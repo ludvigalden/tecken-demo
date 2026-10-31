@@ -1,0 +1,54 @@
+{
+    "id": "letter-p",
+    "kind": "fingerspelling-letter",
+    "text_sv": "p",
+    "sts_variant": "P",
+    "video": {
+        "file": "content/media/letter-p.mp4",
+        "mime": "video/mp4",
+        "duration_s": 1.733,
+        "sha256": "348f93cb1aae76bd63504d6a3714594406446dc60a7313a98784e843fdd9a78e"
+    },
+    "video_alt": {
+        "file": "content/media/letter-p.webm",
+        "mime": "video/webm",
+        "duration_s": 1.733,
+        "sha256": "0b4d4d5626bc3289c60c5b2f08bc6464af51fab2e954977e6744da14f59c5363"
+    },
+    "poster": {
+        "file": "content/media/letter-p.webp",
+        "sha256": "4b25db88aedd5ecdfdf477a1969359d30603005859d9099320f4382cd0d899c8"
+    },
+    "original_sha256": "5ca5189144d1deddda0459c8a2e36481c53903f17a2abcd5ccef48f9d71cdccd",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:P Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AP%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/P_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven P, svenskt handalfabet"
+    }
+}

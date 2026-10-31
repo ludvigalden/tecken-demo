@@ -1,0 +1,54 @@
+{
+    "id": "letter-o",
+    "kind": "fingerspelling-letter",
+    "text_sv": "o",
+    "sts_variant": "O",
+    "video": {
+        "file": "content/media/letter-o.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.6,
+        "sha256": "6f47257a63376aab49a8a77862e0e83debd0683097bec442f5360dd32fb0bb28"
+    },
+    "video_alt": {
+        "file": "content/media/letter-o.webm",
+        "mime": "video/webm",
+        "duration_s": 2.6,
+        "sha256": "5f60336742c155ea69b9a8f7f893ae7034e25e5a72c661a2b83b92128e060038"
+    },
+    "poster": {
+        "file": "content/media/letter-o.webp",
+        "sha256": "97b0fa23d3f3b5e12241f873bfad5c2b792bf33921515ccdaa23444c66a3a0da"
+    },
+    "original_sha256": "f7c0fa83d5b07e41ba3d1aaa4e593625e44adaec4d58b7bae7f8150d74848475",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:O Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AO%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/O_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven O, svenskt handalfabet"
+    }
+}

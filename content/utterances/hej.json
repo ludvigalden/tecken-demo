@@ -1,0 +1,54 @@
+{
+    "id": "hej",
+    "kind": "utterance",
+    "text_sv": "hej",
+    "sts_variant": "HEJ",
+    "video": {
+        "file": "content/media/hej.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.84,
+        "sha256": "ab06dcef8bef90e05ce6ccd00cdddc101df665d4964df45306037b44ee610e71"
+    },
+    "video_alt": {
+        "file": "content/media/hej.webm",
+        "mime": "video/webm",
+        "duration_s": 2.84,
+        "sha256": "a9fbc16323060bf5de6444896eae2c297f3bc4f147de9472509928ef970eefa9"
+    },
+    "poster": {
+        "file": "content/media/hej.webp",
+        "sha256": "c390f9105a087089a2dd0df1d1b151a089c118fd0e5a9b530d00cfd041d5ab6e"
+    },
+    "original_sha256": "87c51c8eac4fe425fb4089114c43832c5cc8ed8b4ad51112a06e9d4bbc5a2d6d",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:67329.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3A67329.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/67329.webm",
+        "author": "MSLink",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "hej"
+    }
+}

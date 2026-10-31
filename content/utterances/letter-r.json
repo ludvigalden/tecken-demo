@@ -1,0 +1,54 @@
+{
+    "id": "letter-r",
+    "kind": "fingerspelling-letter",
+    "text_sv": "r",
+    "sts_variant": "R",
+    "video": {
+        "file": "content/media/letter-r.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.333,
+        "sha256": "678248843ef38f9c86669aea8ca21e85309d8aac4e726bc42e6d8645f20e67cb"
+    },
+    "video_alt": {
+        "file": "content/media/letter-r.webm",
+        "mime": "video/webm",
+        "duration_s": 2.333,
+        "sha256": "f657cd8802c37931a6bf8c89b6dfb4038c87491aebe6d46e4e066e49ee2bf371"
+    },
+    "poster": {
+        "file": "content/media/letter-r.webp",
+        "sha256": "33817257e5d0df29940bf15b8e55cdb11605399b8949296da769e2cbcaeea005"
+    },
+    "original_sha256": "9a026a7a3d7cb0bbd812d5cc598be2af838ecb6bfd34936feeed15afd63cdf7d",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:R Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AR%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/R_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven R, svenskt handalfabet"
+    }
+}

@@ -1,0 +1,54 @@
+{
+    "id": "letter-d",
+    "kind": "fingerspelling-letter",
+    "text_sv": "d",
+    "sts_variant": "D",
+    "video": {
+        "file": "content/media/letter-d.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.866,
+        "sha256": "1f0a47de9cb04e9746cb525e5b031186cf0ef3f891a5fc0650cb17f0fa9564e9"
+    },
+    "video_alt": {
+        "file": "content/media/letter-d.webm",
+        "mime": "video/webm",
+        "duration_s": 2.866,
+        "sha256": "258a7d626f425029cdc0849e02f9478da03ab146540efd65baeb10c4bfa8b64f"
+    },
+    "poster": {
+        "file": "content/media/letter-d.webp",
+        "sha256": "a4a7b38dad8bc92e53404ee3fd3fa45e279886d2d8049a8ba154430031ebc0a2"
+    },
+    "original_sha256": "47cdc9592daa3b7a28799b42c9a42d50394f7b0397b337419b0b48b0645b89f1",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:D Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AD%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/7/79/D_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven D, svenskt handalfabet"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "id": "lexikon-hiss",
+    "kind": "link-out",
+    "text_sv": "hiss",
+    "sts_variant": "HISS",
+    "link_out_url": "https://teckensprakslexikon.su.se/ord/04856",
+    "provenance": {
+        "source_title": "Svenskt teckenspråkslexikon: hiss",
+        "source_url": "https://teckensprakslexikon.su.se/ord/04856",
+        "source_file_url": "https://teckensprakslexikon.su.se/ord/04856",
+        "author": "Svenskt teckenspråkslexikon, Avdelningen för teckenspråk, Institutionen för lingvistik, Stockholms universitet",
+        "signer": null,
+        "publisher": "Stockholms universitet",
+        "licence": "CC BY-NC-SA 4.0",
+        "licence_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "review": {
+        "status": "source-published"
+    }
+}

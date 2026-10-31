@@ -1,0 +1,54 @@
+{
+    "id": "letter-w",
+    "kind": "fingerspelling-letter",
+    "text_sv": "w",
+    "sts_variant": "W",
+    "video": {
+        "file": "content/media/letter-w.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.9,
+        "sha256": "e63a70deb0dcd0be5677328f38d5ac3bc5e3d585e02c9458ee2853d8b76e1240"
+    },
+    "video_alt": {
+        "file": "content/media/letter-w.webm",
+        "mime": "video/webm",
+        "duration_s": 2.9,
+        "sha256": "362203baf4315738ab8b8f4de5db3a8a4c8ed6155d2f5f44818ebb1a8de6196b"
+    },
+    "poster": {
+        "file": "content/media/letter-w.webp",
+        "sha256": "1f4e34e492ebae53d6dd032627452917c9657a30a176994cf259f004b5725c13"
+    },
+    "original_sha256": "7faa6497cf4dc03ce466076ecde4c634f7c43b9ba699509f21fe58b94cf7a57b",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:W Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AW%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/2/21/W_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven W, svenskt handalfabet"
+    }
+}

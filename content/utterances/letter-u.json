@@ -1,0 +1,54 @@
+{
+    "id": "letter-u",
+    "kind": "fingerspelling-letter",
+    "text_sv": "u",
+    "sts_variant": "U",
+    "video": {
+        "file": "content/media/letter-u.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.266,
+        "sha256": "fa014c270442ea5ebe81ea4bc648a0aaf8d1acfef9742c9c691c1d9864e22480"
+    },
+    "video_alt": {
+        "file": "content/media/letter-u.webm",
+        "mime": "video/webm",
+        "duration_s": 2.266,
+        "sha256": "28f96519bee42d4f84d22790ec662e3ea17408400c02e7ce34df2cd30425a3cf"
+    },
+    "poster": {
+        "file": "content/media/letter-u.webp",
+        "sha256": "320aa26d8f167e552845ccc5b1ea89c31a518178851ef16bc0826b05a9b81015"
+    },
+    "original_sha256": "a200ab3e8d1f89ceaa93ddc2f4322013d7ca2dfce0d5a5c70d553827422e2be7",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:U Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AU%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/U_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven U, svenskt handalfabet"
+    }
+}

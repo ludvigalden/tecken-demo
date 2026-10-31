@@ -1,0 +1,54 @@
+{
+    "id": "annat",
+    "kind": "single-sign",
+    "text_sv": "annat",
+    "sts_variant": "ANNAT",
+    "video": {
+        "file": "content/media/annat.mp4",
+        "mime": "video/mp4",
+        "duration_s": 3.8,
+        "sha256": "7df78043fff02cf930375f272fad8b3b112721df2ad648e8b818f167aad5ef4f"
+    },
+    "video_alt": {
+        "file": "content/media/annat.webm",
+        "mime": "video/webm",
+        "duration_s": 3.8,
+        "sha256": "23f73f6d07350c4227370f466c0661a2e8b10a81c93a26d94d1992dd4af8fd28"
+    },
+    "poster": {
+        "file": "content/media/annat.webp",
+        "sha256": "df6581f05031b7082f6a9bce4bbdceb9869195796d132eabd603ee714c90600b"
+    },
+    "original_sha256": "b22670b4ed420305dd59bae03df30db0bd151957e84d67657d64b83f6629ae30",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:Swl-annat-spreadthesign-73566.ogv",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-annat-spreadthesign-73566.ogv",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Swl-annat-spreadthesign-73566.ogv",
+        "author": "Spread the Sign",
+        "signer": null,
+        "publisher": "Spread the Sign",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": "2013091910008774"
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "annat"
+    }
+}

@@ -1,0 +1,54 @@
+{
+    "id": "letter-t",
+    "kind": "fingerspelling-letter",
+    "text_sv": "t",
+    "sts_variant": "T",
+    "video": {
+        "file": "content/media/letter-t.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.733,
+        "sha256": "fdaa86d77bf10e1c2149b7ccb6686507f4d15cd5968e1bfd135129f1e72f2cfa"
+    },
+    "video_alt": {
+        "file": "content/media/letter-t.webm",
+        "mime": "video/webm",
+        "duration_s": 2.733,
+        "sha256": "e4af00c97bf8b7140a887ea8a2c4d9dc539eab5401d80e03a03cb0ae6848bbd5"
+    },
+    "poster": {
+        "file": "content/media/letter-t.webp",
+        "sha256": "d70016ddd1af2aa66dcf24053494f4ca8fa043a20a49cee25ef437f53063e4bd"
+    },
+    "original_sha256": "945b3abb900572f48e4392fdcc4b791cbc938a73c2b9c6e61c28d67412c5e393",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:T Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AT%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/T_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven T, svenskt handalfabet"
+    }
+}

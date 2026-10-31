@@ -1,0 +1,54 @@
+{
+    "id": "musik-pa-teckensprak-ar-sa-vackert",
+    "kind": "utterance",
+    "text_sv": "musik på teckenspråk är så vackert",
+    "sts_variant": "MUSIK PÅ TECKENSPRÅK ÄR SÅ VACKERT",
+    "video": {
+        "file": "content/media/musik-pa-teckensprak-ar-sa-vackert.mp4",
+        "mime": "video/mp4",
+        "duration_s": 8.92,
+        "sha256": "83b058135eeefbbc91aa67ba1d9666c0ef61c6a996dda765f0bee1e9d5671de3"
+    },
+    "video_alt": {
+        "file": "content/media/musik-pa-teckensprak-ar-sa-vackert.webm",
+        "mime": "video/webm",
+        "duration_s": 8.92,
+        "sha256": "32eb841772dd259c21c29ab2f8d7f5f771fe27fb4a35144003485f4e6eeb4f13"
+    },
+    "poster": {
+        "file": "content/media/musik-pa-teckensprak-ar-sa-vackert.webp",
+        "sha256": "965ff6b1d0b438a2868385841463ab92b56b2d73804a019e8d4dcc683ed02515"
+    },
+    "original_sha256": "77425e130259f0e6cfafe628078bc5976333fe9960b32c42cad5bf4fe63cc050",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:Swl-musik på teckenspråk är så vackert-spreadthesign-84845.ogv",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-musik%20p%C3%A5%20teckenspr%C3%A5k%20%C3%A4r%20s%C3%A5%20vackert-spreadthesign-84845.ogv",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Swl-musik_p%C3%A5_teckenspr%C3%A5k_%C3%A4r_s%C3%A5_vackert-spreadthesign-84845.ogv",
+        "author": "Spread the Sign",
+        "signer": null,
+        "publisher": "Spread the Sign",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": "2013091910008774"
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "musik på teckenspråk är så vackert"
+    }
+}

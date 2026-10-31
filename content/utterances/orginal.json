@@ -1,0 +1,54 @@
+{
+    "id": "orginal",
+    "kind": "single-sign",
+    "text_sv": "orginal",
+    "sts_variant": "ORGINAL",
+    "video": {
+        "file": "content/media/orginal.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.8,
+        "sha256": "1ded0d84f77952335e3523a71face6e7cb5f8b55633cccae72878e94bad2a3f9"
+    },
+    "video_alt": {
+        "file": "content/media/orginal.webm",
+        "mime": "video/webm",
+        "duration_s": 2.8,
+        "sha256": "ab77c76a0914a5c863c9be640da6cc15367e2a3aec9472e075b94a313621daa0"
+    },
+    "poster": {
+        "file": "content/media/orginal.webp",
+        "sha256": "43f8517800e1bd6cc15ab85933490a506e9f63738ed70b5e516b627f30242451"
+    },
+    "original_sha256": "4a4fda84b729ddaa6eeb6bfd3cb82bcc490fa43364087c59c924548d3efc3210",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:Swl-orginal-spreadthesign-16626.ogv",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-orginal-spreadthesign-16626.ogv",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/1/11/Swl-orginal-spreadthesign-16626.ogv",
+        "author": "Spread the Sign",
+        "signer": null,
+        "publisher": "Spread the Sign",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": "2013091910008774"
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "orginal"
+    }
+}

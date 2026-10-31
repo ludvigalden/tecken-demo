@@ -1,0 +1,54 @@
+{
+    "id": "letter-x",
+    "kind": "fingerspelling-letter",
+    "text_sv": "x",
+    "sts_variant": "X",
+    "video": {
+        "file": "content/media/letter-x.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.3,
+        "sha256": "037b89ef7bd53f9832f9ae60f45770b1ef9081cfe7afbea11909fe1792f7317f"
+    },
+    "video_alt": {
+        "file": "content/media/letter-x.webm",
+        "mime": "video/webm",
+        "duration_s": 2.3,
+        "sha256": "cb132d21180642fa3134a55f1d8c5604d44a882f819bd2561b0c443525355e46"
+    },
+    "poster": {
+        "file": "content/media/letter-x.webp",
+        "sha256": "90fe9588811bd8f5a2001386820e6d28603ce576558342924e693aa4ec321d78"
+    },
+    "original_sha256": "3937446f3a35d95693bbb889c86bd064836c60411e895f7db37bb3b9ced64430",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:X Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AX%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/X_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven X, svenskt handalfabet"
+    }
+}

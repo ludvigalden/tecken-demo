@@ -1,0 +1,54 @@
+{
+    "id": "letter-s",
+    "kind": "fingerspelling-letter",
+    "text_sv": "s",
+    "sts_variant": "S",
+    "video": {
+        "file": "content/media/letter-s.mp4",
+        "mime": "video/mp4",
+        "duration_s": 1.566,
+        "sha256": "ff51a10de396c6a1e43a78c09b7bb55610965ddc530a2238dc14ecfe403f00af"
+    },
+    "video_alt": {
+        "file": "content/media/letter-s.webm",
+        "mime": "video/webm",
+        "duration_s": 1.566,
+        "sha256": "052158350678925859e2be7f6a2d85c218fb9a1addf404ae7d82bf1b62cdf871"
+    },
+    "poster": {
+        "file": "content/media/letter-s.webp",
+        "sha256": "b5cf8a735b036022740395d222ea9b421ccff7cd11b6f2904f04c23d2a91eb43"
+    },
+    "original_sha256": "9e672fbc402a1779f494e5bda8b26843d01602a4e909b49b3a80fa74634380b0",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:S Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AS%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/6/60/S_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven S, svenskt handalfabet"
+    }
+}

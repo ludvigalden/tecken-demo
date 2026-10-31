@@ -1,0 +1,54 @@
+{
+    "id": "hatt",
+    "kind": "single-sign",
+    "text_sv": "hatt",
+    "sts_variant": "HATT",
+    "video": {
+        "file": "content/media/hatt.mp4",
+        "mime": "video/mp4",
+        "duration_s": 3.84,
+        "sha256": "d7102d072c35fd4edc3b662519012234d0d7e100f72da28f09fe8c24d2a70f67"
+    },
+    "video_alt": {
+        "file": "content/media/hatt.webm",
+        "mime": "video/webm",
+        "duration_s": 3.84,
+        "sha256": "4bcdd4b0dab89b8bb4cd40086003f26351f7d763e8dc7d92ca29cc26febf0ab9"
+    },
+    "poster": {
+        "file": "content/media/hatt.webp",
+        "sha256": "27c7508abbf2fa78ffdd1360153b48a5794fd7abbc8163f4f4c33c898d41a499"
+    },
+    "original_sha256": "9b69c3674bc81dd02680dcb90f8feaf134606db9c700f0e8753b1569f0cf7c8d",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:Swl-hatt-14859.ogv",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-hatt-14859.ogv",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Swl-hatt-14859.ogv",
+        "author": "Spread the Sign",
+        "signer": null,
+        "publisher": "Spread the Sign",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": "2013091910008774"
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "hatt"
+    }
+}

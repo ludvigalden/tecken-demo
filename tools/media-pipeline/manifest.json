@@ -1,0 +1,239 @@
+{
+    "$comment": "Pinned list of Wikimedia Commons clips. Do not edit casually: the media count in the README and the REUSE annotations derive from it.",
+    "clips": [
+        {
+            "id": "hej",
+            "kind": "utterance",
+            "title": "File:67329.webm",
+            "text_sv": "hej"
+        },
+        {
+            "id": "jag-behover-tvatta-lite",
+            "kind": "utterance",
+            "title": "File:Swl-jag behöver tvätta lite.-spreadthesign-79721.ogv",
+            "text_sv": "jag behöver tvätta lite."
+        },
+        {
+            "id": "musik-pa-teckensprak-ar-sa-vackert",
+            "kind": "utterance",
+            "title": "File:Swl-musik på teckenspråk är så vackert-spreadthesign-84845.ogv",
+            "text_sv": "musik på teckenspråk är så vackert"
+        },
+        {
+            "id": "bil",
+            "kind": "single-sign",
+            "title": "File:Swl-bil-spreadthesign-4014.ogv",
+            "text_sv": "bil"
+        },
+        {
+            "id": "hatt",
+            "kind": "single-sign",
+            "title": "File:Swl-hatt-14859.ogv",
+            "text_sv": "hatt"
+        },
+        {
+            "id": "blomma",
+            "kind": "single-sign",
+            "title": "File:Swl-blomma-13928.ogv",
+            "text_sv": "blomma"
+        },
+        {
+            "id": "annat",
+            "kind": "single-sign",
+            "title": "File:Swl-annat-spreadthesign-73566.ogv",
+            "text_sv": "annat"
+        },
+        {
+            "id": "deltid",
+            "kind": "single-sign",
+            "title": "File:Swl-deltid-spreadthesign-70518.ogv",
+            "text_sv": "deltid"
+        },
+        {
+            "id": "man",
+            "kind": "single-sign",
+            "title": "File:Swl-män-spreadthesign-81278.ogv",
+            "text_sv": "män"
+        },
+        {
+            "id": "orginal",
+            "kind": "single-sign",
+            "title": "File:Swl-orginal-spreadthesign-16626.ogv",
+            "text_sv": "orginal"
+        },
+        {
+            "id": "letter-a",
+            "kind": "fingerspelling-letter",
+            "title": "File:A Svenskt handalfabet.webm",
+            "text_sv": "a"
+        },
+        {
+            "id": "letter-b",
+            "kind": "fingerspelling-letter",
+            "title": "File:B Svenskt handalfabet.webm",
+            "text_sv": "b"
+        },
+        {
+            "id": "letter-c",
+            "kind": "fingerspelling-letter",
+            "title": "File:C, Svenskt handalfabet.webm",
+            "text_sv": "c"
+        },
+        {
+            "id": "letter-d",
+            "kind": "fingerspelling-letter",
+            "title": "File:D Svenskt handalfabet.webm",
+            "text_sv": "d"
+        },
+        {
+            "id": "letter-e",
+            "kind": "fingerspelling-letter",
+            "title": "File:E Svenskt handalfabet.webm",
+            "text_sv": "e"
+        },
+        {
+            "id": "letter-f",
+            "kind": "fingerspelling-letter",
+            "title": "File:F Svenskt handalfabet.webm",
+            "text_sv": "f"
+        },
+        {
+            "id": "letter-g",
+            "kind": "fingerspelling-letter",
+            "title": "File:G Svenskt handalfabet.webm",
+            "text_sv": "g"
+        },
+        {
+            "id": "letter-h",
+            "kind": "fingerspelling-letter",
+            "title": "File:H Svenskt handalfabet.webm",
+            "text_sv": "h"
+        },
+        {
+            "id": "letter-i",
+            "kind": "fingerspelling-letter",
+            "title": "File:I Svenskt handalfabet.webm",
+            "text_sv": "i"
+        },
+        {
+            "id": "letter-j",
+            "kind": "fingerspelling-letter",
+            "title": "File:J Svenskt handalfabet.webm",
+            "text_sv": "j"
+        },
+        {
+            "id": "letter-k",
+            "kind": "fingerspelling-letter",
+            "title": "File:K Svenskt handalfabet.webm",
+            "text_sv": "k"
+        },
+        {
+            "id": "letter-l",
+            "kind": "fingerspelling-letter",
+            "title": "File:L Svenskt handalfabet.webm",
+            "text_sv": "l"
+        },
+        {
+            "id": "letter-m",
+            "kind": "fingerspelling-letter",
+            "title": "File:M Svenskt handalfabet.webm",
+            "text_sv": "m"
+        },
+        {
+            "id": "letter-n",
+            "kind": "fingerspelling-letter",
+            "title": "File:N Svenskt handalfabet.webm",
+            "text_sv": "n"
+        },
+        {
+            "id": "letter-o",
+            "kind": "fingerspelling-letter",
+            "title": "File:O Svenskt handalfabet.webm",
+            "text_sv": "o"
+        },
+        {
+            "id": "letter-p",
+            "kind": "fingerspelling-letter",
+            "title": "File:P Svenskt handalfabet.webm",
+            "text_sv": "p"
+        },
+        {
+            "id": "letter-q",
+            "kind": "fingerspelling-letter",
+            "title": "File:Q Svenskt handalfabet.webm",
+            "text_sv": "q"
+        },
+        {
+            "id": "letter-r",
+            "kind": "fingerspelling-letter",
+            "title": "File:R Svenskt handalfabet.webm",
+            "text_sv": "r"
+        },
+        {
+            "id": "letter-s",
+            "kind": "fingerspelling-letter",
+            "title": "File:S Svenskt handalfabet.webm",
+            "text_sv": "s"
+        },
+        {
+            "id": "letter-t",
+            "kind": "fingerspelling-letter",
+            "title": "File:T Svenskt handalfabet.webm",
+            "text_sv": "t"
+        },
+        {
+            "id": "letter-u",
+            "kind": "fingerspelling-letter",
+            "title": "File:U Svenskt handalfabet.webm",
+            "text_sv": "u"
+        },
+        {
+            "id": "letter-v",
+            "kind": "fingerspelling-letter",
+            "title": "File:V Svenskt handalfabet.webm",
+            "text_sv": "v"
+        },
+        {
+            "id": "letter-w",
+            "kind": "fingerspelling-letter",
+            "title": "File:W Svenskt handalfabet.webm",
+            "text_sv": "w"
+        },
+        {
+            "id": "letter-x",
+            "kind": "fingerspelling-letter",
+            "title": "File:X Svenskt handalfabet.webm",
+            "text_sv": "x"
+        },
+        {
+            "id": "letter-y",
+            "kind": "fingerspelling-letter",
+            "title": "File:Y Svenskt handalfabet.webm",
+            "text_sv": "y"
+        },
+        {
+            "id": "letter-z",
+            "kind": "fingerspelling-letter",
+            "title": "File:Z Svenskt handalfabet.webm",
+            "text_sv": "z"
+        },
+        {
+            "id": "letter-aring",
+            "kind": "fingerspelling-letter",
+            "title": "File:Å Svenskt handalfabet.webm",
+            "text_sv": "å"
+        },
+        {
+            "id": "letter-auml",
+            "kind": "fingerspelling-letter",
+            "title": "File:Ä Svenskt handalfabet.webm",
+            "text_sv": "ä"
+        },
+        {
+            "id": "letter-ouml",
+            "kind": "fingerspelling-letter",
+            "title": "File:Ö Svenskt handalfabet.webm",
+            "text_sv": "ö"
+        }
+    ]
+}

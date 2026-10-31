@@ -1,8 +1,17 @@
 version = 1
 
-# Everything in this repository is MIT unless per-file annotations
-# below say otherwise (media carries its own licences).
+# Code and configuration are MIT. Generated and licensed media under
+# content/ carry their own REUSE.toml files with per-file annotations.
 [[annotations]]
-path = "**"
+path = [
+    "*",
+    ".*",
+    ".github/**",
+    "apps/**",
+    "docs/**",
+    "packages/**",
+    "services/**",
+    "tools/**",
+]
 SPDX-FileCopyrightText = "2026 Ludvig Aldén"
 SPDX-License-Identifier = "MIT"

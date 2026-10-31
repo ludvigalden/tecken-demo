@@ -1,0 +1,54 @@
+{
+    "id": "letter-n",
+    "kind": "fingerspelling-letter",
+    "text_sv": "n",
+    "sts_variant": "N",
+    "video": {
+        "file": "content/media/letter-n.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.733,
+        "sha256": "fac444fab58a0094d898273be508bf01242b5db3535feb1752f1eefd232d2c31"
+    },
+    "video_alt": {
+        "file": "content/media/letter-n.webm",
+        "mime": "video/webm",
+        "duration_s": 2.733,
+        "sha256": "dd6b62763edf56e2612956d3fa5bd603971f486274f0a42016b41a1a94881faf"
+    },
+    "poster": {
+        "file": "content/media/letter-n.webp",
+        "sha256": "b42841f50c74ed4f769cb5a9ae85096db2ce7bd8dab804b08913e114a2095a46"
+    },
+    "original_sha256": "7c0b6ff3f4d3b70b139a6baf561597b23094288e659480d5de04bacda248851e",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:N Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AN%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/N_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven N, svenskt handalfabet"
+    }
+}

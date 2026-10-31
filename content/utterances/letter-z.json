@@ -1,0 +1,54 @@
+{
+    "id": "letter-z",
+    "kind": "fingerspelling-letter",
+    "text_sv": "z",
+    "sts_variant": "Z",
+    "video": {
+        "file": "content/media/letter-z.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.033,
+        "sha256": "55710ddac3623302263102c69a06013757e167133102f02b9ebe25d43c4ba7e5"
+    },
+    "video_alt": {
+        "file": "content/media/letter-z.webm",
+        "mime": "video/webm",
+        "duration_s": 2.033,
+        "sha256": "c89c16612e1f45d4879ffde119cfa918b87dffa14f3da0902fe4f7aa0d686751"
+    },
+    "poster": {
+        "file": "content/media/letter-z.webp",
+        "sha256": "bf7a5392f99d1c48ad6578dab87d32ce6a07dac75b97c10b8994d8b8f2c65efa"
+    },
+    "original_sha256": "a66f2d5891d7da2b13e2688dfc0ed2a1ee3e7dd3f872eb309fcb69d372ce9095",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:Z Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AZ%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Z_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven Z, svenskt handalfabet"
+    }
+}

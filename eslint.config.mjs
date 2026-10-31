@@ -90,4 +90,14 @@ export default [
             ],
         },
     },
+    {
+        // The utterance record is a wire contract with snake_case field names
+        // (content/utterances/*.json). These packages construct and read those
+        // records, so snake_case identifiers are the honest spelling here.
+        name: "tecken/wire-record-field-names",
+        files: ["packages/contracts/src/**", "tools/media-pipeline/src/**"],
+        rules: {
+            camelcase: "off",
+        },
+    },
 ];

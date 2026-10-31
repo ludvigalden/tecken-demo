@@ -1,0 +1,54 @@
+{
+    "id": "letter-y",
+    "kind": "fingerspelling-letter",
+    "text_sv": "y",
+    "sts_variant": "Y",
+    "video": {
+        "file": "content/media/letter-y.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.6,
+        "sha256": "bc39bd69de80619b05f933381a024aa6bb8bff335e1d28084f3c9e60c3270ade"
+    },
+    "video_alt": {
+        "file": "content/media/letter-y.webm",
+        "mime": "video/webm",
+        "duration_s": 2.6,
+        "sha256": "9185af526c637162b05184088052c26b52914a62e5bb57ce05a7111608ab656b"
+    },
+    "poster": {
+        "file": "content/media/letter-y.webp",
+        "sha256": "d35a21d6ada9b80e89c41999808a5eb028b57a3f80cf98e2a3b00f7e918646e6"
+    },
+    "original_sha256": "64a7fc8614bde831578601d93e4b0cabc5620c3d19915ad8c2bebab955eaee65",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:Y Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AY%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Y_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven Y, svenskt handalfabet"
+    }
+}

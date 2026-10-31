@@ -1,0 +1,54 @@
+{
+    "id": "bil",
+    "kind": "single-sign",
+    "text_sv": "bil",
+    "sts_variant": "BIL",
+    "video": {
+        "file": "content/media/bil.mp4",
+        "mime": "video/mp4",
+        "duration_s": 4.08,
+        "sha256": "5a8a3bba5db8245bc8bc6590aef13aa4080083f0430aa180ee0851f2278e21d8"
+    },
+    "video_alt": {
+        "file": "content/media/bil.webm",
+        "mime": "video/webm",
+        "duration_s": 4.08,
+        "sha256": "bf32aee7b9724002053f343cb84271cd645bf15ff9c8fdbca00c38bad20f04de"
+    },
+    "poster": {
+        "file": "content/media/bil.webp",
+        "sha256": "351acca744277185cc5cb5df1d6451f2de2d2adcffdfb28380a4bc4e69841694"
+    },
+    "original_sha256": "493c1a6739e668b8da6a15d50bf9d9cd421b17779ec76a2ff5e756659c7c4e0c",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:Swl-bil-spreadthesign-4014.ogv",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-bil-spreadthesign-4014.ogv",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Swl-bil-spreadthesign-4014.ogv",
+        "author": "Spread the Sign",
+        "signer": null,
+        "publisher": "Spread the Sign",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": "2013091910008774"
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "bil"
+    }
+}

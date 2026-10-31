@@ -8,11 +8,16 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "lint": "eslint .",
+    "pipeline": "esbuild src/cli.ts --bundle --platform=node --format=esm --outfile=dist/cli.mjs --external:zod && node dist/cli.mjs",
     "test": "vitest run --coverage",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
+  "dependencies": {
+    "@ludvigalden-demo/tecken-contracts": "0.0.0"
+  },
   "devDependencies": {
     "@types/node": "24.19.2",
+    "esbuild": "0.28.2",
     "vitest": "5.0.5"
   }
 }

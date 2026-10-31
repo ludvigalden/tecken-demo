@@ -1,0 +1,54 @@
+{
+    "id": "deltid",
+    "kind": "single-sign",
+    "text_sv": "deltid",
+    "sts_variant": "DELTID",
+    "video": {
+        "file": "content/media/deltid.mp4",
+        "mime": "video/mp4",
+        "duration_s": 3.8,
+        "sha256": "5a0f225ce6f5ad07b5f7d4dcb80493ba690e98ac39ede9b8f61cfc1c0ff4d0c5"
+    },
+    "video_alt": {
+        "file": "content/media/deltid.webm",
+        "mime": "video/webm",
+        "duration_s": 3.8,
+        "sha256": "8b0f9d141c0fdd94da7e04d07fabcaff57616ce64268cb1e9b76f6e2eeba08e8"
+    },
+    "poster": {
+        "file": "content/media/deltid.webp",
+        "sha256": "af4d4ea866ef078fda6ef29220fd167fbacb30d07e354e735179948ff78ab199"
+    },
+    "original_sha256": "a292fb3f170f3415674e4f02cc7b2e5e5b5a4ffed4e26f7ae93fa8f457bff5de",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:Swl-deltid-spreadthesign-70518.ogv",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-deltid-spreadthesign-70518.ogv",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Swl-deltid-spreadthesign-70518.ogv",
+        "author": "Spread the Sign",
+        "signer": null,
+        "publisher": "Spread the Sign",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": "2013091910008774"
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "deltid"
+    }
+}

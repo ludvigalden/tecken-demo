@@ -4,3 +4,4 @@ coverage/
 storybook-static/
 .nx/
 package-lock.json
+content/

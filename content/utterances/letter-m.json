@@ -1,0 +1,54 @@
+{
+    "id": "letter-m",
+    "kind": "fingerspelling-letter",
+    "text_sv": "m",
+    "sts_variant": "M",
+    "video": {
+        "file": "content/media/letter-m.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.533,
+        "sha256": "8e09540c41543953f391723a72544e82ad92a9fae628b97a6c775f08bbf3c578"
+    },
+    "video_alt": {
+        "file": "content/media/letter-m.webm",
+        "mime": "video/webm",
+        "duration_s": 2.533,
+        "sha256": "c33acda4a8e678c58a80e28e47dae4efb672b356fcab92d553fe9f8a7f3cbf31"
+    },
+    "poster": {
+        "file": "content/media/letter-m.webp",
+        "sha256": "188f58508c473c06024c387b35795afe17ba483d89e2745702c6ddbd649c73bc"
+    },
+    "original_sha256": "3e6fce6491b6937647f18ef1a7d23a70fc3b45e522807353ce40f5bdce67a512",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:M Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AM%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/M_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven M, svenskt handalfabet"
+    }
+}

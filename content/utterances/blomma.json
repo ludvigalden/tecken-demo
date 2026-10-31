@@ -1,0 +1,54 @@
+{
+    "id": "blomma",
+    "kind": "single-sign",
+    "text_sv": "blomma",
+    "sts_variant": "BLOMMA",
+    "video": {
+        "file": "content/media/blomma.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.12,
+        "sha256": "4f3cfef85ed484b2b4d6dc83bf7d3e28acc40ce779f221e03d7a3489f70c602c"
+    },
+    "video_alt": {
+        "file": "content/media/blomma.webm",
+        "mime": "video/webm",
+        "duration_s": 2.12,
+        "sha256": "9819f93f96d5ea6ebec7b3b9cb6724505f49314628520d2ea470d07a0b4998c9"
+    },
+    "poster": {
+        "file": "content/media/blomma.webp",
+        "sha256": "385fd62538ddb9d5cf542ec190e8b0327eb3c128ab9c23070db41fd37649ab20"
+    },
+    "original_sha256": "2da1d4687d042868d1c5c7fe1da2d9d7df7cdf4f2e1d1fe51bc0ebad9d9f00d4",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:Swl-blomma-13928.ogv",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-blomma-13928.ogv",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Swl-blomma-13928.ogv",
+        "author": "Spread the Sign",
+        "signer": null,
+        "publisher": "Spread the Sign",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": "2013091910008774"
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "blomma"
+    }
+}

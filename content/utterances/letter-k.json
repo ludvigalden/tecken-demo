@@ -1,0 +1,54 @@
+{
+    "id": "letter-k",
+    "kind": "fingerspelling-letter",
+    "text_sv": "k",
+    "sts_variant": "K",
+    "video": {
+        "file": "content/media/letter-k.mp4",
+        "mime": "video/mp4",
+        "duration_s": 2.433,
+        "sha256": "f25d940c6a624e296b905fb76d1ecaeeb2d62c19ad9f449e7ed8a7d64aea2734"
+    },
+    "video_alt": {
+        "file": "content/media/letter-k.webm",
+        "mime": "video/webm",
+        "duration_s": 2.433,
+        "sha256": "261a48b5091d10cbed82749d0e6339d5ec8643537376421558dca8ae093992b0"
+    },
+    "poster": {
+        "file": "content/media/letter-k.webp",
+        "sha256": "8f1f06381da4617cce489a9f0f70c42b91555ed366b2c5cc1068938ef5651e5f"
+    },
+    "original_sha256": "ce864e38b574c00e2f656cda00cc25f1f645007ede283f90568848659602fbf9",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:K Svenskt handalfabet.webm",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3AK%20Svenskt%20handalfabet.webm",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/K_Svenskt_handalfabet.webm",
+        "author": "LittleGun",
+        "signer": null,
+        "publisher": "Wikimedia Commons",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": null
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "Bokstaven K, svenskt handalfabet"
+    }
+}

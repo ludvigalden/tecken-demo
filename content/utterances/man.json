@@ -1,0 +1,54 @@
+{
+    "id": "man",
+    "kind": "single-sign",
+    "text_sv": "män",
+    "sts_variant": "MÄN",
+    "video": {
+        "file": "content/media/man.mp4",
+        "mime": "video/mp4",
+        "duration_s": 3.64,
+        "sha256": "db9c4bf2483d4173b7c5540eefa4a6e90aee0df47aa8af8d9c60119901809077"
+    },
+    "video_alt": {
+        "file": "content/media/man.webm",
+        "mime": "video/webm",
+        "duration_s": 3.64,
+        "sha256": "1a313d1f6d1a5226a098f8f1f983b1010911b74b1b0b51e64fbb0ee8d825a9e9"
+    },
+    "poster": {
+        "file": "content/media/man.webp",
+        "sha256": "b7476114b39b4bb72dcf4586ff7f56d8ed6e144760c26e6db594767f9a911192"
+    },
+    "original_sha256": "f8fb5d66da80262869eb21a8555609cb082f8a9f63445bd1d1d070a96e69e3a4",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:Swl-män-spreadthesign-81278.ogv",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-m%C3%A4n-spreadthesign-81278.ogv",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Swl-m%C3%A4n-spreadthesign-81278.ogv",
+        "author": "Spread the Sign",
+        "signer": null,
+        "publisher": "Spread the Sign",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": "2013091910008774"
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "män"
+    }
+}

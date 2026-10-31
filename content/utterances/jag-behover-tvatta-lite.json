@@ -1,0 +1,54 @@
+{
+    "id": "jag-behover-tvatta-lite",
+    "kind": "utterance",
+    "text_sv": "jag behöver tvätta lite.",
+    "sts_variant": "JAG BEHÖVER TVÄTTA LITE.",
+    "video": {
+        "file": "content/media/jag-behover-tvatta-lite.mp4",
+        "mime": "video/mp4",
+        "duration_s": 7.32,
+        "sha256": "e921e6fc20f5f377073e76e681d25188a49cb9ffe89ec04effe4db8275e744b8"
+    },
+    "video_alt": {
+        "file": "content/media/jag-behover-tvatta-lite.webm",
+        "mime": "video/webm",
+        "duration_s": 7.32,
+        "sha256": "031ba2573a10a5df013cfd3bce0f5637271c73f552d156ac55c853f31bed75c6"
+    },
+    "poster": {
+        "file": "content/media/jag-behover-tvatta-lite.webp",
+        "sha256": "0f7d2e9eb7827cae90bb3b6967e2ad85677f4fbd9cdf4aac23aff9a1eee3d8b4"
+    },
+    "original_sha256": "ded48bc260b9acd99dd64dddb5e55f57273a86448420a6a1354ef38a59c6f289",
+    "transformations": [
+        "transcode:h264",
+        "transcode:vp9",
+        "poster:frame@0.5s"
+    ],
+    "provenance": {
+        "source_title": "File:Swl-jag behöver tvätta lite.-spreadthesign-79721.ogv",
+        "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-jag%20beh%C3%B6ver%20tv%C3%A4tta%20lite.-spreadthesign-79721.ogv",
+        "source_file_url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Swl-jag_beh%C3%B6ver_tv%C3%A4tta_lite.-spreadthesign-79721.ogv",
+        "author": "Spread the Sign",
+        "signer": null,
+        "publisher": "Spread the Sign",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "retrieved_at": "2026-10-30",
+        "permission_ticket": "2013091910008774"
+    },
+    "rights": {
+        "code": "MIT",
+        "data": "CC-BY-4.0",
+        "media": "CC BY-SA 3.0",
+        "output": "CC-BY-4.0"
+    },
+    "review": {
+        "status": "source-published"
+    },
+    "caption": {
+        "kind": "vtt",
+        "lang": "sv",
+        "text": "jag behöver tvätta lite."
+    }
+}
