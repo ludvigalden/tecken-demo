@@ -1,0 +1,18 @@
+{
+  "name": "@ludvigalden-demo/tecken-storybook",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Storybook for the Tecken design system.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint .",
+    "test": "vitest run --coverage",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "vitest": "5.0.5"
+  }
+}

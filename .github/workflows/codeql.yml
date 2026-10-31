@@ -1,0 +1,69 @@
+name: CodeQL
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+    schedule:
+        - cron: "0 3 * * 1"
+
+permissions:
+    contents: read
+
+defaults:
+    run:
+        shell: bash --noprofile --norc -euo pipefail {0}
+
+jobs:
+    visibility:
+        runs-on: ubuntu-latest
+        outputs:
+            public: ${{ steps.vis.outputs.public }}
+        steps:
+            - name: Record start
+              run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
+            - id: vis
+              run: |
+                  VIS=$(gh api "repos/${{ github.repository }}" --jq .visibility)
+                  echo "public=$( [ "$VIS" = "public" ] && echo true || echo false )" >> "$GITHUB_OUTPUT"
+            - name: Job duration
+              if: always()
+              run: |
+                  echo "visibility: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"
+        env:
+            GH_TOKEN: ${{ github.token }}
+
+    analyze:
+        needs: visibility
+        if: needs.visibility.outputs.public == 'true'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            actions: read
+            security-events: write
+        steps:
+            - name: Record start
+              run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
+              # v7.0.1
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+              # v4.39.1
+            - uses: github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370
+              with:
+                  languages: javascript-typescript
+                  # v4.39.1
+            - uses: github/codeql-action/autobuild@9b3254085494b55a0f7c4c2b3d2d52cc712ce370
+              # v4.39.1
+            - uses: github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370
+            - name: Job duration
+              if: always()
+              run: |
+                  echo "analyze: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"
+
+    analyze-elided:
+        needs: visibility
+        if: needs.visibility.outputs.public != 'true'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Loud elision
+              run: |
+                  echo "ELIDED: CodeQL needs a public repo or GHAS" >> "$GITHUB_STEP_SUMMARY"

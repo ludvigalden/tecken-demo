@@ -1,0 +1,36 @@
+{
+  "name": "@ludvigalden-demo/tecken-contracts",
+  "version": "0.0.0",
+  "description": "Shared schemas and types for the Tecken demonstration (utterance, provenance, rights, review and caption records).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ludvigalden/tecken-demo.git",
+    "directory": "packages/contracts"
+  },
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint .",
+    "test": "vitest run --coverage",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "vitest": "5.0.5"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

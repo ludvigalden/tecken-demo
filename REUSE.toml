@@ -1,0 +1,8 @@
+version = 1
+
+# Everything in this repository is MIT unless per-file annotations
+# below say otherwise (media carries its own licences).
+[[annotations]]
+path = "**"
+SPDX-FileCopyrightText = "2026 Ludvig Aldén"
+SPDX-License-Identifier = "MIT"

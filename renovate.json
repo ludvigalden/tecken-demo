@@ -1,0 +1,17 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:recommended"],
+    "minimumReleaseAge": "3 days",
+    "ignoreDeps": ["fk-icons"],
+    "packageRules": [
+        {
+            "groupName": "vue",
+            "matchPackageNames": ["vue", "@vue/**"]
+        },
+        {
+            "groupName": "fkui",
+            "matchPackageNames": ["@fkui/**"]
+        }
+    ],
+    "automerge": false
+}

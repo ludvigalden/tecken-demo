@@ -1,0 +1,163 @@
+name: CI
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: ci-${{ github.ref }}
+    cancel-in-progress: true
+
+defaults:
+    run:
+        shell: bash --noprofile --norc -euo pipefail {0}
+
+jobs:
+    static:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Record start
+              run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
+              # v7.0.1
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+              with:
+                  fetch-depth: 0
+                  # v7.1.0
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+              with:
+                  node-version-file: .nvmrc
+                  cache: npm
+            - run: npm ci
+            - run: npx lerna run typecheck
+            - run: npx lerna run lint
+            - run: npx prettier --check .
+            - name: stylelint
+              run: npx stylelint "**/*.{css,scss,vue}" --allow-empty-input
+            - name: html-validate (tracked sources only)
+              run: |
+                  FILES=$(git ls-files '*.vue' '*.html')
+                  if [ -n "$FILES" ]; then
+                      # shellcheck disable=SC2086
+                      npx html-validate $FILES
+                  else
+                      MSG="no .vue/.html sources tracked"
+                      echo "ELIDED: html-validate - $MSG" >> "$GITHUB_STEP_SUMMARY"
+                  fi
+            - run: npx markdownlint-cli2
+            - name: commitlint
+              run: |
+                  if [ "${{ github.event_name }}" = "pull_request" ]; then
+                      FROM="${{ github.event.pull_request.base.sha }}"
+                  elif [ -n "${{ github.event.before }}" ] && \
+                          [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+                      FROM="${{ github.event.before }}"
+                  else
+                      FROM="$(git rev-list --max-parents=0 HEAD | head -1)"
+                      echo "root commit $FROM checked explicitly (no valid before-sha)"
+                      git log --format=%B -n 1 "$FROM" | npx commitlint || exit 1
+                  fi
+                  npx commitlint --from "$FROM" --to HEAD
+            - name: reuse lint
+              run: |
+                  if [ -f REUSE.toml ]; then
+                      pipx run reuse==6.2.0 lint
+                  else
+                      echo "ELIDED: reuse lint — REUSE.toml not present" >> "$GITHUB_STEP_SUMMARY"
+                  fi
+            - name: terraform checks
+              run: |
+                  if [ -n "$(find infra -name '*.tf' -print -quit 2>/dev/null)" ]; then
+                      terraform fmt -check -recursive
+                      for root in infra/terraform/*/; do
+                          (cd "$root" && terraform init -backend=false >/dev/null && terraform validate)
+                      done
+                  else
+                      echo "ELIDED: terraform fmt/validate — infra/ not present" >> "$GITHUB_STEP_SUMMARY"
+                  fi
+            - name: hadolint
+              run: |
+                  if [ -f Dockerfile ]; then
+                      docker run --rm -i hadolint/hadolint < Dockerfile
+                  else
+                      echo "ELIDED: hadolint — Dockerfile not present" >> "$GITHUB_STEP_SUMMARY"
+                  fi
+            - name: Job duration
+              if: always()
+              run: |
+                  echo "static: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"
+
+    unit:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Record start
+              run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
+              # v7.0.1
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+              # v7.1.0
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+              with:
+                  node-version-file: .nvmrc
+                  cache: npm
+            - run: npm ci
+            - run: npx lerna run test
+            - name: Job duration
+              if: always()
+              run: |
+                  echo "unit: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"
+
+    drift:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Record start
+              run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
+              # v7.0.1
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+              # v7.1.0
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+              with:
+                  node-version-file: .nvmrc
+                  cache: npm
+            - run: npm ci
+            - name: Regenerate generated artifacts and fail on drift
+              run: |
+                  npx lerna run generate || { echo "generate failed" >&2; exit 1; }
+                  if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
+                      echo "drift: clean"
+                  else
+                      git status --porcelain
+                      echo "drift: working tree changed after generate" >&2
+                      exit 1
+                  fi
+            - name: Job duration
+              if: always()
+              run: |
+                  echo "drift: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"
+
+    release-dry-run:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Record start
+              run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
+              # v7.0.1
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+              with:
+                  fetch-depth: 0
+                  # v7.1.0
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+              with:
+                  node-version-file: .nvmrc
+                  cache: npm
+            - run: npm ci
+            - run: npx lerna run build
+            - name: Lerna version (throwaway checkout, no tags, no push)
+              run: npx lerna version --no-git-tag-version --no-push --yes 0.1.0
+            - name: npm pack dry-run with allowlist check
+              run: node tools/ci/check-pack.mjs packages/contracts packages/design-system
+            - name: Job duration
+              if: always()
+              run: |
+                  echo "release-dry-run: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"

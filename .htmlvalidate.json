@@ -1,0 +1,12 @@
+{
+    "$schema": "https://html-validate.org/schemas/config.json",
+    "plugins": ["html-validate-vue", "@fkui/vue/htmlvalidate"],
+    "extends": [
+        "html-validate:recommended",
+        "html-validate-vue:recommended",
+        "@fkui/vue/htmlvalidate:recommended"
+    ],
+    "transform": {
+        "^.*\\.vue$": "html-validate-vue"
+    }
+}

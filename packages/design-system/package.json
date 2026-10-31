@@ -1,0 +1,36 @@
+{
+  "name": "@ludvigalden-demo/tecken-design-system",
+  "version": "0.0.0",
+  "description": "Design tokens and Vue components for the Tecken demonstration, layered on FKUI.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ludvigalden/tecken-demo.git",
+    "directory": "packages/design-system"
+  },
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint .",
+    "test": "vitest run --coverage",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "vitest": "5.0.5"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "name": "tecken-demo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Swedish Sign Language demonstration: recorded human signing from open sources, with provenance shown before play.",
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*",
+    "tools/*"
+  ],
+  "scripts": {
+    "build": "lerna run build",
+    "lint": "lerna run lint",
+    "lint:root": "eslint . && prettier --check . && stylelint \"**/*.{css,scss,vue}\" --allow-empty-input && markdownlint-cli2",
+    "test": "lerna run test",
+    "typecheck": "lerna run typecheck"
+  },
+  "allowScripts": {
+    "esbuild": true,
+    "fsevents": false,
+    "nx": true,
+    "unrs-resolver": true
+  },
+  "overrides": {
+    "eslint-plugin-tsdoc": {
+      "@typescript-eslint/utils": "8.72.1"
+    },
+    "markdownlint": {
+      "re2js": "2.8.7"
+    },
+    "nx": {
+      "undici": "7.30.1"
+    },
+    "openapi-typescript": {
+      "typescript": "$typescript"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.4",
+    "@commitlint/config-conventional": "21.2.4",
+    "@fkui/date": "6.63.0",
+    "@fkui/design": "6.63.0",
+    "@fkui/icon-lib-default": "6.63.0",
+    "@fkui/logic": "6.63.0",
+    "@fkui/theme-default": "6.63.0",
+    "@fkui/vue": "6.63.0",
+    "@forsakringskassan/eslint-config": "15.13.0",
+    "@forsakringskassan/eslint-config-typescript": "15.13.2",
+    "@forsakringskassan/eslint-config-vitest": "15.13.0",
+    "@forsakringskassan/eslint-config-vue": "15.13.2",
+    "@forsakringskassan/prettier-config": "3.7.13",
+    "@forsakringskassan/stylelint-config": "3.5.1",
+    "@types/node": "24.19.2",
+    "@vitest/coverage-v8": "5.0.5",
+    "eslint": "10.13.0",
+    "eslint-plugin-vuejs-accessibility": "2.6.3",
+    "html-validate": "11.17.0",
+    "html-validate-vue": "9.3.1",
+    "lerna": "10.1.1",
+    "markdownlint-cli2": "0.24.0",
+    "prettier": "3.9.10",
+    "stylelint": "17.16.0",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "vitest": "5.0.5",
+    "vue": "3.5.44",
+    "vue-tsc": "3.3.14"
+  },
+  "engines": {
+    "node": "^22.16 || >= 24"
+  }
+}

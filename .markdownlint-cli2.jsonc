@@ -1,0 +1,18 @@
+{
+    "config": {
+        "default": true,
+        "MD013": false,
+        "MD033": false,
+        "MD041": true,
+    },
+    // The top-level files and directories the .gitignore allowlist admits.
+    "globs": [
+        "*.md",
+        "{.github,apps,content,contracts,docs,infra,packages,services,tests,tools}/**/*.md",
+    ],
+    "ignores": [
+        "**/node_modules/**",
+        "**/dist/**",
+        "**/CHANGELOG.md",
+    ],
+}
