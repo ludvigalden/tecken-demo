@@ -1,0 +1,46 @@
+/* Plain-HTML consumer of the Tecken tokens. Only semantic tokens. */
+
+body {
+    margin: var(--tecken-space-200);
+    color: var(--tecken-text-primary);
+    background: var(--tecken-surface-default);
+    line-height: var(--tecken-line-height-normal);
+}
+
+.statuses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--tecken-space-50);
+    padding: 0;
+    list-style: none;
+}
+
+.status {
+    padding: var(--tecken-space-25) var(--tecken-space-50);
+    border-radius: var(--tecken-radius-small);
+    font-weight: var(--tecken-font-weight-medium);
+}
+
+.status--recorded {
+    background: var(--tecken-status-recorded);
+    color: var(--tecken-status-recorded-text);
+}
+
+.status--link-out {
+    background: var(--tecken-status-link-out);
+    color: var(--tecken-status-link-out-text);
+}
+
+.status--unsupported {
+    background: var(--tecken-status-unsupported);
+    color: var(--tecken-status-unsupported-text);
+}
+
+.action {
+    color: var(--tecken-action-text-primary);
+}
+
+.action:focus-visible {
+    outline: var(--tecken-focus-ring-width) solid var(--tecken-focus-ring);
+    outline-offset: var(--tecken-focus-ring-offset);
+}

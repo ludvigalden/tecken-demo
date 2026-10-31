@@ -5,3 +5,6 @@ storybook-static/
 .nx/
 package-lock.json
 content/
+packages/design-system/src/generated/
+apps/web/src/generated/
+apps/storybook/generated/

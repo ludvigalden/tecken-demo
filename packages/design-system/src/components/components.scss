@@ -1,0 +1,35 @@
+/* Domain component styles. Consumes semantic tokens only; raw values live
+ * in src/tokens/tokens.ts. */
+
+.t-sign-video {
+    margin: 0;
+    display: grid;
+    gap: var(--tecken-space-50);
+}
+
+.t-sign-video figcaption {
+    font-size: var(--tecken-font-size-lg);
+    font-weight: var(--tecken-font-weight-bold);
+    line-height: var(--tecken-line-height-tight);
+}
+
+.t-sign-video video {
+    max-width: 100%;
+    border-radius: var(--tecken-radius-medium);
+    border: var(--tecken-space-25) solid var(--tecken-border-subtle);
+}
+
+/* Tokenised focus ring for our own focusable elements (the video, and any
+ * heading that receives programmatic focus). FKUI controls draw the same
+ * colours through the --fkds-focus-indicator-* mapping. */
+.t-sign-video video:focus-visible,
+.t-focus-target:focus-visible {
+    outline: var(--tecken-focus-ring-width) solid var(--tecken-focus-ring);
+    outline-offset: var(--tecken-focus-ring-offset);
+}
+
+.t-fingerspelling__current {
+    font-size: var(--tecken-font-size-xl);
+    font-weight: var(--tecken-font-weight-bold);
+    min-height: var(--tecken-space-400);
+}

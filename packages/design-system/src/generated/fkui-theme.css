@@ -1,0 +1,63 @@
+/* Generated from src/tokens/tokens.ts — do not edit.
+ * Every FKUI colour variable the shipped FKUI components render, mapped onto
+ * Tecken semantic tokens (coverage enforced by fkui-coverage.test.ts).
+ */
+:root {
+    --fkds-color-text-primary: var(--tecken-text-primary);
+    --fkds-color-text-secondary: var(--tecken-text-secondary);
+    --fkds-color-text-inverted: var(--tecken-text-inverted);
+    --fkds-color-text-disabled: var(--tecken-text-disabled);
+    --f-text-color-heading-1: var(--tecken-text-primary);
+    --f-text-color-heading-2: var(--tecken-text-primary);
+    --f-text-color-heading-3: var(--tecken-text-primary);
+    --f-text-color-heading-4: var(--tecken-text-primary);
+    --f-text-color-heading-5: var(--tecken-text-primary);
+    --f-text-color-heading-6: var(--tecken-text-primary);
+    --fkds-color-background-primary: var(--tecken-surface-default);
+    --fkds-color-background-secondary: var(--tecken-surface-muted);
+    --fkds-color-background-disabled: var(--tecken-surface-muted);
+    --fkds-color-border-primary: var(--tecken-border-default);
+    --fkds-color-border-disabled: var(--tecken-border-subtle);
+    --fkds-color-interactive-surface-background-primary-default: var(--tecken-surface-muted);
+    --fkds-color-interactive-surface-background-primary-hover: var(--tecken-surface-interactive-hover);
+    --fkds-color-action-background-primary-default: var(--tecken-action-bg);
+    --fkds-color-action-background-primary-hover: var(--tecken-action-bg-hover);
+    --fkds-color-action-background-primary-active: var(--tecken-action-bg-active);
+    --fkds-color-action-background-primary-focus: var(--tecken-action-bg);
+    --fkds-color-action-background-secondary-default: var(--tecken-surface-default);
+    --fkds-color-action-background-secondary-hover: var(--tecken-surface-muted);
+    --fkds-color-action-background-secondary-active: var(--tecken-surface-interactive-hover);
+    --fkds-color-action-background-secondary-focus: var(--tecken-surface-default);
+    --fkds-color-action-text-inverted-default: var(--tecken-action-text);
+    --fkds-color-action-text-inverted-hover: var(--tecken-action-text);
+    --fkds-color-action-text-inverted-active: var(--tecken-action-text);
+    --fkds-color-action-text-inverted-focus: var(--tecken-action-text);
+    --fkds-color-action-text-primary-default: var(--tecken-action-text-primary);
+    --fkds-color-action-text-primary-hover: var(--tecken-action-text-primary-hover);
+    --fkds-color-action-text-primary-active: var(--tecken-action-text-primary-active);
+    --fkds-color-action-text-primary-focus: var(--tecken-action-text-primary);
+    --fkds-color-action-text-secondary-default: var(--tecken-text-primary);
+    --fkds-color-action-border-primary-default: var(--tecken-action-text-primary);
+    --fkds-color-action-border-primary-hover: var(--tecken-action-text-primary-hover);
+    --fkds-color-action-border-primary-active: var(--tecken-action-text-primary-active);
+    --fkds-color-feedback-background-positive-strong: var(--tecken-status-recorded);
+    --fkds-color-feedback-background-positive: var(--tecken-status-recorded-subtle);
+    --fkds-color-feedback-border-positive: var(--tecken-status-recorded);
+    --fkds-color-feedback-background-info-strong: var(--tecken-status-link-out);
+    --fkds-color-feedback-background-info: var(--tecken-status-link-out-subtle);
+    --fkds-color-feedback-border-info: var(--tecken-status-link-out);
+    --fkds-color-feedback-background-warning-strong: var(--tecken-status-unsupported);
+    --fkds-color-feedback-background-warning: var(--tecken-status-unsupported-subtle);
+    --fkds-color-feedback-border-warning: var(--tecken-status-unsupported);
+    --fkds-color-feedback-text-on-warning: var(--tecken-status-unsupported-text);
+    --fkds-color-feedback-background-negative-strong: var(--tecken-status-error);
+    --fkds-color-feedback-background-negative: var(--tecken-status-error-subtle);
+    --fkds-color-feedback-border-negative: var(--tecken-status-error);
+    --fkds-color-feedback-text-negative: var(--tecken-status-error);
+    --fkds-color-feedback-background-neutral-strong: var(--tecken-status-neutral);
+    --fkds-color-feedback-background-neutral: var(--tecken-surface-muted);
+    --fkds-color-feedback-border-neutral: var(--tecken-border-default);
+    --fkds-focus-indicator-color: var(--tecken-focus-ring);
+    --fkds-focus-indicator-color-background: var(--tecken-focus-ring-gap);
+    --f-font-family: var(--tecken-font-family-base);
+}

@@ -7,11 +7,13 @@
   "type": "module",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "generate": "node scripts/generate.mjs",
     "lint": "eslint .",
     "test": "vitest run --coverage",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "devDependencies": {
+    "@fkui/icon-lib-default": "6.63.0",
     "@types/node": "24.19.2",
     "vitest": "5.0.5"
   }

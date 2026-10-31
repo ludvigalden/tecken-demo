@@ -31,4 +31,4 @@ if (utterances.length !== clips + 6) {
     );
     failed = true;
 }
-process.exit(failed ? 1 : 0);
+process.exitCode = failed ? 1 : 0;

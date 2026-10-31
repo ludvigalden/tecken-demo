@@ -1,2 +1,6 @@
-/** The workspace's package name. */
-export const workspace = "@ludvigalden-demo/tecken-api";
+export {
+    BASE_CSP_DIRECTIVES,
+    CONTENT_SECURITY_POLICY,
+    STATIC_SECURITY_HEADERS,
+    designSystemCsp,
+} from "./security-headers";

@@ -21,12 +21,15 @@ export default [
             "**/storybook-static/**",
             "**/*.d.ts",
             ".nx/**",
+            "apps/storybook/generated/**",
         ],
     },
     ...fkConfig,
     vueConfig(),
     typescriptConfig(),
-    vitestConfig(),
+    // The vitest preset claims *.spec.* files; the Playwright specs under
+    // tests/ use @playwright/test, so they are excluded from it.
+    vitestConfig({ ignores: ["cypress/**", "tests/**"] }),
     ...vueA11y.configs["flat/recommended"],
     {
         name: "tecken/banned-imports",
@@ -95,7 +98,12 @@ export default [
         // (content/utterances/*.json). These packages construct and read those
         // records, so snake_case identifiers are the honest spelling here.
         name: "tecken/wire-record-field-names",
-        files: ["packages/contracts/src/**", "tools/media-pipeline/src/**"],
+        files: [
+            "packages/contracts/src/**",
+            "tools/media-pipeline/src/**",
+            "packages/design-system/src/**",
+            "apps/storybook/stories/**",
+        ],
         rules: {
             camelcase: "off",
         },

@@ -5,6 +5,9 @@ export default {
         "**/dist/**",
         "**/coverage/**",
         "**/storybook-static/**",
+        // Generated from src/tokens/tokens.ts and drift-gated; the token
+        // source is where raw values are reviewed, not the generator output.
+        "packages/design-system/src/generated/**",
     ],
     overrides: [
         {

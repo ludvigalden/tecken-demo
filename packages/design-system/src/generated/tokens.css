@@ -1,0 +1,92 @@
+/* Generated from src/tokens/tokens.ts — do not edit. */
+@layer tecken {
+    :root {
+        /* Tier 1: private primitives. */
+        --tecken-green-050: #eef6f1;
+        --tecken-green-700: #1f6b4f;
+        --tecken-green-800: #17543e;
+        --tecken-green-900: #0f3d2c;
+        --tecken-blue-050: #eef2fc;
+        --tecken-blue-700: #1d4ed8;
+        --tecken-blue-800: #1e40af;
+        --tecken-amber-050: #fdf6ec;
+        --tecken-amber-800: #92400e;
+        --tecken-red-050: #fcf1f1;
+        --tecken-red-700: #b91c1c;
+        --tecken-ink-900: #1a1a1a;
+        --tecken-ink-600: #525252;
+        --tecken-ink-500: #737373;
+        --tecken-paper-000: #ffffff;
+        --tecken-paper-100: #f5f5f4;
+        --tecken-paper-200: #e7e5e4;
+        --tecken-paper-300: #d6d3d1;
+
+        /* Tier 2: semantic roles. */
+        --tecken-text-primary: var(--tecken-ink-900);
+        --tecken-text-secondary: var(--tecken-ink-600);
+        --tecken-text-inverted: var(--tecken-paper-000);
+        --tecken-text-disabled: var(--tecken-ink-500);
+        --tecken-surface-default: var(--tecken-paper-000);
+        --tecken-surface-muted: var(--tecken-paper-100);
+        --tecken-surface-interactive-hover: var(--tecken-paper-200);
+        --tecken-border-default: var(--tecken-ink-500);
+        --tecken-border-subtle: var(--tecken-paper-300);
+        --tecken-focus-ring: var(--tecken-green-900);
+        --tecken-focus-ring-gap: var(--tecken-paper-000);
+        --tecken-action-bg: var(--tecken-green-700);
+        --tecken-action-bg-hover: var(--tecken-green-800);
+        --tecken-action-bg-active: var(--tecken-green-900);
+        --tecken-action-text: var(--tecken-paper-000);
+        --tecken-action-text-primary: var(--tecken-green-700);
+        --tecken-action-text-primary-hover: var(--tecken-green-800);
+        --tecken-action-text-primary-active: var(--tecken-green-900);
+        --tecken-status-recorded: var(--tecken-green-700);
+        --tecken-status-recorded-text: var(--tecken-paper-000);
+        --tecken-status-recorded-subtle: var(--tecken-green-050);
+        --tecken-status-link-out: var(--tecken-blue-700);
+        --tecken-status-link-out-text: var(--tecken-paper-000);
+        --tecken-status-link-out-subtle: var(--tecken-blue-050);
+        --tecken-status-unsupported: var(--tecken-amber-800);
+        --tecken-status-unsupported-text: var(--tecken-paper-000);
+        --tecken-status-unsupported-subtle: var(--tecken-amber-050);
+        --tecken-status-error: var(--tecken-red-700);
+        --tecken-status-error-text: var(--tecken-paper-000);
+        --tecken-status-error-subtle: var(--tecken-red-050);
+        --tecken-status-neutral: var(--tecken-paper-200);
+        --tecken-status-neutral-text: var(--tecken-ink-900);
+
+        /* Spacing. */
+        --tecken-space-0: 0;
+        --tecken-space-25: 0.25rem;
+        --tecken-space-50: 0.5rem;
+        --tecken-space-100: 1rem;
+        --tecken-space-200: 1.5rem;
+        --tecken-space-400: 2.5rem;
+
+        /* Radius. */
+        --tecken-radius-small: 0.25rem;
+        --tecken-radius-medium: 0.5rem;
+
+        /* Focus ring. */
+        --tecken-focus-ring-width: 0.1875rem;
+        --tecken-focus-ring-offset: 0.125rem;
+
+        /* Type scale. */
+        --tecken-font-size-xs: 0.75rem;
+        --tecken-font-size-sm: 0.875rem;
+        --tecken-font-size-md: 1rem;
+        --tecken-font-size-lg: 1.25rem;
+        --tecken-font-size-xl: 1.75rem;
+        --tecken-line-height-tight: 1.25;
+        --tecken-line-height-normal: 1.5;
+        --tecken-font-weight-normal: 400;
+        --tecken-font-weight-medium: 500;
+        --tecken-font-weight-bold: 700;
+
+        --tecken-font-family-base: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    html {
+        font-family: var(--tecken-font-family-base);
+    }
+}

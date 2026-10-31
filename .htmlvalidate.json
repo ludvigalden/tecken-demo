@@ -8,5 +8,13 @@
     ],
     "transform": {
         "^.*\\.vue$": "html-validate-vue"
+    },
+    "rules": {
+        "doctype-style": [
+            "error",
+            {
+                "style": "lowercase"
+            }
+        ]
     }
 }

@@ -12,6 +12,7 @@ path = [
     "packages/**",
     "services/**",
     "tools/**",
+    "tests/**",
 ]
 SPDX-FileCopyrightText = "2026 Ludvig Aldén"
 SPDX-License-Identifier = "MIT"
