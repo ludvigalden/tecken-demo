@@ -1,0 +1,523 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Tecken API",
+        "version": "0.1.0",
+        "description": "Looks up supported Swedish phrases and returns recorded Swedish Sign Language clips with their provenance. It translates nothing and generates nothing.",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/license/mit"
+        }
+    },
+    "servers": [
+        {
+            "url": "/",
+            "description": "Same origin as the web app"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "Health": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "ok"
+                        ]
+                    }
+                },
+                "required": [
+                    "status"
+                ],
+                "additionalProperties": false
+            },
+            "UtteranceList": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Utterance"
+                        }
+                    }
+                },
+                "required": [
+                    "items"
+                ],
+                "additionalProperties": false
+            },
+            "Utterance": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string",
+                        "enum": [
+                            "utterance",
+                            "single-sign",
+                            "fingerspelling-letter",
+                            "link-out"
+                        ]
+                    },
+                    "text_sv": {
+                        "type": "string"
+                    },
+                    "playable": {
+                        "type": "boolean"
+                    },
+                    "video": {
+                        "$ref": "#/components/schemas/Video"
+                    },
+                    "video_alt": {
+                        "$ref": "#/components/schemas/Video"
+                    },
+                    "poster_url": {
+                        "type": "string"
+                    },
+                    "captions_url": {
+                        "type": "string"
+                    },
+                    "caption_text": {
+                        "type": "string"
+                    },
+                    "link_out_url": {
+                        "type": "string"
+                    },
+                    "provenance": {
+                        "$ref": "#/components/schemas/Provenance"
+                    },
+                    "review_status": {
+                        "type": "string",
+                        "enum": [
+                            "source-published",
+                            "reviewed",
+                            "not-validated"
+                        ]
+                    }
+                },
+                "required": [
+                    "id",
+                    "kind",
+                    "text_sv",
+                    "playable",
+                    "provenance",
+                    "review_status"
+                ],
+                "additionalProperties": false
+            },
+            "Video": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string"
+                    },
+                    "mime": {
+                        "type": "string",
+                        "enum": [
+                            "video/mp4",
+                            "video/webm"
+                        ]
+                    },
+                    "duration_s": {
+                        "type": "number"
+                    },
+                    "sha256": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "url",
+                    "mime",
+                    "duration_s",
+                    "sha256"
+                ],
+                "additionalProperties": false
+            },
+            "Provenance": {
+                "type": "object",
+                "properties": {
+                    "source_title": {
+                        "type": "string"
+                    },
+                    "source_url": {
+                        "type": "string"
+                    },
+                    "source_file_url": {
+                        "type": "string"
+                    },
+                    "author": {
+                        "type": "string"
+                    },
+                    "signer": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "publisher": {
+                        "type": "string"
+                    },
+                    "licence": {
+                        "type": "string",
+                        "enum": [
+                            "CC BY 3.0",
+                            "CC BY 4.0",
+                            "CC BY-SA 3.0",
+                            "CC BY-SA 4.0",
+                            "CC BY-NC-SA 4.0"
+                        ]
+                    },
+                    "licence_url": {
+                        "type": "string"
+                    },
+                    "retrieved_at": {
+                        "type": "string"
+                    },
+                    "permission_ticket": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "required": [
+                    "source_title",
+                    "source_url",
+                    "source_file_url",
+                    "author",
+                    "signer",
+                    "publisher",
+                    "licence",
+                    "licence_url",
+                    "retrieved_at",
+                    "permission_ticket"
+                ],
+                "additionalProperties": false
+            },
+            "Problem": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "example": "about:blank"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "integer"
+                    },
+                    "code": {
+                        "type": "string",
+                        "enum": [
+                            "invalid_request",
+                            "not_found",
+                            "rate_limited",
+                            "internal_error"
+                        ]
+                    },
+                    "detail": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "type",
+                    "title",
+                    "status",
+                    "code"
+                ],
+                "additionalProperties": false
+            },
+            "MatchResult": {
+                "oneOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "result": {
+                                "type": "string",
+                                "enum": [
+                                    "exact"
+                                ]
+                            },
+                            "utterance": {
+                                "$ref": "#/components/schemas/Utterance"
+                            }
+                        },
+                        "required": [
+                            "result",
+                            "utterance"
+                        ],
+                        "additionalProperties": false
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "result": {
+                                "type": "string",
+                                "enum": [
+                                    "suggested"
+                                ]
+                            },
+                            "suggestions": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Utterance"
+                                },
+                                "minItems": 1,
+                                "maxItems": 3
+                            }
+                        },
+                        "required": [
+                            "result",
+                            "suggestions"
+                        ],
+                        "additionalProperties": false
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "result": {
+                                "type": "string",
+                                "enum": [
+                                    "fingerspelling"
+                                ]
+                            },
+                            "word": {
+                                "type": "string"
+                            },
+                            "letters": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Utterance"
+                                },
+                                "minItems": 1
+                            }
+                        },
+                        "required": [
+                            "result",
+                            "word",
+                            "letters"
+                        ],
+                        "additionalProperties": false
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "result": {
+                                "type": "string",
+                                "enum": [
+                                    "unsupported"
+                                ]
+                            },
+                            "reason": {
+                                "type": "string",
+                                "enum": [
+                                    "no_match",
+                                    "negation",
+                                    "empty"
+                                ]
+                            },
+                            "supported": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "link_outs": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Utterance"
+                                }
+                            }
+                        },
+                        "required": [
+                            "result",
+                            "reason",
+                            "supported",
+                            "link_outs"
+                        ],
+                        "additionalProperties": false
+                    }
+                ]
+            },
+            "MatchRequest": {
+                "type": "object",
+                "properties": {
+                    "text": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                    },
+                    "mode": {
+                        "type": "string",
+                        "enum": [
+                            "exact",
+                            "suggest"
+                        ]
+                    }
+                },
+                "required": [
+                    "text",
+                    "mode"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "parameters": {}
+    },
+    "paths": {
+        "/v1/health": {
+            "get": {
+                "operationId": "getHealth",
+                "responses": {
+                    "200": {
+                        "description": "The process is up. Performs no I/O.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Health"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/utterances": {
+            "get": {
+                "operationId": "listUtterances",
+                "responses": {
+                    "200": {
+                        "description": "Every content record, playable or not.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UtteranceList"
+                                }
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Rate limited",
+                        "content": {
+                            "application/problem+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Problem"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/utterances/{id}": {
+            "get": {
+                "operationId": "getUtterance",
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string",
+                            "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+                        },
+                        "required": true,
+                        "name": "id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "One content record.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Utterance"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id",
+                        "content": {
+                            "application/problem+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Problem"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No such record",
+                        "content": {
+                            "application/problem+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Problem"
+                                }
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Rate limited",
+                        "content": {
+                            "application/problem+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Problem"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/match": {
+            "post": {
+                "operationId": "matchPhrase",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MatchRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The match outcome.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MatchResult"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request body",
+                        "content": {
+                            "application/problem+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Problem"
+                                }
+                            }
+                        }
+                    },
+                    "429": {
+                        "description": "Rate limited",
+                        "content": {
+                            "application/problem+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Problem"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "webhooks": {}
+}

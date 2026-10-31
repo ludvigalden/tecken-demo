@@ -20,6 +20,7 @@
   },
   "allowScripts": {
     "@parcel/watcher": true,
+    "@scarf/scarf": false,
     "esbuild": true,
     "fsevents": false,
     "nx": true,
@@ -66,6 +67,7 @@
     "html-validate-vue": "9.3.1",
     "lerna": "10.1.1",
     "markdownlint-cli2": "0.24.0",
+    "openapi-typescript": "7.13.0",
     "prettier": "3.9.10",
     "stylelint": "17.16.0",
     "typescript": "npm:@typescript/typescript6@6.0.2",

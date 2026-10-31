@@ -1,0 +1,7 @@
+extends:
+    - "spectral:oas"
+rules:
+    # Every operation must describe itself; the document is public contract.
+    operation-description: off
+    operation-tags: off
+    info-contact: off

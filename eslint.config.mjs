@@ -100,6 +100,8 @@ export default [
         name: "tecken/wire-record-field-names",
         files: [
             "packages/contracts/src/**",
+            "services/api/src/**",
+            "apps/web/src/**",
             "tools/media-pipeline/src/**",
             "packages/design-system/src/**",
             "apps/storybook/stories/**",

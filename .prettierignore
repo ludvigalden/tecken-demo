@@ -8,3 +8,4 @@ content/
 packages/design-system/src/generated/
 apps/web/src/generated/
 apps/storybook/generated/
+contracts/openapi/tecken.openapi.json

@@ -1,21 +1,45 @@
 {
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "namedInputs": {
+        "default": ["{projectRoot}/**/*", "sharedGlobals"],
+        "sharedGlobals": [
+            "{workspaceRoot}/package-lock.json",
+            "{workspaceRoot}/tsconfig.base.json",
+            "{workspaceRoot}/eslint.config.mjs",
+            "{workspaceRoot}/stylelint.config.mjs",
+            "{workspaceRoot}/.htmlvalidate.json"
+        ],
+        "repoData": [
+            "{workspaceRoot}/content/**/*",
+            "{workspaceRoot}/contracts/**/*",
+            "{workspaceRoot}/tools/media-pipeline/manifest.json",
+            "{workspaceRoot}/tools/media-pipeline/link-outs.json"
+        ]
+    },
     "targetDefaults": {
         "build": {
             "dependsOn": ["^build"],
+            "inputs": ["default", "^default", "repoData"],
             "cache": true,
             "outputs": ["{projectRoot}/dist"]
         },
         "test": {
             "dependsOn": ["^build"],
+            "inputs": ["default", "^default", "repoData"],
             "cache": true
         },
         "lint": {
+            "inputs": ["default", "repoData"],
             "cache": true
         },
         "typecheck": {
             "dependsOn": ["^build"],
+            "inputs": ["default", "^default"],
             "cache": true
+        },
+        "generate": {
+            "inputs": ["default", "^default", "repoData"],
+            "cache": false
         }
     }
 }

@@ -7,12 +7,23 @@
   "type": "module",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "lint": "eslint .",
+    "bundle": "node scripts/bundle.mjs",
+    "generate": "node scripts/generate.mjs",
+    "lint": "eslint . && spectral lint ../../contracts/openapi/tecken.openapi.json --ruleset ../../contracts/openapi/.spectral.yaml --fail-severity warn",
     "test": "vitest run --coverage",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
+  "dependencies": {
+    "@hono/node-server": "2.1.5",
+    "@hono/zod-openapi": "1.6.3",
+    "@ludvigalden-demo/tecken-contracts": "0.0.0",
+    "hono": "4.13.14",
+    "zod": "4.6.7"
+  },
   "devDependencies": {
+    "@stoplight/spectral-cli": "6.17.0",
     "@types/node": "24.19.2",
+    "esbuild": "0.28.2",
     "vitest": "5.0.5"
   }
 }
