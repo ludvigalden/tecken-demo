@@ -172,9 +172,10 @@ export async function expectCleanState(page, csp) {
     // Assess the settled state: a fade still running would make axe measure
     // contrast through partial opacity (seen on WebKit in CI). Infinite
     // animations (FKUI's loading spinner) never finish, so only finite ones
-    // are awaited.
+    // are awaited. An animation cancelled because its element left the page
+    // rejects `finished` with AbortError; that also counts as settled.
     await page.evaluate(() =>
-        Promise.all(
+        Promise.allSettled(
             document
                 .getAnimations()
                 .filter(

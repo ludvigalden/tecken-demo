@@ -57,6 +57,14 @@ mobile performance score must not fall below 0.85 on any page. The CI
 job. With both ceilings tightened (LCP 2000 ms, score 0.97) the same
 reports fail, so the assertion is live.
 
+**Headroom on `/kallor`.** The ceiling sits close to that page's real
+LCP: mobile median 3085 ms locally (2026-10-31), and 3056 ms and 3196 ms
+on two CI runs, against the 3500 ms ceiling. That leaves
+roughly 300–450 ms. A slow CI runner, or a change that adds startup work,
+can therefore turn `perf` red on `/kallor` first. That is the ceiling
+doing its job: treat it as a regression to investigate, not a reason to
+raise the ceiling.
+
 ### Size limits (`.size-limit.json`, gzip, baseline + 10 %)
 
 | Bundle                           | Baseline  | Limit     |
@@ -65,6 +73,23 @@ reports fail, so the assertion is live.
 | App CSS (`index-*.css`)          | 10 488 B  | 11 537 B  |
 | Design-system CSS (`dist/*.css`) | 2 083 B   | 2 292 B   |
 | Design-system components         | 3 991 B   | 4 391 B   |
+
+## Container start
+
+Measured 2026-10-31 on the production image (`node:24-alpine`, 78.3 MB
+uncompressed), on an arm64 development host:
+
+| Measure                                                               | Without compile cache | With `NODE_COMPILE_CACHE` (shipped) |
+| --------------------------------------------------------------------- | --------------------- | ----------------------------------- |
+| `node dist/server.mjs` spawn → first 200 on `/v1/health`, median of 8 | 265 ms                | 223 ms                              |
+| `docker run` → first 200 (includes container creation), 5 runs        | 665–751 ms            | 638–699 ms                          |
+
+The compile cache is written at image build time by importing the
+server once and flushing it, so every container starts warm. The server
+also reads a prebuilt, validated content index instead of walking
+`content/utterances` at startup. The scale-to-zero cold start on Azure
+adds the platform's own container start on top; it is measured live
+after deployment.
 
 ## Running locally
 

@@ -1,0 +1,26 @@
+# Build context: an allowlist. Everything is left out except what the
+# build stage reads: the workspace manifests, the workspaces, the content,
+# the API contract and the licence files.
+*
+!package.json
+!package-lock.json
+!.npmrc
+!lerna.json
+!nx.json
+!tsconfig.base.json
+!apps/
+!services/
+!packages/
+!tools/
+!content/
+!contracts/
+!LICENSES/
+!REUSE.toml
+**/node_modules
+**/dist
+**/coverage
+**/storybook-static
+**/test-results
+**/playwright-report
+**/.env*
+**/*.local.*

@@ -80,8 +80,17 @@ jobs:
                   else
                       echo "ELIDED: reuse lint — REUSE.toml not present" >> "$GITHUB_STEP_SUMMARY"
                   fi
+            - name: Install Terraform 1.16.4 (checksum-pinned)
+              run: |
+                  ZIP=terraform_1.16.4_linux_amd64.zip
+                  curl -sSfLo "$RUNNER_TEMP/$ZIP" "https://releases.hashicorp.com/terraform/1.16.4/$ZIP"
+                  echo "dc94af0eef1147718ad7c8daea792ed199e3e0492eec180d0adafa2a65a879df  $RUNNER_TEMP/$ZIP" \
+                      | sha256sum -c -
+                  unzip -q -o "$RUNNER_TEMP/$ZIP" -d "$RUNNER_TEMP/terraform"
+                  echo "$RUNNER_TEMP/terraform" >> "$GITHUB_PATH"
             - name: terraform checks
               run: |
+                  terraform version
                   if [ -n "$(find infra -name '*.tf' -print -quit 2>/dev/null)" ]; then
                       terraform fmt -check -recursive
                       for root in infra/terraform/*/; do
@@ -204,11 +213,14 @@ jobs:
                   TLSDIR="$(tests/tls/make-cert.sh)"
                   cd tests
                   TLS_CERT_FILE="$TLSDIR/cert.pem" TLS_KEY_FILE="$TLSDIR/key.pem" PORT=8443 \
-                      PLAYWRIGHT_JSON_OUTPUT_NAME=../playwright-report.json \
+                      PLAYWRIGHT_JSON_OUTPUT_NAME="$GITHUB_WORKSPACE/playwright-report.json" \
                       npx playwright test -c playwright.config.mjs --reporter=list,json
-            - name: Every declared browser ran (a skipped browser fails)
+            - name: Every declared browser ran every declared test
               if: always()
-              run: node tools/ci/check-browsers.mjs playwright-report.json
+              run: |
+                  (cd tests && npx playwright test -c playwright.config.mjs --list --reporter=json) \
+                      > playwright-list.json
+                  node tools/ci/check-browsers.mjs playwright-report.json playwright-list.json
             - name: Job duration
               if: always()
               run: |
@@ -260,3 +272,84 @@ jobs:
               if: always()
               run: |
                   echo "perf: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"
+
+    image:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Record start
+              run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
+              # v7.0.1
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+              # v7.1.0
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+              with:
+                  node-version-file: .nvmrc
+                  cache: npm
+            - name: Build the production image (no push)
+              run: |
+                  docker build -t tecken:ci .
+                  docker image inspect tecken:ci --format 'image size: {{.Size}} bytes' \
+                      | tee -a "$GITHUB_STEP_SUMMARY"
+            # The test tooling runs on the runner; the server under test is
+            # the container, exactly as it ships.
+            - run: npm ci
+            # The suite reads Storybook's story index and the design-system
+            # CSS from the runner's tree; the container serves the same build.
+            - name: Build the workspaces the suite reads
+              run: npx lerna run build
+            - name: Install Playwright browsers (all declared; none may be skipped)
+              run: npx playwright install --with-deps chromium firefox webkit
+            - name: Full browser suite against the container over local TLS
+              run: |
+                  TLSDIR="$(tests/tls/make-cert.sh)"
+                  # The container runs as uid 1000; let it read the throwaway cert.
+                  chmod a+rx "$TLSDIR"
+                  chmod a+r "$TLSDIR"/*.pem
+                  START_MS=$(date +%s%3N)
+                  docker run -d --name tecken-tls -p 8443:8443 \
+                      -v "$TLSDIR:/tls:ro" \
+                      -v "$PWD/packages/design-system/examples:/app/packages/design-system/examples:ro" \
+                      -v "$PWD/packages/design-system/dist:/app/packages/design-system/dist:ro" \
+                      -e TLS_CERT_FILE=/tls/cert.pem -e TLS_KEY_FILE=/tls/key.pem \
+                      -e PORT=8443 -e TECKEN_EXAMPLES=1 tecken:ci
+                  for _ in $(seq 1 300); do
+                      curl -skf -o /dev/null https://127.0.0.1:8443/v1/health && break
+                      sleep 0.1
+                  done
+                  curl -skf -o /dev/null https://127.0.0.1:8443/v1/health
+                  echo "docker run to first 200: $(( $(date +%s%3N) - START_MS )) ms" \
+                      | tee -a "$GITHUB_STEP_SUMMARY"
+                  cd tests
+                  TECKEN_EXTERNAL_SERVER=1 PORT=8443 \
+                      PLAYWRIGHT_JSON_OUTPUT_NAME="$GITHUB_WORKSPACE/image-report.json" \
+                      npx playwright test -c playwright.config.mjs --reporter=list,json
+            - name: Every declared browser ran every declared test
+              if: always()
+              run: |
+                  (cd tests && npx playwright test -c playwright.config.mjs --list --reporter=json) \
+                      > image-list.json
+                  node tools/ci/check-browsers.mjs image-report.json image-list.json
+            - name: Production mode (plain http) starts and sends identical headers
+              run: |
+                  docker run -d --name tecken-http -p 8080:8080 tecken:ci
+                  for _ in $(seq 1 300); do
+                      curl -sf -o /dev/null http://127.0.0.1:8080/v1/health && break
+                      sleep 0.1
+                  done
+                  curl -sf -o /dev/null -D http.txt http://127.0.0.1:8080/
+                  curl -skf -o /dev/null -D tls.txt https://127.0.0.1:8443/
+                  for f in http tls; do
+                      grep -i -v -E '^(date|connection|keep-alive|last-modified|content-length):' "$f.txt" \
+                          | tr -d '\r' | sort > "$f.sorted"
+                  done
+                  diff tls.sorted http.sorted
+                  grep -i '^content-security-policy:' http.txt
+            - name: Container logs
+              if: always()
+              run: |
+                  docker logs tecken-tls || true
+                  docker logs tecken-http || true
+            - name: Job duration
+              if: always()
+              run: |
+                  echo "image: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"

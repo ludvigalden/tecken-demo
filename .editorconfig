@@ -13,3 +13,7 @@ indent_size = 2
 
 [*.md]
 trim_trailing_whitespace = false
+
+# terraform fmt uses two spaces, and it is the formatting authority for HCL.
+[*.{tf,hcl}]
+indent_size = 2

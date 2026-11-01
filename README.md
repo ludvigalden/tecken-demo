@@ -64,6 +64,7 @@ Raden ovan räknas fram ur `content/` och kontrolleras i CI
 | `content/`   | licensierade klipp och yttrandeposter                               |
 | `contracts/` | det genererade OpenAPI-dokumentet                                   |
 | `docs/`      | design, tillgänglighet, säkerhet, prestanda, CI och innehållskällor |
+| `infra/`     | Terraform för driftmiljön i Azure                                   |
 | `tests/`     | webbläsartester för appen och designsystemet                        |
 
 ## Köra lokalt

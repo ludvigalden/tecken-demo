@@ -65,6 +65,7 @@ The line above is computed from `content/` and checked in CI
 | `content/`   | licensed clips and utterance records                              |
 | `contracts/` | the generated OpenAPI document                                    |
 | `docs/`      | design, accessibility, security, performance, CI, content sources |
+| `infra/`     | Terraform for the Azure hosting                                   |
 | `tests/`     | browser tests for the app and the design system                   |
 
 ## Running locally

@@ -7,9 +7,10 @@ import {
 import type { UtteranceRecord } from "@ludvigalden-demo/tecken-contracts";
 
 /**
- * The content index, loaded once at startup from content/utterances. Every
- * record is validated against the contract; an invalid record fails startup
- * (fail closed), it is never served.
+ * The content index. The bundle step (scripts/bundle.mjs) validates every
+ * record in content/utterances against the contract and writes them as one
+ * prebuilt file, so the server does no directory walk at startup. An invalid
+ * record fails the build (fail closed); it is never served.
  */
 
 export interface ContentIndex {
@@ -72,4 +73,25 @@ export function loadContent(utterancesDir: string): ContentIndex {
             return parsed.data;
         });
     return buildIndex(records);
+}
+
+/** Serializes a validated index for the prebuilt content file. */
+export function serializeContent(index: ContentIndex): string {
+    return `${JSON.stringify(index.all)}\n`;
+}
+
+/**
+ * Reads the prebuilt content file written at build time. The records are
+ * checked against the contract again, so a hand-edited or truncated file
+ * still fails closed instead of being served.
+ */
+export function readContentIndex(file: string): ContentIndex {
+    const raw: unknown = JSON.parse(readFileSync(file, "utf8"));
+    const parsed = utteranceRecord.array().safeParse(raw);
+    if (!parsed.success) {
+        throw new Error(
+            `prebuilt content index ${file} is invalid: ${parsed.error.message}`,
+        );
+    }
+    return buildIndex(parsed.data);
 }

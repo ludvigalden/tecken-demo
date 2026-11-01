@@ -1,12 +1,16 @@
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { createApp } from "./app";
-import { loadContent } from "./content";
+import { readContentIndex } from "./content";
 import { listen } from "./listen";
 
 /** Node entry; the transport rules live in listen.ts. */
 
 const root = process.env.TECKEN_ROOT ?? process.cwd();
-const content = loadContent(join(root, "content/utterances"));
+// The validated content index is prebuilt next to the bundle at build time.
+const content = readContentIndex(
+    fileURLToPath(new URL("content-index.json", import.meta.url)),
+);
 // TECKEN_EXAMPLES=1 also mounts the design-system examples and CSS, for
 // the design-system test suite. Production never sets it.
 const withExamples = process.env.TECKEN_EXAMPLES === "1";

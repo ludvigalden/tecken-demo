@@ -1,0 +1,146 @@
+name: Deploy
+
+# Builds the production image, pushes it to the private registry, points
+# the container app at the new digest and runs the live browser smoke
+# against the deployed URL. Runs on every push to main and on demand.
+# Authentication is OpenID Connect into Entra: no cloud secret exists.
+
+on:
+    push:
+        branches: [main]
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    # One deploy at a time; a newer push waits rather than cancelling a
+    # deploy that is already changing the live app.
+    group: deploy-production
+    cancel-in-progress: false
+
+defaults:
+    run:
+        shell: bash --noprofile --norc -euo pipefail {0}
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        environment:
+            name: production
+            url: ${{ steps.app.outputs.url }}
+        permissions:
+            contents: read
+            id-token: write
+        outputs:
+            url: ${{ steps.app.outputs.url }}
+        env:
+            RESOURCE_GROUP: ${{ vars.TECKEN_RESOURCE_GROUP }}
+            CONTAINER_APP: ${{ vars.TECKEN_CONTAINER_APP }}
+            REGISTRY: ${{ vars.TECKEN_REGISTRY }}
+        steps:
+            - name: Record start
+              run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
+            - name: Require the production bindings
+              env:
+                  AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+                  AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+                  AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+              run: |
+                  : "${AZURE_CLIENT_ID:?production must set AZURE_CLIENT_ID}"
+                  : "${AZURE_TENANT_ID:?production must set AZURE_TENANT_ID}"
+                  : "${AZURE_SUBSCRIPTION_ID:?production must set AZURE_SUBSCRIPTION_ID}"
+                  : "${RESOURCE_GROUP:?production must set TECKEN_RESOURCE_GROUP}"
+                  : "${CONTAINER_APP:?production must set TECKEN_CONTAINER_APP}"
+                  : "${REGISTRY:?production must set TECKEN_REGISTRY}"
+              # v7.0.1
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+              # v3.1.0
+            - uses: azure/login@a641126d1b8aa4d1fa005f4f92df94a3a4c4c906
+              with:
+                  client-id: ${{ vars.AZURE_CLIENT_ID }}
+                  tenant-id: ${{ vars.AZURE_TENANT_ID }}
+                  subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+            - name: Build and push the image
+              id: image
+              run: |
+                  az acr login --name "${REGISTRY%%.*}"
+                  IMAGE="$REGISTRY/tecken:${GITHUB_SHA}"
+                  docker build \
+                      --label "org.opencontainers.image.revision=${GITHUB_SHA}" \
+                      -t "$IMAGE" .
+                  docker push "$IMAGE"
+                  DIGEST="$(docker image inspect "$IMAGE" --format '{{index .RepoDigests 0}}')"
+                  echo "digest=${DIGEST##*@}" >> "$GITHUB_OUTPUT"
+                  echo "image: ${DIGEST}" >> "$GITHUB_STEP_SUMMARY"
+            - name: Point the container app at the new digest
+              run: |
+                  az containerapp update \
+                      --name "$CONTAINER_APP" \
+                      --resource-group "$RESOURCE_GROUP" \
+                      --image "$REGISTRY/tecken@${{ steps.image.outputs.digest }}" \
+                      --output none
+            - name: Wait for the new revision to serve
+              id: app
+              run: |
+                  FQDN="$(az containerapp show --name "$CONTAINER_APP" \
+                      --resource-group "$RESOURCE_GROUP" \
+                      --query properties.configuration.ingress.fqdn -o tsv)"
+                  echo "url=https://${FQDN}" >> "$GITHUB_OUTPUT"
+                  WANT="$REGISTRY/tecken@${{ steps.image.outputs.digest }}"
+                  STATUS=none
+                  for _ in $(seq 1 30); do
+                      QUERY="[?properties.active && properties.template.containers[0].image=='${WANT}']"
+                      RUNNING="$(az containerapp revision list --name "$CONTAINER_APP" \
+                          --resource-group "$RESOURCE_GROUP" \
+                          --query "${QUERY}.properties.runningState" -o tsv)"
+                      STATUS="$(curl -s -o /dev/null -w '%{http_code}' --max-time 60 \
+                          "https://${FQDN}/v1/health" || true)"
+                      if [ "$STATUS" = 200 ] && [ -n "$RUNNING" ]; then
+                          echo "revision ${RUNNING}, /v1/health ${STATUS}"
+                          exit 0
+                      fi
+                      sleep 10
+                  done
+                  echo "the new revision did not serve: last status ${STATUS}" >&2
+                  exit 1
+            - name: Job duration
+              if: always()
+              run: |
+                  echo "deploy: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"
+
+    smoke:
+        needs: deploy
+        runs-on: ubuntu-latest
+        steps:
+            - name: Record start
+              run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
+              # v7.0.1
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+              # v7.1.0
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+              with:
+                  node-version-file: .nvmrc
+                  cache: npm
+            - run: npm ci
+            - name: Install Playwright browsers (all declared; none may be skipped)
+              run: npx playwright install --with-deps chromium firefox webkit
+            - name: Live browser smoke against the deployed URL
+              env:
+                  TECKEN_LIVE_URL: ${{ needs.deploy.outputs.url }}
+              run: |
+                  cd tests
+                  PLAYWRIGHT_JSON_OUTPUT_NAME="$GITHUB_WORKSPACE/live-report.json" \
+                      npx playwright test -c live/playwright.live.config.mjs --reporter=list,json
+            - name: Every declared browser ran every declared test
+              if: always()
+              env:
+                  TECKEN_LIVE_URL: ${{ needs.deploy.outputs.url }}
+              run: |
+                  (cd tests && npx playwright test -c live/playwright.live.config.mjs --list --reporter=json) \
+                      > live-list.json
+                  node tools/ci/check-browsers.mjs live-report.json live-list.json
+            - name: Job duration
+              if: always()
+              run: |
+                  echo "smoke: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"
