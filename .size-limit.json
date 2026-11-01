@@ -1,0 +1,26 @@
+[
+    {
+        "name": "app entry JS",
+        "path": "apps/web/dist/assets/index-[A-Za-z0-9_-]*.js",
+        "gzip": true,
+        "limit": "137475 B"
+    },
+    {
+        "name": "app CSS",
+        "path": "apps/web/dist/assets/index-[A-Za-z0-9_-]*.css",
+        "gzip": true,
+        "limit": "11537 B"
+    },
+    {
+        "name": "design-system CSS",
+        "path": "packages/design-system/dist/*.css",
+        "gzip": true,
+        "limit": "2292 B"
+    },
+    {
+        "name": "design-system components",
+        "path": "packages/design-system/dist/components/*",
+        "gzip": true,
+        "limit": "4391 B"
+    }
+]

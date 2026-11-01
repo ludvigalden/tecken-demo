@@ -14,7 +14,7 @@
   "scripts": {
     "build": "lerna run build",
     "lint": "lerna run lint",
-    "lint:repo": "eslint tests tools/ci",
+    "lint:repo": "eslint tests tools/ci eslint.config.mjs stylelint.config.mjs commitlint.config.mjs",
     "test": "lerna run test",
     "typecheck": "lerna run typecheck"
   },
@@ -58,6 +58,7 @@
     "@forsakringskassan/stylelint-config": "3.5.1",
     "@hono/node-server": "2.1.5",
     "@playwright/test": "1.64.1",
+    "@size-limit/file": "14.3.0",
     "@types/node": "24.19.2",
     "@vitest/coverage-v8": "5.0.5",
     "eslint": "10.13.0",
@@ -69,6 +70,7 @@
     "markdownlint-cli2": "0.24.0",
     "openapi-typescript": "7.13.0",
     "prettier": "3.9.10",
+    "size-limit": "14.3.0",
     "stylelint": "17.16.0",
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "vite": "8.3.5",

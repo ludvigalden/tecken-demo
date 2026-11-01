@@ -14,6 +14,10 @@ describe("injectSanitizedSprite", () => {
         expect(document.body.firstElementChild).toBe(svg);
         expect(svg.hasAttribute("hidden")).toBe(true);
         expect(svg.getAttribute("aria-hidden")).toBe("true");
+        // Takes no layout space: zero size plus the display:none class.
+        expect(svg.getAttribute("width")).toBe("0");
+        expect(svg.getAttribute("height")).toBe("0");
+        expect(svg.classList.contains("t-icon-sprite")).toBe(true);
         expect(svg.querySelectorAll("symbol")).toHaveLength(31);
         expect(svg.outerHTML).not.toContain("style=");
     });

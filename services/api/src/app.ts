@@ -467,7 +467,8 @@ export function createApp(options: AppOptions): OpenAPIHono {
                 c.res.headers.set("Cache-Control", "no-cache");
             }
         });
-        app.use("/*", serveStatic({ root: webDist }));
+        // Hashed assets ship with .br/.gz siblings written at build time.
+        app.use("/*", serveStatic({ root: webDist, precompressed: true }));
         // SPA fallback: unknown non-API, non-file paths get index.html.
         const indexHtml = join(webDist, "index.html");
         app.get("*", (c) => {

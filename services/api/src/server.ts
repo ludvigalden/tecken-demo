@@ -1,16 +1,9 @@
-import { readFileSync } from "node:fs";
-import { createServer as createHttpsServer } from "node:https";
 import { join } from "node:path";
-import { serve } from "@hono/node-server";
 import { createApp } from "./app";
 import { loadContent } from "./content";
+import { listen } from "./listen";
 
-/**
- * Node entry. Plain http on PORT (default 8080) in production, where the
- * Container Apps ingress terminates TLS. When TLS_CERT_FILE and TLS_KEY_FILE
- * are both set (local and CI test runs), it serves https on PORT (default
- * 8443) instead. The transport is the only difference; headers are identical.
- */
+/** Node entry; the transport rules live in listen.ts. */
 
 const root = process.env.TECKEN_ROOT ?? process.cwd();
 const content = loadContent(join(root, "content/utterances"));
@@ -28,28 +21,9 @@ const app = createApp({
     }),
 });
 
-const cert = process.env.TLS_CERT_FILE;
-const key = process.env.TLS_KEY_FILE;
-const tls = Boolean(cert && key);
-const port = Number(process.env.PORT ?? (tls ? 8443 : 8080));
-const hostname = process.env.HOST ?? "0.0.0.0";
-
-serve(
-    tls && cert && key
-        ? {
-              fetch: app.fetch,
-              port,
-              hostname,
-              createServer: createHttpsServer,
-              serverOptions: {
-                  cert: readFileSync(cert),
-                  key: readFileSync(key),
-              },
-          }
-        : { fetch: app.fetch, port, hostname },
-    (info) => {
-        console.log(
-            `tecken api listening ${tls ? "https" : "http"} ${hostname}:${info.port} (${content.all.length} records)`,
-        );
-    },
-);
+listen(app.fetch, process.env, ({ port, tls }) => {
+    const hostname = process.env.HOST ?? "0.0.0.0";
+    console.log(
+        `tecken api listening ${tls ? "https" : "http"} ${hostname}:${port} (${content.all.length} records)`,
+    );
+});

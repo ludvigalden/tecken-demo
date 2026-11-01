@@ -26,6 +26,9 @@
 !/eslint.config.mjs
 !/stylelint.config.mjs
 !/commitlint.config.mjs
+!/.size-limit.json
+!/lighthouserc.json
+!/lighthouserc.mobile.json
 !/renovate.json
 !/Dockerfile
 !/.dockerignore

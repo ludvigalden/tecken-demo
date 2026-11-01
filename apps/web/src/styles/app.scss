@@ -1,6 +1,11 @@
 /* App shell styles. Semantic tokens only; raw values live in the design
  * system's token source. */
 
+/* The injected FKUI icon sprite holds <symbol>s only; it never renders. */
+.t-icon-sprite {
+    display: none;
+}
+
 .skip-link {
     position: absolute;
     left: var(--tecken-space-100);
@@ -56,7 +61,10 @@
     font-weight: var(--tecken-font-weight-bold);
 }
 
+/* The main region fills at least the viewport, so the footer starts below
+ * the fold and never shifts while a page's content arrives (CLS). */
 .site-main {
+    min-height: 100vh;
     padding-block: var(--tecken-space-200);
 }
 

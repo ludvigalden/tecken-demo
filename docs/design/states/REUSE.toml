@@ -1,0 +1,24 @@
+version = 1
+
+# Screenshots of the app's states, written by the e2e suite
+# (TECKEN_WRITE_STATES=1). They are our own UI, and two of them also show a
+# frame of a licensed clip, so they carry that clip's licence and credit
+# as well (the poster frame of each clip is CC BY-SA 3.0).
+
+[[annotations]]
+path = ["empty.png", "loading.png", "suggested-dialog.png", "unsupported.png", "error.png"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Ludvig Aldén"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "result.png"
+precedence = "override"
+SPDX-FileCopyrightText = ["2026 Ludvig Aldén", "Spread the Sign"]
+SPDX-License-Identifier = "MIT AND CC-BY-SA-3.0"
+
+[[annotations]]
+path = "fingerspelling-playing.png"
+precedence = "override"
+SPDX-FileCopyrightText = ["2026 Ludvig Aldén", "LittleGun"]
+SPDX-License-Identifier = "MIT AND CC-BY-SA-3.0"

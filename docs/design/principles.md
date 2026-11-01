@@ -17,6 +17,11 @@ Fingerspelling is its own mode with its own label, "Fingerstavning – bokstav
 för bokstav, inte ett tecken för ordet", so nobody mistakes a spelled word for
 a sign.
 
+Screenshots of every state, plus fingerspelling while it plays, are in
+[`states/`](states/). The e2e suite writes them when it runs with
+`TECKEN_WRITE_STATES=1` (Chromium, 1024 px wide); they are regenerated
+when a state's design changes and reviewed before they are committed.
+
 ## Provenance first
 
 Every recording shows where it came from **before** the user presses play.

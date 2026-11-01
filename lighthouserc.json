@@ -1,0 +1,55 @@
+{
+    "ci": {
+        "collect": {
+            "url": [
+                "https://127.0.0.1:8443/",
+                "https://127.0.0.1:8443/fingerstavning",
+                "https://127.0.0.1:8443/kallor"
+            ],
+            "numberOfRuns": 3,
+            "settings": {
+                "preset": "desktop",
+                "chromeFlags": "--headless=new --no-sandbox --ignore-certificate-errors"
+            }
+        },
+        "assert": {
+            "aggregationMethod": "median-run",
+            "assertions": {
+                "categories:performance": [
+                    "error",
+                    {
+                        "minScore": 0.9
+                    }
+                ],
+                "categories:accessibility": [
+                    "error",
+                    {
+                        "minScore": 1
+                    }
+                ],
+                "largest-contentful-paint": [
+                    "error",
+                    {
+                        "maxNumericValue": 2500
+                    }
+                ],
+                "cumulative-layout-shift": [
+                    "error",
+                    {
+                        "maxNumericValue": 0.1
+                    }
+                ],
+                "total-blocking-time": [
+                    "error",
+                    {
+                        "maxNumericValue": 200
+                    }
+                ]
+            }
+        },
+        "upload": {
+            "target": "filesystem",
+            "outputDir": ".lighthouseci/desktop"
+        }
+    }
+}

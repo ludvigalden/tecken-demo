@@ -194,8 +194,56 @@ jobs:
                   TLSDIR="$(tests/tls/make-cert.sh)"
                   cd tests
                   TLS_CERT_FILE="$TLSDIR/cert.pem" TLS_KEY_FILE="$TLSDIR/key.pem" PORT=8443 \
-                      npx playwright test -c playwright.config.mjs
+                      PLAYWRIGHT_JSON_OUTPUT_NAME=../playwright-report.json \
+                      npx playwright test -c playwright.config.mjs --reporter=list,json
+            - name: Every declared browser ran (a skipped browser fails)
+              if: always()
+              run: node tools/ci/check-browsers.mjs playwright-report.json
             - name: Job duration
               if: always()
               run: |
                   echo "browser: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"
+
+    perf:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Record start
+              run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
+              # v7.0.1
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+              # v7.1.0
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+              with:
+                  node-version-file: .nvmrc
+                  cache: npm
+            - run: npm ci
+            - run: npx lerna run build
+            - name: Size budgets (gzip, baseline + 10 %)
+              run: npx size-limit
+            - name: Install Chromium for Lighthouse
+              run: npx playwright install --with-deps chromium
+            - name: Bundle the Node server
+              run: npm run bundle --workspace services/api
+            - name: Lighthouse CI (3 runs, median) against the Node server over local TLS
+              run: |
+                  TLSDIR="$(tests/tls/make-cert.sh)"
+                  CHROME_PATH="$(node -e 'console.log(require("@playwright/test").chromium.executablePath())')"
+                  export CHROME_PATH
+                  TECKEN_ROOT=. HOST=127.0.0.1 PORT=8443 \
+                      TLS_CERT_FILE="$TLSDIR/cert.pem" TLS_KEY_FILE="$TLSDIR/key.pem" \
+                      node services/api/dist/server.mjs &
+                  SERVER=$!
+                  for _ in $(seq 1 30); do
+                      curl -skf https://127.0.0.1:8443/v1/health > /dev/null && break
+                      sleep 1
+                  done
+                  curl -skf https://127.0.0.1:8443/v1/health > /dev/null
+                  RC=0
+                  npx --yes @lhci/cli@0.15.1 autorun --config=lighthouserc.json || RC=$?
+                  npx --yes @lhci/cli@0.15.1 autorun --config=lighthouserc.mobile.json || RC=$?
+                  kill "$SERVER"
+                  exit "$RC"
+            - name: Job duration
+              if: always()
+              run: |
+                  echo "perf: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"

@@ -1,6 +1,7 @@
-import { mkdtempSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { brotliCompressSync, brotliDecompressSync } from "node:zlib";
 import { beforeAll, describe, expect, it } from "vitest";
 import { utteranceRecord } from "@ludvigalden-demo/tecken-contracts";
 import type { UtteranceRecord } from "@ludvigalden-demo/tecken-contracts";
@@ -15,6 +16,7 @@ import { CONTENT_SECURITY_POLICY } from "./security-headers";
  */
 
 const repoRoot = join(import.meta.dirname, "../../..");
+const ASSET_SOURCE = `export const app = "${"tecken ".repeat(200)}";\n`;
 let content: ContentIndex;
 let app: ReturnType<typeof createApp>;
 
@@ -24,6 +26,12 @@ beforeAll(() => {
     writeFileSync(
         join(web, "index.html"),
         "<!doctype html><title>t</title><main></main>",
+    );
+    mkdirSync(join(web, "assets"));
+    writeFileSync(join(web, "assets/app-abc.js"), ASSET_SOURCE);
+    writeFileSync(
+        join(web, "assets/app-abc.js.br"),
+        brotliCompressSync(ASSET_SOURCE),
     );
     const sb = mkdtempSync(join(tmpdir(), "tecken-sb-"));
     writeFileSync(join(sb, "index.html"), "<!doctype html><title>sb</title>");
@@ -365,5 +373,33 @@ describe("headers and static serving", () => {
         const root = await app.request("/");
         expect(root.status).toBe(200);
         expect(root.headers.get("cache-control")).toBe("no-cache");
+    });
+
+    it("serves a hashed asset's precompressed sibling when the client accepts it", async () => {
+        expect.hasAssertions();
+        const br = await app.request("/assets/app-abc.js", {
+            headers: { "Accept-Encoding": "gzip, br" },
+        });
+        expect(br.status).toBe(200);
+        expect(br.headers.get("content-encoding")).toBe("br");
+        expect(br.headers.get("vary")).toContain("Accept-Encoding");
+        expect(br.headers.get("content-type")).toMatch(/^text\/javascript/);
+        expect(br.headers.get("cache-control")).toBe(
+            "public, max-age=31536000, immutable",
+        );
+        expect(br.headers.get("content-security-policy")).toBe(
+            CONTENT_SECURITY_POLICY,
+        );
+        const body = Buffer.from(await br.arrayBuffer());
+        expect(body.length).toBeLessThan(ASSET_SOURCE.length);
+        expect(brotliDecompressSync(body).toString()).toBe(ASSET_SOURCE);
+    });
+
+    it("serves the plain asset to a client that accepts no compression", async () => {
+        expect.hasAssertions();
+        const plain = await app.request("/assets/app-abc.js");
+        expect(plain.status).toBe(200);
+        expect(plain.headers.get("content-encoding")).toBeNull();
+        expect(await plain.text()).toBe(ASSET_SOURCE);
     });
 });

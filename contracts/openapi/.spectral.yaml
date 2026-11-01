@@ -5,3 +5,24 @@ rules:
     operation-description: off
     operation-tags: off
     info-contact: off
+    # The public contract must name itself and carry its licence.
+    info-license: error
+    license-url: error
+    tecken-info-title:
+        description: info.title must be a non-empty string.
+        severity: error
+        given: "$.info"
+        then:
+            field: title
+            function: pattern
+            functionOptions:
+                match: "\\S"
+    tecken-info-license-name:
+        description: info.license.name must be a non-empty string.
+        severity: error
+        given: "$.info.license"
+        then:
+            field: name
+            function: pattern
+            functionOptions:
+                match: "\\S"

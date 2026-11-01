@@ -26,6 +26,9 @@ const i18n = createI18n({
 const app = createApp(App);
 app.use(createPinia());
 app.use(i18n);
-app.use(makeRouter(undefined, (key) => i18n.global.t(key)));
+const router = makeRouter(undefined, (key) => i18n.global.t(key));
+app.use(router);
 app.use(ValidationPlugin);
-app.mount("#app");
+// Mount once the first (lazy) route has resolved, so the first paint is the
+// whole page rather than an empty shell that then shifts.
+void router.isReady().then(() => app.mount("#app"));
