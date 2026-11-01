@@ -1,0 +1,11 @@
+CODE_OF_CONDUCT.md is the Contributor Covenant, version 2.1, published by
+the Contributor Covenant project for communities to adopt:
+
+    https://www.contributor-covenant.org/version/2/1/code_of_conduct/
+
+It is reproduced unchanged except for the enforcement contact
+([INSERT CONTACT METHOD] replaced by an email address), which the
+project's published text asks adopters to fill in. The text keeps its
+own "Attribution" section crediting the Contributor Covenant and Mozilla's
+code of conduct enforcement ladder. Reuse it on the Contributor Covenant
+project's terms, as published at https://www.contributor-covenant.org/.

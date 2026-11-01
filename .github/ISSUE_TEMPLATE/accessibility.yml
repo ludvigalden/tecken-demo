@@ -1,0 +1,20 @@
+name: Accessibility problem
+description: Something is hard or impossible to use with a keyboard, screen reader, zoom or other assistive technology.
+labels: [accessibility]
+body:
+    - type: textarea
+      id: what
+      attributes:
+          label: The problem
+          description: What you tried to do and what stopped you.
+      validations:
+          required: true
+    - type: input
+      id: setup
+      attributes:
+          label: Browser and assistive technology
+          description: For example "Safari 19, VoiceOver" or "Chrome, 400 % zoom".
+    - type: input
+      id: page
+      attributes:
+          label: Page

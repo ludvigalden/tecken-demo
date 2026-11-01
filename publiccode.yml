@@ -1,0 +1,90 @@
+publiccodeYmlVersion: "0"
+
+name: Tecken
+url: "https://github.com/ludvigalden/tecken-demo"
+releaseDate: "2026-11-01"
+platforms:
+    - web
+
+categories:
+    - communications
+    - design-system
+
+developmentStatus: development
+
+softwareType: "standalone/web"
+
+description:
+    sv:
+        shortDescription: >-
+            Spelar upp inspelat svenskt teckenspråk för vardagliga fraser, med
+            källa och licens före uppspelning.
+        longDescription: >
+            Tecken är en demonstration av ett webbgränssnitt för svenskt
+            teckenspråk. Användaren skriver en vardaglig fras på svenska. Finns
+            frasen bland de stödda yttrandena spelas en inspelning av en
+            människa som tecknar, med svensk textning, och källan och licensen
+            visas innan klippet spelas. Liknar frasen ett stött yttrande föreslås
+            det i en dialog. Annars säger tjänsten tydligt att frasen inte stöds
+            och länkar till Svenskt teckenspråkslexikon.
+
+
+            Tecken översätter ingenting och genererar ingenting. Den spelar bara
+            upp inspelningar som redan finns, alla från Wikimedia Commons, och
+            ersätter ingen teckenspråkstolk. Innehållet är vardagligt och
+            innehåller inget om hälsa, nödsituationer, samtycke eller juridik.
+            Gränssnittet följer WCAG 2.2 nivå AA som mål och testas automatiskt i
+            tre webbläsarmotorer och manuellt.
+        features:
+            - Uppspelning av inspelat teckenspråk med svensk textning
+            - Källa, upphov och licens visas före uppspelning
+            - Förslag på stött yttrande med bekräftelse, aldrig vid negation
+            - Fingerstavning bokstav för bokstav med det svenska handalfabetet
+            - Länkar till Svenskt teckenspråkslexikon för ord som inte stöds
+    en:
+        shortDescription: >-
+            Plays recorded Swedish Sign Language for everyday phrases, showing
+            source and licence before playback.
+        longDescription: >
+            Tecken is a demonstration of a web interface for Swedish Sign
+            Language. The user types an everyday phrase in Swedish. If the phrase
+            is one of the supported utterances, a recording of a person signing
+            it plays with Swedish captions, and its source and licence are shown
+            before the clip plays. If the phrase is close to a supported
+            utterance, that utterance is offered in a confirm dialog. Otherwise
+            the service says plainly that the phrase is not supported and links
+            to the Swedish Sign Language Dictionary.
+
+
+            Tecken translates nothing and generates nothing. It only plays
+            existing recordings, all from Wikimedia Commons, and it replaces no
+            sign language interpreter. The content is everyday and contains
+            nothing about health, emergencies, consent or law. The interface
+            targets WCAG 2.2 level AA and is tested automatically in three
+            browser engines and by hand.
+        features:
+            - Playback of recorded signing with Swedish captions
+            - Source, author and licence shown before playback
+            - Suggested supported utterance with confirmation, never across a negation
+            - Fingerspelling letter by letter with the Swedish manual alphabet
+            - Links to the Swedish Sign Language Dictionary for unsupported words
+
+legal:
+    license: MIT
+
+maintenance:
+    type: internal
+    contacts:
+        - name: Ludvig Aldén
+          email: tecken-demo@ludvigalden.com
+
+localisation:
+    localisationReady: true
+    availableLanguages:
+        - sv
+        - en
+
+dependsOn:
+    open:
+        - name: Node.js
+          versionMin: "22.16"

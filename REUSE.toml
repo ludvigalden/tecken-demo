@@ -17,3 +17,12 @@ path = [
 ]
 SPDX-FileCopyrightText = "2026 Ludvig Aldén"
 SPDX-License-Identifier = "MIT"
+
+# The code of conduct is the Contributor Covenant 2.1, reused as its
+# authors intend (adopt it and fill in the contact line). Its licence terms
+# are recorded in LICENSES/LicenseRef-Contributor-Covenant.txt.
+[[annotations]]
+path = "CODE_OF_CONDUCT.md"
+precedence = "override"
+SPDX-FileCopyrightText = "Contributor Covenant contributors"
+SPDX-License-Identifier = "LicenseRef-Contributor-Covenant"

@@ -14,5 +14,7 @@
         "**/node_modules/**",
         "**/dist/**",
         "**/CHANGELOG.md",
+        // Third-party text kept byte for byte (Contributor Covenant 2.1).
+        "CODE_OF_CONDUCT.md",
     ],
 }

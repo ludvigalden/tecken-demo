@@ -36,6 +36,16 @@ jobs:
             - run: npx lerna run lint
             - name: Lint root scripts and tests outside the workspaces
               run: npm run lint:repo
+            - name: README coverage line matches content/
+              run: node tools/ci/check-coverage-stamp.mjs
+            - name: publiccode.yml validates (publiccode-parser v5.4.3)
+              run: |
+                  # The runner image's preinstalled Go builds the parser; a
+                  # missing toolchain fails the step (no silent skip).
+                  go install github.com/italia/publiccode-parser-go/v5/publiccode-parser@v5.4.3
+                  # -no-network: the parser checks the file itself and fetches
+                  # nothing, so the check does not depend on the network.
+                  "$(go env GOPATH)/bin/publiccode-parser" -no-network -path . publiccode.yml
             - run: npx prettier --check .
             - name: stylelint
               run: npx stylelint "**/*.{css,scss,vue}" --allow-empty-input
@@ -241,6 +251,9 @@ jobs:
                   RC=0
                   npx --yes @lhci/cli@0.15.1 autorun --config=lighthouserc.json || RC=$?
                   npx --yes @lhci/cli@0.15.1 autorun --config=lighthouserc.mobile.json || RC=$?
+                  # Error-level ceilings over the two warn-only mobile elisions,
+                  # asserted on the same mobile reports.
+                  npx --yes @lhci/cli@0.15.1 assert --config=lighthouserc.mobile-ceiling.json || RC=$?
                   kill "$SERVER"
                   exit "$RC"
             - name: Job duration

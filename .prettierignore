@@ -9,3 +9,5 @@ packages/design-system/src/generated/
 apps/web/src/generated/
 apps/storybook/generated/
 contracts/openapi/tecken.openapi.json
+# Third-party text kept byte for byte (Contributor Covenant 2.1).
+CODE_OF_CONDUCT.md

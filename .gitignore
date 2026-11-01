@@ -29,6 +29,7 @@
 !/.size-limit.json
 !/lighthouserc.json
 !/lighthouserc.mobile.json
+!/lighthouserc.mobile-ceiling.json
 !/renovate.json
 !/Dockerfile
 !/.dockerignore

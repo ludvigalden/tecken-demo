@@ -84,10 +84,27 @@
     },
     "accessibility": {
         "heading": "Tillgänglighet",
-        "intro": "Tecken siktar på WCAG 2.2 nivå AA.",
-        "captions": "Alla klipp har svenska textningar som är påslagna från början.",
+        "intro": "Tecken är en demonstration och ingen offentlig webbplats. Redogörelsen följer ändå den form som DOS-lagen (SFS 2018:1937) kräver av offentliga aktörer.",
+        "levelHeading": "Hur tillgänglig är webbplatsen?",
+        "level": "Kravnivån är EN 301 549 V3.2.1, som motsvarar WCAG 2.1 nivå AA. Målet är WCAG 2.2 nivå AA.",
+        "status": "Status: delvis förenlig. Automatiska tester visar inga fel, men den manuella granskningen med skärmläsare är inte genomförd.",
+        "gapsHeading": "Kända brister",
+        "gaps": [
+            "Manuell granskning med skärmläsare, zoom och tvingade färger är inte genomförd.",
+            "Tjänsten har bara ett fåtal inspelade fraser och tecken. Annat besvaras med en upplysning om att frasen inte stöds.",
+            "På en långsam mobilanslutning tar det runt 2,5 sekunder innan sidans text visas, och på sidan Källor runt 3 sekunder."
+        ],
+        "methodHeading": "Så har vi testat",
+        "method": "Vid varje ändring testas alla sidor och lägen automatiskt med axe-core mot WCAG 2.0–2.2 nivå A och AA, i Chromium, Firefox och WebKit. Före varje version testas tangentbord, skärmläsare, zoom, tvingade färger, minskad rörelse och textning manuellt.",
+        "featuresHeading": "Det här fungerar",
+        "captions": "Alla klipp har svensk textning som är påslagen från början.",
         "keyboard": "Allt kan användas med tangentbord.",
-        "motion": "Rörelse i gränssnittet visas bara om du inte har valt minskad rörelse."
+        "motion": "Rörelse i gränssnittet visas bara om du inte har valt minskad rörelse.",
+        "reportHeading": "Rapportera brister",
+        "report": "Skapa ett ärende i projektets ärendelista på GitHub, eller mejla tecken-demo{'@'}ludvigalden.com. Vi svarar inom fem arbetsdagar.",
+        "supervisionHeading": "Tillsyn",
+        "supervision": "Myndigheten för digital förvaltning (Digg) är tillsynsmyndighet för DOS-lagen. Tecken är ingen offentlig webbplats och omfattas inte av lagen.",
+        "updated": "Redogörelsen uppdaterades senast 31 oktober 2026."
     },
     "notFound": {
         "heading": "Sidan finns inte",

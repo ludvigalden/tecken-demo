@@ -1,13 +1,26 @@
 # Manual accessibility test checklist
 
-Run against the local production build: `npx lerna run build`,
-`npm run bundle --workspace services/api`, then
-`TECKEN_ROOT=. node services/api/dist/server.mjs` and open
-`http://localhost:8080/`. Use
-the same build for every item below. Record each session in the table at
-the end: date, tester, environment, result per item, and any findings.
-Log every finding as an issue, then fix it or list it as a known gap in
-[COVERAGE.md](COVERAGE.md).
+Run against the local production build, served over local HTTPS:
+
+```sh
+npx lerna run build
+npm run bundle --workspace services/api
+TLSDIR="$(tests/tls/make-cert.sh)"
+TECKEN_ROOT=. TLS_CERT_FILE="$TLSDIR/cert.pem" TLS_KEY_FILE="$TLSDIR/key.pem" \
+    node services/api/dist/server.mjs
+```
+
+Open `https://localhost:8443/` and accept the browser's warning for the
+throwaway self-signed certificate once per browser. Do not use plain
+`http://localhost:8080/`: the production CSP carries
+`upgrade-insecure-requests`, so Safari and WebKit request the scripts
+over https and show a blank page. The https route renders the app in
+Chromium, Firefox and WebKit.
+
+Use the same build for every item below. Record each session in the
+table at the end: date, tester, browsers and screen readers, result per
+item, and any findings. Log every finding as an issue, then fix it or
+list it as a known gap in [COVERAGE.md](COVERAGE.md).
 
 Automated checks miss things, so this session is required for every
 release. It covers the rows marked _manual_ in the coverage map.

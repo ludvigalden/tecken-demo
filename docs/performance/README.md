@@ -9,13 +9,13 @@ repeats these runs on every push.
 
 ### Lighthouse
 
-| Assertion         | Target   | Desktop (`lighthouserc.json`) | Mobile (`lighthouserc.mobile.json`) |
-| ----------------- | -------- | ----------------------------- | ----------------------------------- |
-| Performance score | ≥ 0.90   | error                         | error; **warn** on `/kallor`        |
-| Accessibility     | = 1.00   | error                         | error                               |
-| LCP               | ≤ 2.5 s  | error                         | **warn** (declared elision, below)  |
-| CLS               | ≤ 0.1    | error                         | error                               |
-| TBT               | ≤ 200 ms | error                         | error                               |
+| Assertion         | Target   | Desktop (`lighthouserc.json`) | Mobile (`lighthouserc.mobile.json`)        |
+| ----------------- | -------- | ----------------------------- | ------------------------------------------ |
+| Performance score | ≥ 0.90   | error                         | error; on `/kallor` **warn**, error < 0.85 |
+| Accessibility     | = 1.00   | error                         | error                                      |
+| LCP               | ≤ 2.5 s  | error                         | **warn**, error > 3.5 s (elision below)    |
+| CLS               | ≤ 0.1    | error                         | error                                      |
+| TBT               | ≤ 200 ms | error                         | error                                      |
 
 Measured medians (desktop preset, then Lighthouse's default mobile
 emulation: 4× CPU slowdown, 150 ms RTT, 1.6 Mbit/s):
@@ -48,6 +48,14 @@ there the assertion warns. Its score is held down by the same LCP gap,
 and all its other assertions still fail the job. `/` and `/fingerstavning`
 (0.93–0.95) keep the performance score as an error on mobile, and every
 page keeps it on desktop.
+
+**Ceilings on both elisions.** A warn alone has no bound, so
+`lighthouserc.mobile-ceiling.json` asserts error-level ceilings on the
+same mobile runs: mobile LCP must not exceed 3500 ms on any page, and the
+mobile performance score must not fall below 0.85 on any page. The CI
+`perf` job runs it after the mobile run, and either breach fails the
+job. With both ceilings tightened (LCP 2000 ms, score 0.97) the same
+reports fail, so the assertion is live.
 
 ### Size limits (`.size-limit.json`, gzip, baseline + 10 %)
 
