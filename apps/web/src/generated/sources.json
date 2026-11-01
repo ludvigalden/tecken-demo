@@ -1,0 +1,593 @@
+[
+    {
+        "id": "annat",
+        "kind": "single-sign",
+        "text_sv": "annat",
+        "provenance": {
+            "author": "Spread the Sign",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Swl-annat-spreadthesign-73566.ogv",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-annat-spreadthesign-73566.ogv",
+            "permission_ticket": "2013091910008774"
+        }
+    },
+    {
+        "id": "bil",
+        "kind": "single-sign",
+        "text_sv": "bil",
+        "provenance": {
+            "author": "Spread the Sign",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Swl-bil-spreadthesign-4014.ogv",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-bil-spreadthesign-4014.ogv",
+            "permission_ticket": "2013091910008774"
+        }
+    },
+    {
+        "id": "blomma",
+        "kind": "single-sign",
+        "text_sv": "blomma",
+        "provenance": {
+            "author": "Spread the Sign",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Swl-blomma-13928.ogv",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-blomma-13928.ogv",
+            "permission_ticket": "2013091910008774"
+        }
+    },
+    {
+        "id": "deltid",
+        "kind": "single-sign",
+        "text_sv": "deltid",
+        "provenance": {
+            "author": "Spread the Sign",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Swl-deltid-spreadthesign-70518.ogv",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-deltid-spreadthesign-70518.ogv",
+            "permission_ticket": "2013091910008774"
+        }
+    },
+    {
+        "id": "hatt",
+        "kind": "single-sign",
+        "text_sv": "hatt",
+        "provenance": {
+            "author": "Spread the Sign",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Swl-hatt-14859.ogv",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-hatt-14859.ogv",
+            "permission_ticket": "2013091910008774"
+        }
+    },
+    {
+        "id": "hej",
+        "kind": "utterance",
+        "text_sv": "hej",
+        "provenance": {
+            "author": "MSLink",
+            "licence": "CC BY 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by/3.0",
+            "source_title": "File:67329.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3A67329.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "jag-behover-tvatta-lite",
+        "kind": "utterance",
+        "text_sv": "jag behöver tvätta lite.",
+        "provenance": {
+            "author": "Spread the Sign",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Swl-jag behöver tvätta lite.-spreadthesign-79721.ogv",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-jag%20beh%C3%B6ver%20tv%C3%A4tta%20lite.-spreadthesign-79721.ogv",
+            "permission_ticket": "2013091910008774"
+        }
+    },
+    {
+        "id": "letter-a",
+        "kind": "fingerspelling-letter",
+        "text_sv": "a",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:A Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AA%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-aring",
+        "kind": "fingerspelling-letter",
+        "text_sv": "å",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Å Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3A%C3%85%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-auml",
+        "kind": "fingerspelling-letter",
+        "text_sv": "ä",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Ä Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3A%C3%84%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-b",
+        "kind": "fingerspelling-letter",
+        "text_sv": "b",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:B Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AB%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-c",
+        "kind": "fingerspelling-letter",
+        "text_sv": "c",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:C, Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AC%2C%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-d",
+        "kind": "fingerspelling-letter",
+        "text_sv": "d",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:D Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AD%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-e",
+        "kind": "fingerspelling-letter",
+        "text_sv": "e",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:E Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AE%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-f",
+        "kind": "fingerspelling-letter",
+        "text_sv": "f",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:F Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AF%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-g",
+        "kind": "fingerspelling-letter",
+        "text_sv": "g",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:G Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AG%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-h",
+        "kind": "fingerspelling-letter",
+        "text_sv": "h",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:H Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AH%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-i",
+        "kind": "fingerspelling-letter",
+        "text_sv": "i",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:I Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AI%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-j",
+        "kind": "fingerspelling-letter",
+        "text_sv": "j",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:J Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AJ%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-k",
+        "kind": "fingerspelling-letter",
+        "text_sv": "k",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:K Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AK%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-l",
+        "kind": "fingerspelling-letter",
+        "text_sv": "l",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:L Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AL%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-m",
+        "kind": "fingerspelling-letter",
+        "text_sv": "m",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:M Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AM%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-n",
+        "kind": "fingerspelling-letter",
+        "text_sv": "n",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:N Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AN%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-o",
+        "kind": "fingerspelling-letter",
+        "text_sv": "o",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:O Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AO%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-ouml",
+        "kind": "fingerspelling-letter",
+        "text_sv": "ö",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Ö Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3A%C3%96%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-p",
+        "kind": "fingerspelling-letter",
+        "text_sv": "p",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:P Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AP%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-q",
+        "kind": "fingerspelling-letter",
+        "text_sv": "q",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Q Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AQ%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-r",
+        "kind": "fingerspelling-letter",
+        "text_sv": "r",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:R Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AR%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-s",
+        "kind": "fingerspelling-letter",
+        "text_sv": "s",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:S Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AS%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-t",
+        "kind": "fingerspelling-letter",
+        "text_sv": "t",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:T Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AT%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-u",
+        "kind": "fingerspelling-letter",
+        "text_sv": "u",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:U Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AU%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-v",
+        "kind": "fingerspelling-letter",
+        "text_sv": "v",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:V Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AV%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-w",
+        "kind": "fingerspelling-letter",
+        "text_sv": "w",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:W Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AW%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-x",
+        "kind": "fingerspelling-letter",
+        "text_sv": "x",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:X Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AX%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-y",
+        "kind": "fingerspelling-letter",
+        "text_sv": "y",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Y Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AY%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "letter-z",
+        "kind": "fingerspelling-letter",
+        "text_sv": "z",
+        "provenance": {
+            "author": "LittleGun",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Z Svenskt handalfabet.webm",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AZ%20Svenskt%20handalfabet.webm",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "lexikon-hej",
+        "kind": "link-out",
+        "text_sv": "hej",
+        "link_out_url": "https://teckensprakslexikon.su.se/ord/00032",
+        "provenance": {
+            "author": "Svenskt teckenspråkslexikon, Avdelningen för teckenspråk, Institutionen för lingvistik, Stockholms universitet",
+            "licence": "CC BY-NC-SA 4.0",
+            "licence_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+            "source_title": "Svenskt teckenspråkslexikon: hej",
+            "source_url": "https://teckensprakslexikon.su.se/ord/00032",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "lexikon-hiss",
+        "kind": "link-out",
+        "text_sv": "hiss",
+        "link_out_url": "https://teckensprakslexikon.su.se/ord/04856",
+        "provenance": {
+            "author": "Svenskt teckenspråkslexikon, Avdelningen för teckenspråk, Institutionen för lingvistik, Stockholms universitet",
+            "licence": "CC BY-NC-SA 4.0",
+            "licence_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+            "source_title": "Svenskt teckenspråkslexikon: hiss",
+            "source_url": "https://teckensprakslexikon.su.se/ord/04856",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "lexikon-hjalpa",
+        "kind": "link-out",
+        "text_sv": "hjälpa",
+        "link_out_url": "https://teckensprakslexikon.su.se/ord/00625",
+        "provenance": {
+            "author": "Svenskt teckenspråkslexikon, Avdelningen för teckenspråk, Institutionen för lingvistik, Stockholms universitet",
+            "licence": "CC BY-NC-SA 4.0",
+            "licence_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+            "source_title": "Svenskt teckenspråkslexikon: hjälpa",
+            "source_url": "https://teckensprakslexikon.su.se/ord/00625",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "lexikon-stanga",
+        "kind": "link-out",
+        "text_sv": "stänga",
+        "link_out_url": "https://teckensprakslexikon.su.se/ord/00360",
+        "provenance": {
+            "author": "Svenskt teckenspråkslexikon, Avdelningen för teckenspråk, Institutionen för lingvistik, Stockholms universitet",
+            "licence": "CC BY-NC-SA 4.0",
+            "licence_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+            "source_title": "Svenskt teckenspråkslexikon: stäng, stänga, stängd, stängt",
+            "source_url": "https://teckensprakslexikon.su.se/ord/00360",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "lexikon-toalett",
+        "kind": "link-out",
+        "text_sv": "toalett",
+        "link_out_url": "https://teckensprakslexikon.su.se/ord/04074",
+        "provenance": {
+            "author": "Svenskt teckenspråkslexikon, Avdelningen för teckenspråk, Institutionen för lingvistik, Stockholms universitet",
+            "licence": "CC BY-NC-SA 4.0",
+            "licence_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+            "source_title": "Svenskt teckenspråkslexikon: toalett",
+            "source_url": "https://teckensprakslexikon.su.se/ord/04074",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "lexikon-valkommen",
+        "kind": "link-out",
+        "text_sv": "välkommen",
+        "link_out_url": "https://teckensprakslexikon.su.se/ord/00192",
+        "provenance": {
+            "author": "Svenskt teckenspråkslexikon, Avdelningen för teckenspråk, Institutionen för lingvistik, Stockholms universitet",
+            "licence": "CC BY-NC-SA 4.0",
+            "licence_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+            "source_title": "Svenskt teckenspråkslexikon: välkommen",
+            "source_url": "https://teckensprakslexikon.su.se/ord/00192",
+            "permission_ticket": null
+        }
+    },
+    {
+        "id": "man",
+        "kind": "single-sign",
+        "text_sv": "män",
+        "provenance": {
+            "author": "Spread the Sign",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Swl-män-spreadthesign-81278.ogv",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-m%C3%A4n-spreadthesign-81278.ogv",
+            "permission_ticket": "2013091910008774"
+        }
+    },
+    {
+        "id": "musik-pa-teckensprak-ar-sa-vackert",
+        "kind": "utterance",
+        "text_sv": "musik på teckenspråk är så vackert",
+        "provenance": {
+            "author": "Spread the Sign",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Swl-musik på teckenspråk är så vackert-spreadthesign-84845.ogv",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-musik%20p%C3%A5%20teckenspr%C3%A5k%20%C3%A4r%20s%C3%A5%20vackert-spreadthesign-84845.ogv",
+            "permission_ticket": "2013091910008774"
+        }
+    },
+    {
+        "id": "orginal",
+        "kind": "single-sign",
+        "text_sv": "orginal",
+        "provenance": {
+            "author": "Spread the Sign",
+            "licence": "CC BY-SA 3.0",
+            "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source_title": "File:Swl-orginal-spreadthesign-16626.ogv",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3ASwl-orginal-spreadthesign-16626.ogv",
+            "permission_ticket": "2013091910008774"
+        }
+    }
+]

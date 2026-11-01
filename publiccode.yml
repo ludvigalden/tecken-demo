@@ -17,55 +17,49 @@ softwareType: "standalone/web"
 description:
     sv:
         shortDescription: >-
-            Spelar upp inspelat svenskt teckenspråk för vardagliga fraser, med
-            källa och licens före uppspelning.
+            En demonstration av webbutveckling som spelar upp inspelat svenskt
+            teckenspråk för ett fåtal vardagliga fraser.
         longDescription: >
-            Tecken är en demonstration av ett webbgränssnitt för svenskt
-            teckenspråk. Användaren skriver en vardaglig fras på svenska. Finns
-            frasen bland de stödda yttrandena spelas en inspelning av en
-            människa som tecknar, med svensk textning, och källan och licensen
-            visas innan klippet spelas. Liknar frasen ett stött yttrande föreslås
-            det i en dialog. Annars säger tjänsten tydligt att frasen inte stöds
-            och länkar till Svenskt teckenspråkslexikon.
+            Tecken är en demonstration av webbutveckling: tillgänglighet,
+            testning, arkitektur och arbete med öppen källkod. Den spelar upp
+            inspelat svenskt teckenspråk för ett fåtal vardagliga fraser och
+            handalfabetet, med svensk textning och med källa och licens för
+            varje klipp. Alla inspelningar kommer från Wikimedia Commons.
 
 
-            Tecken översätter ingenting och genererar ingenting. Den spelar bara
-            upp inspelningar som redan finns, alla från Wikimedia Commons, och
-            ersätter ingen teckenspråkstolk. Innehållet är vardagligt och
-            innehåller inget om hälsa, nödsituationer, samtycke eller juridik.
-            Gränssnittet följer WCAG 2.2 nivå AA som mål och testas automatiskt i
-            tre webbläsarmotorer och manuellt.
+            Tecken konkurrerar inte med någon tjänst. Den verkliga och långt
+            mer fullständiga resursen är Svenskt teckenspråkslexikon
+            (https://teckensprakslexikon.su.se/), som Tecken länkar till.
+            Tecken översätter ingenting, genererar ingenting och ersätter
+            ingen teckenspråkstolk.
         features:
             - Uppspelning av inspelat teckenspråk med svensk textning
-            - Källa, upphov och licens visas före uppspelning
+            - Källa, upphov och licens för varje klipp
             - Förslag på stött yttrande med bekräftelse, aldrig vid negation
             - Fingerstavning bokstav för bokstav med det svenska handalfabetet
             - Länkar till Svenskt teckenspråkslexikon för ord som inte stöds
     en:
         shortDescription: >-
-            Plays recorded Swedish Sign Language for everyday phrases, showing
-            source and licence before playback.
+            A demonstration of web-platform engineering that plays recorded
+            Swedish Sign Language for a handful of everyday phrases.
         longDescription: >
-            Tecken is a demonstration of a web interface for Swedish Sign
-            Language. The user types an everyday phrase in Swedish. If the phrase
-            is one of the supported utterances, a recording of a person signing
-            it plays with Swedish captions, and its source and licence are shown
-            before the clip plays. If the phrase is close to a supported
-            utterance, that utterance is offered in a confirm dialog. Otherwise
-            the service says plainly that the phrase is not supported and links
-            to the Swedish Sign Language Dictionary.
+            Tecken is a demonstration of web-platform engineering:
+            accessibility, testing, architecture and open-source practice. It
+            plays recorded Swedish Sign Language for a handful of everyday
+            phrases and the manual alphabet, with Swedish captions and the
+            source and licence of every clip. All recordings come from
+            Wikimedia Commons.
 
 
-            Tecken translates nothing and generates nothing. It only plays
-            existing recordings, all from Wikimedia Commons, and it replaces no
-            sign language interpreter. The content is everyday and contains
-            nothing about health, emergencies, consent or law. The interface
-            targets WCAG 2.2 level AA and is tested automatically in three
-            browser engines and by hand.
+            Tecken does not compete with any service. The real and far more
+            complete resource is the Swedish Sign Language Dictionary
+            (https://teckensprakslexikon.su.se/), which Tecken links to.
+            Tecken translates nothing, generates nothing and replaces no sign
+            language interpreter.
         features:
             - Playback of recorded signing with Swedish captions
-            - Source, author and licence shown before playback
-            - Suggested supported utterance with confirmation, never across a negation
+            - Source, author and licence of every clip
+            - Suggested supported utterance with confirmation, never when the phrase is negated
             - Fingerspelling letter by letter with the Swedish manual alphabet
             - Links to the Swedish Sign Language Dictionary for unsupported words
 

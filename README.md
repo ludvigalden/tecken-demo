@@ -1,11 +1,16 @@
 # Tecken – svenskt teckenspråk
 
-Tecken spelar upp inspelat svenskt teckenspråk för vardagliga fraser.
-Du skriver en fras på svenska. Finns den bland de stödda yttrandena
-spelas en inspelning av en människa som tecknar, med svensk textning, och
-källan och licensen visas innan klippet spelas.
+Tecken är en demonstration av webbutveckling: tillgänglighet, testning,
+arkitektur och arbete med öppen källkod. Den spelar upp inspelat svenskt
+teckenspråk för ett fåtal vardagliga fraser, med svensk textning och med
+källa och licens för varje klipp.
 
-**Status:** första utkast, 2026-11. Inte i produktion.
+Tecken konkurrerar inte med någon tjänst.
+Den verkliga och långt mer fullständiga resursen är
+[Svenskt teckenspråkslexikon](https://teckensprakslexikon.su.se/).
+
+**Status:** första utkast, 2026-11. Live på
+<https://tecken.demo.ludvigalden.com>.
 
 [English version](README.en.md)
 
@@ -20,15 +25,15 @@ tecknare eller tolkar.
 Innehållet är vardagligt. Det finns inga fraser om hälsa, nödsituationer,
 samtycke eller juridik.
 
-- **Exakt träff:** frasen spelas upp, med källa, upphov och licens före
-  uppspelningen.
+- **Exakt träff:** klippet spelas upp direkt (ljudlöst, och inte alls
+  om du har valt minskad rörelse), med källa, upphov och licens bredvid.
 - **Nära träff:** ett stött yttrande föreslås i en dialog och spelas bara
   om du bekräftar. Tecken föreslår aldrig något när frasen innehåller
   en negation (”inte”, ”ej”, ”aldrig”).
 - **Ingen träff:** tjänsten säger tydligt att frasen inte stöds, visar
   vad som stöds och länkar till Svenskt teckenspråkslexikon.
 - **Fingerstavning:** ett ord stavas bokstav för bokstav med det svenska
-  handalfabetet. Det är inte ett tecken för ordet.
+  handalfabetet, direkt efter sökningen. Det är inte ett tecken för ordet.
 
 ## Innehåll
 
@@ -42,16 +47,16 @@ Raden ovan räknas fram ur `content/` och kontrolleras i CI
 
 ## Teknik
 
-| Del               | Teknik                                                                |
-| ----------------- | --------------------------------------------------------------------- |
-| Webbapp           | Vue 3, TypeScript, Pinia, vue-router, vue-i18n (förkompilerad)        |
-| Komponenter       | FKUI, Försäkringskassans designsystem med öppen källkod               |
-| Eget designsystem | `@ludvigalden-demo/tecken-design-system`: tokens och domänkomponenter |
-| Server och API    | Node.js, Hono, zod, OpenAPI                                           |
-| Kontrakt          | `@ludvigalden-demo/tecken-contracts`: zod-scheman och JSON Schema     |
-| Monorepo          | npm workspaces och Lerna                                              |
-| Tester            | Vitest, Playwright, axe-core, Lighthouse CI, size-limit               |
-| Driftmiljö        | Azure Container Apps (skalar till noll), avbild på GHCR               |
+| Del               | Teknik                                                                            |
+| ----------------- | --------------------------------------------------------------------------------- |
+| Webbapp           | Vue 3, TypeScript, Pinia, vue-router, vue-i18n (förkompilerad)                    |
+| Komponenter       | FKUI, Försäkringskassans designsystem med öppen källkod                           |
+| Eget designsystem | `@ludvigalden-demo/tecken-design-system`: tokens och domänkomponenter             |
+| Server och API    | Node.js, Hono, zod, OpenAPI                                                       |
+| Kontrakt          | `@ludvigalden-demo/tecken-contracts`: zod-scheman och JSON Schema                 |
+| Monorepo          | npm workspaces och Lerna                                                          |
+| Tester            | Vitest, Playwright, axe-core, Lighthouse CI, size-limit                           |
+| Driftmiljö        | Azure Container Apps (skalar till noll), avbild i privat Azure Container Registry |
 
 ## Katalogstruktur
 
@@ -66,6 +71,158 @@ Raden ovan räknas fram ur `content/` och kontrolleras i CI
 | `docs/`      | design, tillgänglighet, säkerhet, prestanda, CI och innehållskällor |
 | `infra/`     | Terraform för driftmiljön i Azure                                   |
 | `tests/`     | webbläsartester för appen och designsystemet                        |
+
+## Struktur och placering
+
+Varje fil har en plats enligt reglerna nedan. En fil som ingen regel
+täcker hör inte hemma i förrådet.
+
+### Roten
+
+- Roten innehåller bara det som gäller hela förrådet: README-filer,
+  licenser, policyfiler (`CONTRIBUTING.md`, `SECURITY.md`,
+  `CODE_OF_CONDUCT.md`, `CODEOWNERS`), `publiccode.yml`, arbetsytornas
+  `package.json` och låsfil, `Dockerfile` med `.dockerignore` för
+  avbilden och den konfiguration som beskrivs härnäst.
+- Konfiguration ligger hos det den konfigurerar. Konfiguration för en
+  arbetsyta ligger i arbetsytan (dess `tsconfig`-, Vite- och
+  Vitest-filer, Storybooks `.storybook/`), Spectrals `.spectral.yaml`
+  ligger bredvid OpenAPI-dokumentet den lintar, och
+  Playwright-konfigurationen ligger i `tests/` med sviterna. Roten
+  innehåller konfiguration som gäller över arbetsytorna (TypeScript,
+  ESLint, Stylelint, Prettier, html-validate, markdownlint, commitlint,
+  EditorConfig, npm, Node, Lerna, Nx, Renovate, REUSE), konfiguration för
+  en fil i roten (`.hadolint.yaml` för `Dockerfile`) och konfiguration för
+  en kontroll som spänner över arbetsytor: `.size-limit.json` sätter
+  budgetar för paket från både appen och designsystemet, och
+  `lighthouserc*.json` granskar sidorna som servern delar ut.
+- `.gitignore` är en tillåtelselista: en ny fil på toppnivån ignoreras
+  tills den läggs till med vilje.
+- `LICENSES/` innehåller licenstexterna som REUSE-annoteringarna pekar på.
+- `.github/` innehåller CI-arbetsflöden och mallar för ärenden och
+  pull requests.
+
+### Innehåll och dokumentation
+
+- `content/` innehåller den licensierade korpusen och inget annat:
+  klipp, yttrandeposter och per-fil licensannoteringar.
+- `contracts/` innehåller det publicerade API-kontraktet: OpenAPI-
+  dokumentet, genererat från API:ets rutter, och dess lintregler.
+- `docs/` innehåller bara prosa för människor, med de bilder prosan
+  visar och deras licensannoteringar. Ingen kod, ingen konfiguration
+  och inget som serveras. Prosa som en rutt visar
+  (tillgänglighetsredogörelsen) finns enbart i `docs/`, och appens
+  generator skriver den till en vykomponent.
+- `infra/` innehåller Terraform för driftmiljön och dess README.
+
+### Arbetsytor
+
+- `apps/` innehåller det som byggs till en webbplats: `apps/web`, appen,
+  och `apps/storybook`, Storybook för designsystemet.
+- `services/api` innehåller Node-servern: API:et och utdelningen av
+  appen, Storybook, media och designsystemets exempel.
+- `packages/` innehåller de publicerade paketen: `contracts` (scheman och
+  typer för yttrandeposten) och `design-system` (tokens och
+  domänkomponenter).
+- `tools/` innehåller verktyg som körs vid byggtid eller i CI och aldrig
+  levereras: `media-pipeline`, `icons` och skripten i `tools/ci`.
+- `tests/` innehåller webbläsarsviterna som spänner över arbetsytor,
+  deras Playwright-konfiguration och skriptet som skapar testcertifikatet
+  för lokal TLS.
+
+En arbetsyta innehåller:
+
+- `package.json`, sin `tsconfig`-, Vite- och Vitest-konfiguration och,
+  för de publicerade paketen, en `README.md`;
+- `src/` för källkod (i Storybook `.storybook/` för konfigurationen och
+  `stories/`, den form Storybook läser);
+- `scripts/` för bygg- och genereringsskript, där `generate.mjs` skriver
+  arbetsytans genererade filer;
+- indata som arbetsytans eget verktyg läser, till exempel
+  mediepipelinens `manifest.json` och `link-outs.json`.
+
+`apps/web/index.html` är appens HTML-ingång.
+
+### Maskinskrivna filer
+
+Varje commitad fil som ett program skriver hör till en av klasserna
+nedan, var och en med sin skribent och den kontroll som håller den
+korrekt.
+
+- **Genererade källfiler:** `scripts/generate.mjs` i arbetsytan som äger
+  källan skriver dem till en katalog `generated/` i arbetsytan som
+  använder dem. Det enda undantaget är OpenAPI-dokumentet, som
+  `services/api/scripts/generate.mjs` skriver till `contracts/openapi/`
+  som det publicerade kontraktet. De redigeras aldrig för hand.
+  `npx lerna run generate` skriver om alla, och CI-jobbet `drift` fäller
+  bygget om något då skiljer sig från det som är commitat.
+- **Korpusen:** allt i `content/` (klipp, stillbilder, textning,
+  yttrandeposter och deras REUSE-annoteringar) skrivs av mediepipelinen
+  i `tools/media-pipeline`. CI laddar inte ned den igen; pipelinens
+  tester kontrollerar hashen för varje commitat klipp och stillbild,
+  varje registrerad längd mot sitt klipp och varje länk mot de
+  verifierade sidtitlarna i `link-outs.json`, och
+  `tools/ci/check-media-count.mjs` kontrollerar antalet filer mot
+  manifestet.
+- **Skärmbilder av lägen:** webbläsarsviten (`tests/app/journeys.mjs`)
+  skriver `docs/design/states/*.png` när den körs med
+  `TECKEN_WRITE_STATES=1`. CI jämför inte bilderna; CI kör samma flöden
+  i alla motorer och kontrollerar varje läge som bilderna visar.
+- **Täckningsraden i README** mellan markörerna `coverage-stamp`:
+  `node tools/ci/check-coverage-stamp.mjs --write` skriver den, och CI
+  kör skriptet utan `--write` och fäller bygget om raden skiljer sig
+  från `content/`.
+- **Låsfiler:** npm skriver `package-lock.json` och Terraform skriver
+  filerna `.terraform.lock.hcl`. CI installerar med `npm ci` och
+  initierar Terraform med `-lockfile=readonly`, och båda fäller bygget
+  om en låsfil inte stämmer med sina manifest.
+
+`content/` är den enda källan till korpusdata. Kod, tester och
+berättelser som använder en posts värden läser dem ur `content/`,
+direkt eller genom en genererad fil; de anger poster med id och kopierar
+aldrig deras fält. Mediepipelinens indata (`manifest.json` och
+`link-outs.json`) är det som `content/` byggs ur, och erkännandena i
+README-filerna, `REUSE.toml`-filerna och `docs/content/link-outs.md`
+namnger källorna så som deras licenser kräver.
+
+### Kod i appen och designsystemet
+
+- `packages/design-system/src/components` innehåller domänkomponenter
+  (T-prefix) som återger teckenspråksbegrepp utan appens routing,
+  store, API-typer eller locale-nycklar. Allt som återanvänds utanför
+  appen hör hit.
+- `packages/design-system/src/tokens` innehåller tokendefinitionerna och
+  deras kontroller.
+- `packages/design-system/examples` innehåller statiska sidor som visar
+  designsystemet utan Vue, och som servern delar ut under `/examples/`.
+- `apps/storybook` innehåller Storybook-konfigurationen (`.storybook/`),
+  berättelserna (`stories/`) och de genererade poster de visar.
+- `apps/web/src` innehåller appens startfiler (`main.ts`, `App.vue`,
+  `router.ts`, `route-query.ts` och typdeklarationer) och en katalog
+  per slag, enligt tabellen nedan.
+
+| Katalog                   | Innehåll                                                                                                                                        |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `apps/web/src/views`      | en komponent per rutt, och hjälpfunktioner som bara vyerna använder; en vy äger URL- och frågehantering, dataladdning och fokus, och hålls tunn |
+| `apps/web/src/components` | alla övriga komponenter, dialoger inbegripna                                                                                                    |
+| `apps/web/src/api`        | den typade klienten mot API:et                                                                                                                  |
+| `apps/web/src/stores`     | Pinia-stores                                                                                                                                    |
+| `apps/web/src/icons`      | injiceringen av ikonuppsättningen                                                                                                               |
+| `apps/web/src/locales`    | översättningar, en fil per språk                                                                                                                |
+| `apps/web/src/styles`     | globala stilmallar: appskal och delmängder av tredjepartsbibliotek; komponentstilar ligger scopade i sina SFC:er                                |
+| `apps/web/src/generated`  | genererade filer                                                                                                                                |
+
+### Tester
+
+- Ett enhetstest ligger bredvid filen det testar, och testdata ligger i
+  `fixtures/` bredvid testerna som använder den.
+- Ett test vars föremål inte är en källfil ligger i arbetsytan som
+  vaktar föremålet: kontrollerna av `content/` (`integrity.test.ts`,
+  `link-outs.test.ts`) i mediepipelinen, som skriver den, och
+  negativkontrollerna för importförbuden i `eslint.config.mjs`
+  (`banned-imports.test.ts`) bredvid designsystemets komponenter som
+  förbuden skyddar.
+- Webbläsarsviter som spänner över arbetsytor ligger i `tests/`.
 
 ## Köra lokalt
 
@@ -113,7 +270,7 @@ står i [docs/performance/README.md](docs/performance/README.md).
 - [Hotmodell](docs/security/threat-model.md) och [säkerhetspolicy](SECURITY.md)
 
 Tjänsten skalar till noll. Det första besöket efter en paus kan därför
-ta några sekunder.
+ta en stund.
 
 ## Licenser
 

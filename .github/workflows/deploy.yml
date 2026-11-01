@@ -38,6 +38,7 @@ jobs:
             RESOURCE_GROUP: ${{ vars.TECKEN_RESOURCE_GROUP }}
             CONTAINER_APP: ${{ vars.TECKEN_CONTAINER_APP }}
             REGISTRY: ${{ vars.TECKEN_REGISTRY }}
+            PUBLIC_URL: ${{ vars.TECKEN_PUBLIC_URL }}
         steps:
             - name: Record start
               run: echo "START=$(date +%s)" >> "$GITHUB_ENV"
@@ -86,7 +87,9 @@ jobs:
                   FQDN="$(az containerapp show --name "$CONTAINER_APP" \
                       --resource-group "$RESOURCE_GROUP" \
                       --query properties.configuration.ingress.fqdn -o tsv)"
-                  echo "url=https://${FQDN}" >> "$GITHUB_OUTPUT"
+                  # The public URL is the custom domain when one is bound;
+                  # readiness is checked on the app's own hostname.
+                  echo "url=${PUBLIC_URL:-https://${FQDN}}" >> "$GITHUB_OUTPUT"
                   WANT="$REGISTRY/tecken@${{ steps.image.outputs.digest }}"
                   STATUS=none
                   for _ in $(seq 1 30); do

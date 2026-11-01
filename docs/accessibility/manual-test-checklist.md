@@ -38,6 +38,11 @@ release. It covers the rows marked _manual_ in the coverage map.
       return focus to the phrase field, and "Ja, visa" shows the result.
     - Play, pause and seek a clip, and switch captions off and on, with
       the native video controls.
+    - In Safari: focus a playing clip and press Space. It must pause.
+      Headless WebKit (Playwright) does not toggle a focused native
+      video on Space, even on a bare page with no app code, while
+      Chromium and Firefox do, so only a real Safari session can check
+      this.
     - Fingerspell "Åsa" step by step with the button.
     - Visit every page in the navigation. No keyboard trap anywhere.
 2. **NVDA with Firefox, and NVDA with Chrome** (Windows). If NVDA is not

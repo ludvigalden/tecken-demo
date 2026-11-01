@@ -1,4 +1,4 @@
-import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { brotliCompressSync, brotliDecompressSync } from "node:zlib";
@@ -63,6 +63,44 @@ function realRecord(): UtteranceRecord {
     return r;
 }
 
+describe("the web app's bundled attribution list", () => {
+    it("matches /v1/utterances record for record", async () => {
+        expect.hasAssertions();
+        const bundled = JSON.parse(
+            readFileSync(
+                join(repoRoot, "apps/web/src/generated/sources.json"),
+                "utf8",
+            ),
+        ) as Array<{
+            id: string;
+            kind: string;
+            text_sv: string;
+            link_out_url?: string;
+            provenance: Record<string, unknown>;
+        }>;
+        const res = await app.request("/v1/utterances");
+        const { items } = (await res.json()) as {
+            items: Array<{
+                id: string;
+                kind: string;
+                text_sv: string;
+                link_out_url?: string;
+                provenance: Record<string, unknown>;
+            }>;
+        };
+        expect(bundled.map((r) => r.id)).toEqual(items.map((r) => r.id));
+        for (const [i, r] of bundled.entries()) {
+            const wire = items[i];
+            expect(r.kind, r.id).toBe(wire?.kind);
+            expect(r.text_sv, r.id).toBe(wire?.text_sv);
+            expect(r.link_out_url, r.id).toBe(wire?.link_out_url);
+            for (const [k, v] of Object.entries(r.provenance)) {
+                expect(v, `${r.id}.${k}`).toBe(wire?.provenance[k] ?? null);
+            }
+        }
+    });
+});
+
 describe("matching", () => {
     it("returns the exact utterance for a normalised phrase", async () => {
         expect.hasAssertions();
@@ -115,6 +153,38 @@ describe("matching", () => {
             result: string;
         };
         expect(e.result).toBe("unsupported");
+    });
+
+    it("fingerspell mode spells a word that is also a recorded utterance", async () => {
+        expect.hasAssertions();
+        for (const word of ["hej", "Hej"]) {
+            const body = (await (
+                await postMatch({ text: word, mode: "fingerspell" })
+            ).json()) as {
+                result: string;
+                letters: Array<{ id: string }>;
+            };
+            expect(body.result, word).toBe("fingerspelling");
+            expect(body.letters.map((l) => l.id)).toEqual([
+                "letter-h",
+                "letter-e",
+                "letter-j",
+            ]);
+        }
+        const exact = (await (
+            await postMatch({ text: "hej", mode: "exact" })
+        ).json()) as { result: string };
+        expect(exact.result).toBe("exact");
+    });
+
+    it("fingerspell mode never matches a phrase and rejects unknown characters", async () => {
+        expect.hasAssertions();
+        for (const text of ["jag behöver tvätta lite", "a1"]) {
+            const body = (await (
+                await postMatch({ text, mode: "fingerspell" })
+            ).json()) as { result: string };
+            expect(body.result, text).toBe("unsupported");
+        }
     });
 
     it("fingerspells a single unknown word letter by letter", async () => {

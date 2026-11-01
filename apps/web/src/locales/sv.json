@@ -4,7 +4,7 @@
         "tagline": "Inspelat svenskt teckenspråk för vardagliga fraser",
         "skipLink": "Hoppa till huvudinnehållet",
         "navLabel": "Huvudmeny",
-        "footer": "En demonstration. Den spelar upp inspelat mänskligt teckenspråk från öppna källor, översätter ingenting och ersätter ingen tolk."
+        "footer": "En demonstration av webbutveckling. Den översätter ingenting och ersätter ingen tolk."
     },
     "nav": {
         "home": "Sök fras",
@@ -15,11 +15,14 @@
     },
     "lookup": {
         "heading": "Sök en fras",
+        "intro": "Ett fåtal vardagliga fraser, inspelade av människor. Det stora, fullständiga uppslagsverket är",
+        "lexikonLink": "Svenskt teckenspråkslexikon",
         "label": "Skriv en fras på svenska",
         "description": "Till exempel ”hej” eller ”jag behöver tvätta lite”. Högst 200 tecken.",
         "submit": "Sök",
         "loading": "Söker…",
         "resultHeading": "Inspelat yttrande: {text}",
+        "resultRegion": "Inspelat yttrande",
         "suggestedNone": "Inget förslag valdes. Skriv en ny fras.",
         "unsupportedHeading": "Ingen inspelning för den frasen",
         "unsupportedNegation": "Frasen innehåller en negation. Tecken föreslår aldrig ett yttrande med motsatt betydelse.",
@@ -48,8 +51,7 @@
     },
     "provenance": {
         "recorded": "Wikimedia Commons",
-        "linkOut": "Svenskt teckenspråkslexikon",
-        "reviewStatus": "Granskningsstatus: källan publicerad, inte granskad här"
+        "linkOut": "Svenskt teckenspråkslexikon"
     },
     "fingerspelling": {
         "heading": "Fingerstavning",
@@ -60,16 +62,17 @@
     },
     "about": {
         "heading": "Om Tecken",
-        "scope": "Tecken spelar upp inspelade klipp av mänskligt teckenspråk för ett litet antal vardagliga fraser och enskilda tecken, samt handalfabetet. Varje klipp visar sin källa och licens innan det spelas.",
+        "scope": "Tecken är en demonstration av webbutveckling: tillgänglighet, testning, arkitektur och arbete med öppen källkod. Den spelar upp inspelat teckenspråk för ett fåtal vardagliga fraser och handalfabetet.",
         "limitsHeading": "Begränsningar",
         "limits": [
             "Tecken översätter ingenting och genererar ingenting. Den visar bara inspelningar som redan finns.",
             "Den ersätter inte en teckenspråkstolk.",
-            "Den innehåller inga fraser om hälsa, nödsituationer, samtycke eller juridik.",
-            "Inspelningarna är publicerade av sina källor men inte granskade här."
+            "Den innehåller inga fraser om hälsa, nödsituationer, samtycke eller juridik."
         ],
         "stanceHeading": "Hållning",
-        "stance": "Tecken följer Dövas världsförbunds (WFD) och WASLI:s hållning: maskinell översättning och avatarer ersätter inte döva tecknare eller tolkar. Därför används här bara inspelningar av människor."
+        "stance": "Tecken följer Dövas världsförbunds (WFD) och WASLI:s hållning: maskinell översättning och avatarer ersätter inte döva tecknare eller tolkar. Därför används här bara inspelningar av människor.",
+        "lexikonLink": "Svenskt teckenspråkslexikon",
+        "lexikon": "Tecken konkurrerar inte med och ersätter inte den verkliga, långt mer fullständiga resursen:"
     },
     "sources": {
         "heading": "Källor och licenser",
@@ -83,28 +86,7 @@
         "transformations": "Ändringar: omkodad till MP4 och WebM utan beskärning eller redigering; stillbild vid 0,5 s."
     },
     "accessibility": {
-        "heading": "Tillgänglighet",
-        "intro": "Tecken är en demonstration och ingen offentlig webbplats. Redogörelsen följer ändå den form som DOS-lagen (SFS 2018:1937) kräver av offentliga aktörer.",
-        "levelHeading": "Hur tillgänglig är webbplatsen?",
-        "level": "Kravnivån är EN 301 549 V3.2.1, som motsvarar WCAG 2.1 nivå AA. Målet är WCAG 2.2 nivå AA.",
-        "status": "Status: delvis förenlig. Automatiska tester visar inga fel, men den manuella granskningen med skärmläsare är inte genomförd.",
-        "gapsHeading": "Kända brister",
-        "gaps": [
-            "Manuell granskning med skärmläsare, zoom och tvingade färger är inte genomförd.",
-            "Tjänsten har bara ett fåtal inspelade fraser och tecken. Annat besvaras med en upplysning om att frasen inte stöds.",
-            "På en långsam mobilanslutning tar det runt 2,5 sekunder innan sidans text visas, och på sidan Källor runt 3 sekunder."
-        ],
-        "methodHeading": "Så har vi testat",
-        "method": "Vid varje ändring testas alla sidor och lägen automatiskt med axe-core mot WCAG 2.0–2.2 nivå A och AA, i Chromium, Firefox och WebKit. Före varje version testas tangentbord, skärmläsare, zoom, tvingade färger, minskad rörelse och textning manuellt.",
-        "featuresHeading": "Det här fungerar",
-        "captions": "Alla klipp har svensk textning som är påslagen från början.",
-        "keyboard": "Allt kan användas med tangentbord.",
-        "motion": "Rörelse i gränssnittet visas bara om du inte har valt minskad rörelse.",
-        "reportHeading": "Rapportera brister",
-        "report": "Skapa ett ärende i projektets ärendelista på GitHub, eller mejla tecken-demo{'@'}ludvigalden.com. Vi svarar inom fem arbetsdagar.",
-        "supervisionHeading": "Tillsyn",
-        "supervision": "Myndigheten för digital förvaltning (Digg) är tillsynsmyndighet för DOS-lagen. Tecken är ingen offentlig webbplats och omfattas inte av lagen.",
-        "updated": "Redogörelsen uppdaterades senast 31 oktober 2026."
+        "heading": "Tillgänglighet"
     },
     "notFound": {
         "heading": "Sidan finns inte",

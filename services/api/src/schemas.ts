@@ -89,7 +89,7 @@ export const UtteranceListSchema = z
 export const MatchRequestSchema = z
     .object({
         text: z.string().min(1).max(MAX_TEXT_LENGTH),
-        mode: z.enum(["exact", "suggest"]),
+        mode: z.enum(["exact", "suggest", "fingerspell"]),
     })
     .strict()
     .openapi("MatchRequest");

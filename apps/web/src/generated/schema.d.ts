@@ -144,7 +144,7 @@ export interface components {
         MatchRequest: {
             text: string;
             /** @enum {string} */
-            mode: "exact" | "suggest";
+            mode: "exact" | "suggest" | "fingerspell";
         };
     };
     responses: never;

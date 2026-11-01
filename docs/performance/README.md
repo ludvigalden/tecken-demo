@@ -35,8 +35,9 @@ LCP assertion warns instead of failing. Every other mobile assertion
 fails the job when missed. The LCP element is the page's first text,
 and nearly all of the time is render delay: the client-rendered app
 must download and run about 125 kB (gzip) of JavaScript, most of it
-FKUI and Vue, before anything paints. `/kallor` also waits for
-`/v1/utterances` before it renders its list. Closing the gap needs
+FKUI and Vue, before anything paints. (`/kallor` ships its list,
+generated from `content/` at build time, so it never waits for
+`/v1/utterances`.) Closing the gap needs
 prerendered HTML for the shell — a static shell without hydration only
 moves the shift to the moment Vue replaces it — or a smaller UI runtime.
 Neither is in scope for this demo.
@@ -67,12 +68,34 @@ raise the ceiling.
 
 ### Size limits (`.size-limit.json`, gzip, baseline + 10 %)
 
-| Bundle                           | Baseline  | Limit     |
-| -------------------------------- | --------- | --------- |
-| App entry JS (`index-*.js`)      | 124 977 B | 137 475 B |
-| App CSS (`index-*.css`)          | 10 488 B  | 11 537 B  |
-| Design-system CSS (`dist/*.css`) | 2 083 B   | 2 292 B   |
-| Design-system components         | 3 991 B   | 4 391 B   |
+| Bundle                                                  | Baseline  | Limit     |
+| ------------------------------------------------------- | --------- | --------- |
+| App initial JS (`index-*.js` + `vue-i18n.runtime-*.js`) | 124 977 B | 137 475 B |
+| App CSS (`index-*.css`)                                 | 10 488 B  | 11 537 B  |
+| Design-system CSS (`dist/*.css`)                        | 2 915 B   | 3 207 B   |
+| Design-system components                                | 7 567 B   | 8 324 B   |
+
+The limits are each bundle's baseline plus 10 %, and the baselines cover
+what the browser actually downloads:
+
+- **The app JS budget names both initial chunks** (`index-*.js` and
+  `vue-i18n.runtime-*.js`). Vite splits vue-i18n into its own chunk that
+  the entry imports, so counting only `index-*.js` would measure part of
+  the download: 127 101 B measured against the 137 475 B limit.
+- **The design-system budgets cover the shared result layout**
+  (`TSignResult` with autoplay and pause handling), the automatic letter
+  sequence and step buttons in `TFingerspellingPlayer`, the working
+  source panel, and the result skeleton (`TSignResultSkeleton`) that
+  holds the final result's geometry with a fixed-height live status line
+  and one fixed 4:3 player box. The skeleton is what keeps CLS at the
+  values in the table above.
+- **`/kallor` ships its data.** The attribution list is generated from
+  `content/utterances` at build time
+  (`apps/web/src/generated/sources.json`, only the fields the page
+  shows, 1 423 B gzip, drift gated by `lerna run generate` and checked
+  record for record against `/v1/utterances` in the API tests). It loads
+  with the lazy `/kallor` chunk, so it is not part of the first-load JS
+  of any other route.
 
 ## Container start
 
@@ -87,9 +110,9 @@ uncompressed), on an arm64 development host:
 The compile cache is written at image build time by importing the
 server once and flushing it, so every container starts warm. The server
 also reads a prebuilt, validated content index instead of walking
-`content/utterances` at startup. The scale-to-zero cold start on Azure
-adds the platform's own container start on top; it is measured live
-after deployment.
+`content/utterances` at startup. After an idle period the app scales
+to zero, so the first visit afterwards waits for Azure to start a
+container; that can take a little while, and later visits are fast.
 
 ## Running locally
 

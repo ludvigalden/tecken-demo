@@ -6,6 +6,9 @@ import { JOURNEYS, armCspCollector, axeNegativeControl } from "./journeys.mjs";
 
 for (const journey of JOURNEYS) {
     test(journey.name, async ({ context, page, browserName }) => {
+        if (journey.timeout) {
+            test.setTimeout(journey.timeout);
+        }
         const csp = await armCspCollector(context);
         await journey.run({ page, csp, browserName });
     });

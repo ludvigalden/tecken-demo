@@ -30,7 +30,7 @@ const links = [
                     <nav class="site-nav" :aria-label="t('app.navLabel')">
                         <ul>
                             <li v-for="link in links" :key="link.to">
-                                <router-link :to="link.to">{{ t(link.label) }}</router-link>
+                                <router-link :to="link.to" :data-label="t(link.label)">{{ t(link.label) }}</router-link>
                             </li>
                         </ul>
                     </nav>
@@ -41,7 +41,7 @@ const links = [
     <main id="main" class="site-main" tabindex="-1">
         <div class="container">
             <div class="row">
-                <div class="col col--sm-12 col--lg-8">
+                <div class="col col--sm-12">
                     <router-view />
                 </div>
             </div>

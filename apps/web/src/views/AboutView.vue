@@ -7,6 +7,11 @@ const { t, tm, rt } = useI18n();
 <template>
     <h1 class="t-focus-target" tabindex="-1">{{ t("about.heading") }}</h1>
     <p>{{ t("about.scope") }}</p>
+    <p>
+        {{ t("about.lexikon") }}
+        <a href="https://teckensprakslexikon.su.se/" rel="noopener noreferrer">{{ t("about.lexikonLink") }}</a
+        >.
+    </p>
     <h2>{{ t("about.limitsHeading") }}</h2>
     <ul>
         <li v-for="(item, i) in tm('about.limits')" :key="i">{{ rt(item) }}</li>

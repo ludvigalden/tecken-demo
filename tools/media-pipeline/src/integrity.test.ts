@@ -19,6 +19,11 @@ beforeAll(() => {
     expect(ffprobe.length).toBeGreaterThan(0);
 });
 
+interface MediaRef {
+    file: string;
+    duration_s: number;
+}
+
 function records(): Array<{ id: string; record: Record<string, unknown> }> {
     if (!existsSync(utterancesDir)) {
         throw new Error(
@@ -97,25 +102,30 @@ describe("content integrity", () => {
     );
 
     it(
-        "every media record's duration matches ffprobe within 0.1 s",
+        "every media record's MP4 and WebM durations match ffprobe within 0.1 s",
         { timeout: 300_000 },
         () => {
             for (const { id, record } of records()) {
                 if (record.kind === "link-out") {
                     continue;
                 }
-                const video = record.video as {
-                    file: string;
-                    duration_s: number;
-                };
-                const probed = ffprobeDurationSeconds(
-                    ffprobe,
-                    join(repoRoot, video.file),
-                );
-                expect(
-                    Math.abs(probed - video.duration_s),
-                    `${id}: duration drift`,
-                ).toBeLessThan(0.1);
+                const refs = [record.video, record.video_alt] as Array<
+                    MediaRef | undefined
+                >;
+                expect(refs[1], `${id}: video_alt missing`).toBeDefined();
+                for (const ref of refs) {
+                    if (!ref) {
+                        continue;
+                    }
+                    const probed = ffprobeDurationSeconds(
+                        ffprobe,
+                        join(repoRoot, ref.file),
+                    );
+                    expect(
+                        Math.abs(probed - ref.duration_s),
+                        `${id}: ${ref.file} duration drift`,
+                    ).toBeLessThan(0.1);
+                }
             }
         },
     );

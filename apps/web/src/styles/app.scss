@@ -6,10 +6,14 @@
     display: none;
 }
 
+/* The skip link wraps instead of widening the page at large text, and
+ * hides by its own height, so a wrapped link never peeks into view. */
 .skip-link {
     position: absolute;
     left: var(--tecken-space-100);
-    top: calc(var(--tecken-space-400) * -2);
+    max-width: calc(100% - 2 * var(--tecken-space-100));
+    top: 0;
+    transform: translateY(-100%);
     padding: var(--tecken-space-50) var(--tecken-space-100);
     background: var(--tecken-surface-default);
     color: var(--tecken-action-text-primary);
@@ -17,7 +21,7 @@
 }
 
 .skip-link:focus-visible {
-    top: var(--tecken-space-50);
+    transform: translateY(var(--tecken-space-50));
 }
 
 .skip-link:focus-visible,
@@ -53,19 +57,85 @@
     list-style: none;
 }
 
+/* Every link is as wide as its bold form, so marking the current page bold
+ * moves no item. The bold copy is hidden, so screen readers skip it. */
 .site-nav a {
+    display: inline-flex;
+    flex-direction: column;
     color: var(--tecken-action-text-primary);
+}
+
+.site-nav a::after {
+    content: attr(data-label);
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    font-weight: var(--tecken-font-weight-bold);
+    user-select: none;
+    pointer-events: none;
 }
 
 .site-nav a[aria-current="page"] {
     font-weight: var(--tecken-font-weight-bold);
 }
 
-/* The main region fills at least the viewport, so the footer starts below
- * the fold and never shifts while a page's content arrives (CLS). */
-.site-main {
+/* Header, main and footer fill exactly the viewport: main grows, so the
+ * footer sits at the bottom and never shifts while a page's content
+ * arrives (CLS), and the page scrolls only when its content overflows. */
+body {
+    margin: 0;
+}
+
+/* A word longer than its line (a heading or a file name at 200 % text on a
+ * 320 px screen) breaks instead of widening the page (WCAG 1.4.4, 1.4.10).
+ * Words that fit are never split, so ordinary text wraps as before. */
+body {
+    overflow-wrap: break-word;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
-    padding-block: var(--tecken-space-200);
+    min-height: 100svh;
+}
+
+.site-main {
+    flex: 1 0 auto;
+    padding-block: var(--tecken-space-100);
+}
+
+.lookup-intro {
+    margin-top: 0;
+    color: var(--tecken-text-secondary);
+}
+
+/* The search form: on wide screens the field and its button share one row,
+ * aligned to the bottom of the field, which keeps the result close to the
+ * top of the page. On narrow screens the button wraps below the field. */
+.site-main form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0 var(--tecken-space-100);
+    max-width: 60ch;
+}
+
+.site-main form > .text-field {
+    flex: 1 1 30ch;
+    margin-bottom: 0;
+}
+
+.site-main form > .button {
+    margin-bottom: var(--tecken-space-100);
+}
+
+.site-main h1 {
+    margin-bottom: var(--tecken-space-50);
+}
+
+.result-section h2 {
+    margin: 0;
 }
 
 .site-footer {
@@ -77,8 +147,9 @@
 .result-section,
 .unsupported-section {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--tecken-space-100);
-    margin-top: var(--tecken-space-200);
+    margin-top: var(--tecken-space-100);
 }
 
 .supported-list {

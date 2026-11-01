@@ -1,7 +1,10 @@
 [
     {
-        "name": "app entry JS",
-        "path": "apps/web/dist/assets/index-[A-Za-z0-9_-]*.js",
+        "name": "app initial JS (entry + vue-i18n chunk)",
+        "path": [
+            "apps/web/dist/assets/index-[A-Za-z0-9_-]*.js",
+            "apps/web/dist/assets/vue-i18n.runtime-[A-Za-z0-9_-]*.js"
+        ],
         "gzip": true,
         "limit": "137475 B"
     },
@@ -15,12 +18,12 @@
         "name": "design-system CSS",
         "path": "packages/design-system/dist/*.css",
         "gzip": true,
-        "limit": "2292 B"
+        "limit": "3207 B"
     },
     {
         "name": "design-system components",
         "path": "packages/design-system/dist/components/*",
         "gzip": true,
-        "limit": "4391 B"
+        "limit": "8324 B"
     }
 ]

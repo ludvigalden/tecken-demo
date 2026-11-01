@@ -1,19 +1,62 @@
 import { nextTick } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
-import type { Router, RouterHistory } from "vue-router";
+import type {
+    RouteComponent,
+    RouteLocationNormalized,
+    Router,
+    RouterHistory,
+} from "vue-router";
+import { primeMatch } from "./api/client";
+import { phraseFromQuery, wordFromQuery } from "./route-query";
+
+type LazyView = () => Promise<RouteComponent>;
+const lookupView: LazyView = async () =>
+    (await import("./views/LookupView.vue")).default;
+const fingerspellingView: LazyView = async () =>
+    (await import("./views/FingerspellingView.vue")).default;
+
+/*
+ * Data before render: a route whose URL names a search (`/?q=`,
+ * `/fingerstavning?ord=`) starts that match while the view's chunk loads,
+ * and the route renders only when both are ready, so the page appears with
+ * its result instead of shifting when the result arrives. This covers a
+ * first load, a link, and history back from another page. A new search on
+ * the same page shows a skeleton of the result instead (see the views).
+ */
+function primeLookup(to: RouteLocationNormalized): Promise<unknown> {
+    const text = phraseFromQuery(to.query);
+    return Promise.all([
+        lookupView(),
+        text ? primeMatch(text, "suggest") : undefined,
+    ]);
+}
+
+function primeSpelling(to: RouteLocationNormalized): Promise<unknown> {
+    const word = wordFromQuery(to.query);
+    return Promise.all([
+        fingerspellingView(),
+        word ? primeMatch(word, "fingerspell") : undefined,
+    ]);
+}
 
 /** Lazy route views; the route meta names the i18n key of the page title. */
 export const routes = [
     {
         path: "/",
         name: "home",
-        component: () => import("./views/LookupView.vue"),
+        component: lookupView,
+        beforeEnter: async (to: RouteLocationNormalized) => {
+            await primeLookup(to);
+        },
         meta: { title: "nav.home" },
     },
     {
         path: "/fingerstavning",
         name: "fingerspelling",
-        component: () => import("./views/FingerspellingView.vue"),
+        component: fingerspellingView,
+        beforeEnter: async (to: RouteLocationNormalized) => {
+            await primeSpelling(to);
+        },
         meta: { title: "nav.fingerspelling" },
     },
     {
@@ -25,6 +68,9 @@ export const routes = [
     {
         path: "/kallor",
         name: "sources",
+        // The attribution list ships with the view (generated at build time
+        // from content/), so the page renders complete, with no data wait,
+        // on a load and on a client navigation alike.
         component: () => import("./views/SourcesView.vue"),
         meta: { title: "nav.sources" },
     },

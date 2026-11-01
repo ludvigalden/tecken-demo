@@ -45,30 +45,30 @@ describe("TProvenanceBadge", () => {
 });
 
 describe("TProvenancePanel", () => {
-    it("shows all provenance terms including an unnamed signer", () => {
+    it("starts collapsed, expands on toggle and shows the attribution", async () => {
+        expect.hasAssertions();
+        // The real FKUI panel, which must open on click.
         const wrapper = mount(TProvenancePanel, {
             props: { provenance: validMediaRecord.provenance },
-            global: {
-                stubs: {
-                    FExpandablePanel: {
-                        template: "<div><slot name='title' /><slot /></div>",
-                    },
-                    FDefinitionList: {
-                        props: { definitions: Array },
-                        template:
-                            "<dl><div v-for='d in definitions' :key='d.term'><dt>{{ d.term }}</dt><dd>{{ d.definition }}</dd></div></dl>",
-                    },
-                },
-            },
+            attachTo: document.body,
         });
+        const button = wrapper.get("button");
+        expect(button.attributes("aria-expanded")).toBe("false");
+        await button.trigger("click");
+        expect(button.attributes("aria-expanded")).toBe("true");
         const text = wrapper.text();
-        expect(text).toContain("Källa");
         expect(text).toContain("Upphovsperson");
         const { provenance } = validMediaRecord;
         expect(provenance.signer).toBeNull();
         expect(text).toContain("Ej namngiven i källan");
         expect(text).toContain(provenance.author);
         expect(text).toContain(provenance.licence);
+        const links = wrapper.findAll("dd a").map((a) => a.attributes("href"));
+        expect(links).toContain(provenance.licence_url);
+        expect(links).toContain(provenance.source_url);
+        await button.trigger("click");
+        expect(button.attributes("aria-expanded")).toBe("false");
+        wrapper.unmount();
     });
 });
 
@@ -104,39 +104,41 @@ describe("TFingerspellingPlayer", () => {
         expect(wrapper.text()).toContain("inte ett tecken för ordet");
     });
 
-    it("steps through letters on explicit presses, plays each clip and announces it", async () => {
+    it("shows the first letter at once and advances when a clip ends", async () => {
         expect.hasAssertions();
         const wrapper = mount(TFingerspellingPlayer, {
-            props: { word: "hej", letters },
+            props: { word: "hej", letters, autoplay: true },
         });
-        // Nothing plays before the first press.
-        expect(wrapper.find("video").exists()).toBe(false);
-        const button = wrapper.get("button");
-        // FButton renders a native button: keyboard-operable by construction
-        // (jsdom does not synthesize Enter/Space activation).
-        expect(button.attributes("type")).toBe("button");
         const status = (): string => wrapper.get('[role="status"]').text();
-
-        await button.trigger("click");
-        expect(wrapper.emitted("played")?.[0]).toEqual(["h"]);
+        // No click needed: the first letter's clip is there immediately.
         expect(status()).toBe("Bokstav 1 av 3: H");
         expect(wrapper.get("source").attributes("src")).toBe(
             "/media/letter-h.mp4",
         );
-        expect(wrapper.get("video").attributes("autoplay")).toBeUndefined();
-
-        await button.trigger("click");
+        await wrapper.get("video").trigger("ended");
         expect(status()).toBe("Bokstav 2 av 3: E");
-        expect(wrapper.get("source").attributes("src")).toBe(
-            "/media/letter-e.mp4",
-        );
-
-        await button.trigger("click");
-        expect(wrapper.emitted("played")?.[2]).toEqual(["j"]);
-
-        await button.trigger("click");
+        await wrapper.get("video").trigger("ended");
+        expect(status()).toBe("Bokstav 3 av 3: J");
+        await wrapper.get("video").trigger("ended");
         expect(wrapper.emitted("finished")?.[0]).toEqual(["hej"]);
-        expect(status()).toBe("Klart: hej");
-        expect(wrapper.find("video").exists()).toBe(false);
+    });
+
+    it("steps by hand, and a hand step stops the automatic sequence", async () => {
+        expect.hasAssertions();
+        const wrapper = mount(TFingerspellingPlayer, {
+            props: { word: "hej", letters, autoplay: true },
+        });
+        const status = (): string => wrapper.get('[role="status"]').text();
+        const [previous, next] = wrapper.findAll("button");
+        // FKUI keeps a disabled button focusable and marks it aria-disabled.
+        expect(previous?.attributes("aria-disabled")).toBe("true");
+        expect(next?.attributes("aria-disabled")).toBe("false");
+        await next?.trigger("click");
+        expect(status()).toBe("Bokstav 2 av 3: E");
+        await previous?.trigger("click");
+        expect(status()).toBe("Bokstav 1 av 3: H");
+        // The sequence is off now: an ending clip stays on its letter.
+        await wrapper.get("video").trigger("ended");
+        expect(status()).toBe("Bokstav 1 av 3: H");
     });
 });

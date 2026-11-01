@@ -4,6 +4,9 @@
  * - `role="status"` with polite live semantics: state changes are announced
  *   without stealing focus.
  * - The region is plain text; it never traps focus or moves it.
+ * - It always takes one line's height, empty or not, so a message
+ *   appearing or changing never moves the content below it (no layout
+ *   shift).
  */
 
 defineProps<{
@@ -13,5 +16,5 @@ defineProps<{
 </script>
 
 <template>
-    <div role="status" aria-live="polite">{{ message }}</div>
+    <div class="t-live-status" role="status" aria-live="polite">{{ message }}</div>
 </template>

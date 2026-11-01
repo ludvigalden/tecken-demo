@@ -1,6 +1,8 @@
 # Tillgänglighetsredogörelse för Tecken
 
-Tecken är en demonstration och ingen offentlig webbplats. Redogörelsen
+Tecken är en demonstration av webbutveckling och ingen offentlig
+webbplats. För teckenspråk i verkligheten finns
+[Svenskt teckenspråkslexikon](https://teckensprakslexikon.su.se/). Redogörelsen
 följer ändå den form som lagen om tillgänglighet till digital offentlig
 service (DOS-lagen, SFS 2018:1937) kräver av offentliga aktörer, så att
 det syns hur tjänsten uppfyller kraven och var den brister.
@@ -23,6 +25,10 @@ tjänsten som delvis förenlig.
   inspelade fraser och tecken. Allt annat besvaras med en tydlig
   upplysning om att frasen inte stöds, och med länkar till Svenskt
   teckenspråkslexikon.
+- **Klipp startar av sig själva.** Ett sökresultat spelas upp direkt,
+  ljudlöst och en gång. Den som har valt minskad rörelse får inget
+  automatiskt uppspel, och klippet kan alltid pausas med kontrollerna.
+  Teckenspråksklippen har inget meningsfullt ljud.
 - **Lång laddningstid på långsamma mobilnät.** På en simulerad långsam
   mobilanslutning tar det runt 2,5 sekunder innan sidans text visas, och
   på sidan Källor runt 3 sekunder.

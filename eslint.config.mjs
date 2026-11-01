@@ -21,6 +21,8 @@ export default [
             "**/storybook-static/**",
             "**/*.d.ts",
             ".nx/**",
+            // Build output, drift-gated by `lerna run generate`.
+            "apps/web/src/generated/**",
             "apps/storybook/generated/**",
         ],
     },
@@ -102,6 +104,7 @@ export default [
             "packages/contracts/src/**",
             "services/api/src/**",
             "apps/web/src/**",
+            "apps/web/scripts/**",
             "tools/media-pipeline/src/**",
             "packages/design-system/src/**",
             "apps/storybook/stories/**",

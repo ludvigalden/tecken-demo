@@ -191,10 +191,15 @@ function unsupported(
 export function match(
     content: ContentIndex,
     text: string,
-    mode: "exact" | "suggest",
+    mode: "exact" | "suggest" | "fingerspell",
 ): MatchResult {
     if (text.trim() === "") {
         return unsupported(content, "empty");
+    }
+    // Fingerspelling mode always spells, even a word that also exists as a
+    // recorded utterance ("hej"): the user asked for letter by letter.
+    if (mode === "fingerspell") {
+        return spellOrUnsupported(content, text);
     }
     const exact = exactMatch(text, content.playable);
     if (exact) {
@@ -209,6 +214,10 @@ export function match(
             };
         }
     }
+    return spellOrUnsupported(content, text);
+}
+
+function spellOrUnsupported(content: ContentIndex, text: string): MatchResult {
     const word = text.trim();
     if (!word.includes(" ")) {
         const letters = fingerspell(word, content.letters);

@@ -82,6 +82,9 @@ test("media serves byte ranges", async ({ request }) => {
 const INTERCEPTING = /^state (?:loading|error):/;
 for (const journey of JOURNEYS.filter((j) => !INTERCEPTING.test(j.name))) {
     test(`journey: ${journey.name}`, async ({ context, page, browserName }) => {
+        if (journey.timeout) {
+            test.setTimeout(journey.timeout);
+        }
         const csp = await armCspCollector(context);
         await journey.run({ page, csp, browserName });
     });
