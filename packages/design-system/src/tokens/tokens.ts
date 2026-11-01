@@ -100,6 +100,11 @@ export const focusRing = {
     offset: "0.125rem",
 } as const;
 
+/** Motion. Applied only under prefers-reduced-motion: no-preference. */
+export const motion = {
+    "duration-short": "160ms",
+} as const;
+
 /** Type scale (rem) and line heights. */
 export const typeScale = {
     "font-size-xs": "0.75rem",

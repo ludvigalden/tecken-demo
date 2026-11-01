@@ -1,0 +1,96 @@
+{
+    "app": {
+        "name": "Tecken",
+        "tagline": "Inspelat svenskt teckenspråk för vardagliga fraser",
+        "skipLink": "Hoppa till huvudinnehållet",
+        "navLabel": "Huvudmeny",
+        "footer": "En demonstration. Den spelar upp inspelat mänskligt teckenspråk från öppna källor, översätter ingenting och ersätter ingen tolk."
+    },
+    "nav": {
+        "home": "Sök fras",
+        "fingerspelling": "Fingerstavning",
+        "about": "Om",
+        "sources": "Källor",
+        "accessibility": "Tillgänglighet"
+    },
+    "lookup": {
+        "heading": "Sök en fras",
+        "label": "Skriv en fras på svenska",
+        "description": "Till exempel ”hej” eller ”jag behöver tvätta lite”. Högst 200 tecken.",
+        "submit": "Sök",
+        "loading": "Söker…",
+        "resultHeading": "Inspelat yttrande: {text}",
+        "suggestedNone": "Inget förslag valdes. Skriv en ny fras.",
+        "unsupportedHeading": "Ingen inspelning för den frasen",
+        "unsupportedNegation": "Frasen innehåller en negation. Tecken föreslår aldrig ett yttrande med motsatt betydelse.",
+        "unsupportedNoMatch": "Det finns ingen inspelning för den frasen. Detta stöds:",
+        "unsupportedEmpty": "Skriv en fras för att söka.",
+        "linkOutsHeading": "Se tecken i Svenskt teckenspråkslexikon",
+        "linkOutsNote": "Länkarna öppnar lexikonets egna sidor. Lexikonets filmer visas inte här.",
+        "errorHeading": "Något gick fel",
+        "errorBody": "Sökningen kunde inte genomföras. Försök igen om en stund.",
+        "retry": "Försök igen",
+        "fingerspellingHeading": "Fingerstavning: {word}",
+        "status": {
+            "result": "Ett inspelat yttrande hittades.",
+            "suggested": "Ett förslag visas i en dialog.",
+            "unsupported": "Ingen inspelning hittades.",
+            "error": "Sökningen misslyckades.",
+            "fingerspelling": "Ordet stavas bokstav för bokstav."
+        }
+    },
+    "suggest": {
+        "heading": "Föreslaget stöttat meddelande: {text}",
+        "body": "Din fras matchade inte exakt. Vill du se det här inspelade yttrandet?",
+        "confirm": "Ja, visa",
+        "dismiss": "Nej",
+        "close": "Stäng"
+    },
+    "provenance": {
+        "recorded": "Wikimedia Commons",
+        "linkOut": "Svenskt teckenspråkslexikon",
+        "reviewStatus": "Granskningsstatus: källan publicerad, inte granskad här"
+    },
+    "fingerspelling": {
+        "heading": "Fingerstavning",
+        "label": "Skriv ett ord att stava",
+        "description": "Bokstäverna A–Ö ur det svenska handalfabetet.",
+        "submit": "Stava",
+        "unsupported": "Ordet innehåller tecken som inte finns i handalfabetet."
+    },
+    "about": {
+        "heading": "Om Tecken",
+        "scope": "Tecken spelar upp inspelade klipp av mänskligt teckenspråk för ett litet antal vardagliga fraser och enskilda tecken, samt handalfabetet. Varje klipp visar sin källa och licens innan det spelas.",
+        "limitsHeading": "Begränsningar",
+        "limits": [
+            "Tecken översätter ingenting och genererar ingenting. Den visar bara inspelningar som redan finns.",
+            "Den ersätter inte en teckenspråkstolk.",
+            "Den innehåller inga fraser om hälsa, nödsituationer, samtycke eller juridik.",
+            "Inspelningarna är publicerade av sina källor men inte granskade här."
+        ],
+        "stanceHeading": "Hållning",
+        "stance": "Tecken följer Dövas världsförbunds (WFD) och WASLI:s hållning: maskinell översättning och avatarer ersätter inte döva tecknare eller tolkar. Därför används här bara inspelningar av människor."
+    },
+    "sources": {
+        "heading": "Källor och licenser",
+        "intro": "Alla klipp kommer från Wikimedia Commons. Exempelmeningar ur Svenskt teckenspråkslexikon länkas men visas inte här.",
+        "clipsHeading": "Inspelade klipp",
+        "linkOutsHeading": "Länkar till Svenskt teckenspråkslexikon",
+        "author": "Upphov",
+        "licence": "Licens",
+        "source": "Källa",
+        "ticket": "Tillstånd (VRT)",
+        "transformations": "Ändringar: omkodad till MP4 och WebM utan beskärning eller redigering; stillbild vid 0,5 s."
+    },
+    "accessibility": {
+        "heading": "Tillgänglighet",
+        "intro": "Tecken siktar på WCAG 2.2 nivå AA.",
+        "captions": "Alla klipp har svenska textningar som är påslagna från början.",
+        "keyboard": "Allt kan användas med tangentbord.",
+        "motion": "Rörelse i gränssnittet visas bara om du inte har valt minskad rörelse."
+    },
+    "notFound": {
+        "heading": "Sidan finns inte",
+        "back": "Till startsidan"
+    }
+}

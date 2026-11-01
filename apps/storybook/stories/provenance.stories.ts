@@ -38,7 +38,23 @@ function status(): VNode {
 }
 
 function fingerspelling(): VNode {
-    return h(TFingerspellingPlayer, { word: "hej", letters });
+    return h(TFingerspellingPlayer, {
+        word: "hej",
+        letters: letters.map((l) => {
+            const mp4 = l.video?.file.replace(/^content/, "") ?? "";
+            return {
+                id: l.id,
+                letter: l.text_sv,
+                captionText: l.caption?.text,
+                sources: {
+                    mp4,
+                    webm: l.video_alt?.file.replace(/^content/, "") ?? "",
+                    captions: mp4.replace(/\.mp4$/, ".vtt"),
+                    poster: l.poster?.file.replace(/^content/, ""),
+                },
+            };
+        }),
+    });
 }
 
 export const BadgeInspelad: StoryObj = { render: () => badgeRecorded };

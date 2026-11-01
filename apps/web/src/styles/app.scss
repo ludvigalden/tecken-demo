@@ -1,0 +1,107 @@
+/* App shell styles. Semantic tokens only; raw values live in the design
+ * system's token source. */
+
+.skip-link {
+    position: absolute;
+    left: var(--tecken-space-100);
+    top: calc(var(--tecken-space-400) * -2);
+    padding: var(--tecken-space-50) var(--tecken-space-100);
+    background: var(--tecken-surface-default);
+    color: var(--tecken-action-text-primary);
+    z-index: 1000;
+}
+
+.skip-link:focus-visible {
+    top: var(--tecken-space-50);
+}
+
+.skip-link:focus-visible,
+.site-nav a:focus-visible,
+.t-focus-target:focus-visible,
+.site-main a:focus-visible {
+    outline: var(--tecken-focus-ring-width) solid var(--tecken-focus-ring);
+    outline-offset: var(--tecken-focus-ring-offset);
+}
+
+.site-header {
+    border-bottom: var(--tecken-space-25) solid var(--tecken-border-subtle);
+    padding-block: var(--tecken-space-100);
+}
+
+.site-title {
+    margin: 0;
+    font-size: var(--tecken-font-size-xl);
+    line-height: var(--tecken-line-height-tight);
+}
+
+.site-tagline {
+    margin: 0;
+    color: var(--tecken-text-secondary);
+}
+
+.site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--tecken-space-100);
+    margin: var(--tecken-space-100) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-nav a {
+    color: var(--tecken-action-text-primary);
+}
+
+.site-nav a[aria-current="page"] {
+    font-weight: var(--tecken-font-weight-bold);
+}
+
+.site-main {
+    padding-block: var(--tecken-space-200);
+}
+
+.site-footer {
+    border-top: var(--tecken-space-25) solid var(--tecken-border-subtle);
+    padding-block: var(--tecken-space-100);
+    color: var(--tecken-text-secondary);
+}
+
+.result-section,
+.unsupported-section {
+    display: grid;
+    gap: var(--tecken-space-100);
+    margin-top: var(--tecken-space-200);
+}
+
+.supported-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--tecken-space-50);
+    padding: 0;
+    list-style: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .result-section {
+        animation: tecken-fade-in var(--tecken-motion-duration-short) ease-out;
+    }
+}
+
+@keyframes tecken-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Links inside running text are underlined, never told apart by colour
+ * alone (WCAG 1.4.1). */
+.site-main p a,
+.site-main li a {
+    color: var(--tecken-action-text-primary);
+    text-decoration: underline;
+    text-underline-offset: var(--tecken-space-25);
+}

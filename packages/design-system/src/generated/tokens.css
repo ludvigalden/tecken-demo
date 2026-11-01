@@ -71,6 +71,9 @@
         --tecken-focus-ring-width: 0.1875rem;
         --tecken-focus-ring-offset: 0.125rem;
 
+        /* Motion. */
+        --tecken-motion-duration-short: 160ms;
+
         /* Type scale. */
         --tecken-font-size-xs: 0.75rem;
         --tecken-font-size-sm: 0.875rem;

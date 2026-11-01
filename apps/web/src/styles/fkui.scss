@@ -1,0 +1,12 @@
+// Per-component FKUI SCSS (no full fkui.scss bundle), the subset verified CSP-clean.
+@use "@fkui/design/src/core";
+@use "@fkui/design/src/components/badge";
+@use "@fkui/design/src/components/button";
+@use "@fkui/design/src/components/close-button";
+@use "@fkui/design/src/components/definition-list";
+@use "@fkui/design/src/components/expandable-panel";
+@use "@fkui/design/src/components/icon";
+@use "@fkui/design/src/components/label";
+@use "@fkui/design/src/components/message-box";
+@use "@fkui/design/src/components/modal";
+@use "@fkui/design/src/components/text-field";

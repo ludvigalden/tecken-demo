@@ -171,7 +171,7 @@ jobs:
               run: |
                   echo "release-dry-run: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"
 
-    design-system-a11y:
+    browser:
         runs-on: ubuntu-latest
         steps:
             - name: Record start
@@ -187,13 +187,15 @@ jobs:
             - run: npx lerna run build
             - name: Install Playwright browsers (all declared; none may be skipped)
               run: npx playwright install --with-deps chromium firefox webkit
-            - name: Storybook + plain-HTML axe and CSP over local TLS
+            - name: Bundle the Node server (the suite runs against it)
+              run: npm run bundle --workspace services/api
+            - name: App journeys + design system, axe and CSP, over local TLS
               run: |
                   TLSDIR="$(tests/tls/make-cert.sh)"
-                  cd tests/design-system
+                  cd tests
                   TLS_CERT_FILE="$TLSDIR/cert.pem" TLS_KEY_FILE="$TLSDIR/key.pem" PORT=8443 \
                       npx playwright test -c playwright.config.mjs
             - name: Job duration
               if: always()
               run: |
-                  echo "design-system-a11y: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"
+                  echo "browser: $(( $(date +%s) - START ))s" >> "$GITHUB_STEP_SUMMARY"

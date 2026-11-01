@@ -4,7 +4,7 @@ import TProvenanceBadge from "./TProvenanceBadge.vue";
 import TProvenancePanel from "./TProvenancePanel.vue";
 import TLiveStatus from "./TLiveStatus.vue";
 import TFingerspellingPlayer from "./TFingerspellingPlayer.vue";
-import { validMediaRecord } from "./fixtures/records";
+import { corpusRecord, validMediaRecord } from "./fixtures/records";
 
 describe("TProvenanceBadge", () => {
     it("carries text and an icon, never colour alone", () => {
@@ -82,7 +82,19 @@ describe("TLiveStatus", () => {
 });
 
 describe("TFingerspellingPlayer", () => {
+    const letters = ["h", "e", "j"].map((letter) => ({
+        id: `letter-${letter}`,
+        letter,
+        captionText: corpusRecord(`letter-${letter}`).caption?.text,
+        sources: {
+            mp4: `/media/letter-${letter}.mp4`,
+            webm: `/media/letter-${letter}.webm`,
+            captions: `/media/letter-${letter}.vtt`,
+        },
+    }));
+
     it("labels itself as letter-by-letter, not a sign for the word", () => {
+        expect.hasAssertions();
         const wrapper = mount(TFingerspellingPlayer, {
             props: { word: "hej", letters: [] },
         });
@@ -92,30 +104,39 @@ describe("TFingerspellingPlayer", () => {
         expect(wrapper.text()).toContain("inte ett tecken för ordet");
     });
 
-    it("steps through letters on explicit button presses and announces each", async () => {
+    it("steps through letters on explicit presses, plays each clip and announces it", async () => {
+        expect.hasAssertions();
         const wrapper = mount(TFingerspellingPlayer, {
-            props: {
-                word: "hej",
-                letters: [
-                    { ...validMediaRecord, id: "letter-h", text_sv: "h" },
-                    { ...validMediaRecord, id: "letter-e", text_sv: "e" },
-                    { ...validMediaRecord, id: "letter-j", text_sv: "j" },
-                ],
-            },
+            props: { word: "hej", letters },
         });
+        // Nothing plays before the first press.
+        expect(wrapper.find("video").exists()).toBe(false);
         const button = wrapper.get("button");
-        // A native button is keyboard-operable by construction (Enter and
-        // Space activate it per the HTML spec; jsdom does not synthesize
-        // that activation, so the contract is asserted structurally).
-        expect(button.element.tagName).toBe("BUTTON");
+        // FButton renders a native button: keyboard-operable by construction
+        // (jsdom does not synthesize Enter/Space activation).
         expect(button.attributes("type")).toBe("button");
+        const status = (): string => wrapper.get('[role="status"]').text();
+
         await button.trigger("click");
         expect(wrapper.emitted("played")?.[0]).toEqual(["h"]);
+        expect(status()).toBe("Bokstav 1 av 3: H");
+        expect(wrapper.get("source").attributes("src")).toBe(
+            "/media/letter-h.mp4",
+        );
+        expect(wrapper.get("video").attributes("autoplay")).toBeUndefined();
+
         await button.trigger("click");
-        expect(wrapper.emitted("played")?.[1]).toEqual(["e"]);
+        expect(status()).toBe("Bokstav 2 av 3: E");
+        expect(wrapper.get("source").attributes("src")).toBe(
+            "/media/letter-e.mp4",
+        );
+
         await button.trigger("click");
         expect(wrapper.emitted("played")?.[2]).toEqual(["j"]);
+
         await button.trigger("click");
         expect(wrapper.emitted("finished")?.[0]).toEqual(["hej"]);
+        expect(status()).toBe("Klart: hej");
+        expect(wrapper.find("video").exists()).toBe(false);
     });
 });

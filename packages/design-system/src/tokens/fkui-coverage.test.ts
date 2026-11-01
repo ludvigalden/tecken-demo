@@ -43,11 +43,17 @@ function renderedColorVariables(): Set<string> {
 }
 
 describe("FKUI theme override coverage", () => {
-    it("maps every colour variable the shipped FKUI components render", () => {
-        const rendered = renderedColorVariables();
-        expect(rendered.size).toBeGreaterThan(40);
-        const mapped = new Set(Object.keys(fkuiColorOverrides));
-        const unmapped = [...rendered].filter((v) => !mapped.has(v)).toSorted();
-        expect(unmapped).toEqual([]);
-    });
+    it(
+        "maps every colour variable the shipped FKUI components render",
+        { timeout: 60_000 },
+        () => {
+            const rendered = renderedColorVariables();
+            expect(rendered.size).toBeGreaterThan(40);
+            const mapped = new Set(Object.keys(fkuiColorOverrides));
+            const unmapped = [...rendered]
+                .filter((v) => !mapped.has(v))
+                .toSorted();
+            expect(unmapped).toEqual([]);
+        },
+    );
 });

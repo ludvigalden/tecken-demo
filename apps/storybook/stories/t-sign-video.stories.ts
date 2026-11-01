@@ -7,7 +7,18 @@ const meta: Meta = { title: "Domän/TSignVideo" };
 export default meta;
 
 function recorded(): VNode {
-    return h(TSignVideo, { record, label: "hej" });
+    const mp4 = record.video?.file.replace(/^content/, "") ?? "";
+    return h(TSignVideo, {
+        id: record.id,
+        label: "hej",
+        captionText: record.caption?.text,
+        sources: {
+            mp4,
+            webm: record.video_alt?.file.replace(/^content/, "") ?? "",
+            captions: mp4.replace(/\.mp4$/, ".vtt"),
+            poster: record.poster?.file.replace(/^content/, ""),
+        },
+    });
 }
 
 export const Inspelat: StoryObj = { render: () => recorded };

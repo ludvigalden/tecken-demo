@@ -7,6 +7,7 @@ import {
     fkuiColorOverrides,
     fkuiOtherOverrides,
     focusRing,
+    motion,
     fontStackBase,
     primitives,
     radius,
@@ -71,6 +72,16 @@ function tokensCss() {
                     ["--tecken-focus-ring-width", focusRing.width],
                     ["--tecken-focus-ring-offset", focusRing.offset],
                 ],
+                i,
+            ),
+        ],
+        [
+            "Motion.",
+            decl(
+                Object.entries(motion).map(([k, v]) => [
+                    `--tecken-motion-${k}`,
+                    v,
+                ]),
                 i,
             ),
         ],
