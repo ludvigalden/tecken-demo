@@ -29,7 +29,8 @@
 // - in Markdown files, a date later than the reference date (a deadline
 //   or a plan), written as YYYY-MM-DD or as day, month name and year in
 //   Swedish or English. The reference date is --as-of YYYY-MM-DD, or else
-//   the HEAD commit's date; without either the scan fails.
+//   the HEAD commit's date. A missing, empty or non-date --as-of value
+//   fails the scan with a named reason.
 //
 // Before the scan each file is read as UTF-8, NFKC-normalised (full-width
 // forms fold to ASCII) and stripped of zero-width and soft-hyphen
@@ -293,6 +294,17 @@ const SAMPLES_CURRENT = [
     "version 2026-13-45 is not a date",
     "about 2 500 ms in 2026",
 ];
+const AS_OF_BAD = [
+    ["--as-of"],
+    ["--as-of", ""],
+    ["--as-of", "--self-test"],
+    ["--as-of", "x"],
+    ["--as-of", "2026-1-1"],
+    ["--as-of", "2026-13-01"],
+    ["--as-of", "2026-02-30"],
+    ["--as-of", "2026-11-01 2026-11-02"],
+];
+const AS_OF_GOOD = [["--as-of", "2026-11-01"], []];
 
 /** Valid calendar dates in `line`, as YYYY-MM-DD strings. */
 function datesIn(line) {
@@ -324,15 +336,37 @@ function laterDateLines(text, asOf) {
     return lines;
 }
 
+const AS_OF_FORM = /^\d{4}-\d{2}-\d{2}$/u;
+
+/** The --as-of value in `args`: `{ date }` when it is one valid
+ * YYYY-MM-DD calendar date, `{ error }` naming why it is not, or `{}`
+ * when the flag is absent. */
+function parseAsOf(args) {
+    const at = args.indexOf("--as-of");
+    if (at === -1) {
+        return {};
+    }
+    const value = args[at + 1];
+    if (value === undefined || value.startsWith("--")) {
+        return { error: "--as-of needs a YYYY-MM-DD date, got no value" };
+    }
+    if (value === "") {
+        return { error: "--as-of needs a YYYY-MM-DD date, got an empty value" };
+    }
+    if (!AS_OF_FORM.test(value) || datesIn(value).join(",") !== value) {
+        return { error: `--as-of needs a YYYY-MM-DD date, got "${value}"` };
+    }
+    return { date: value };
+}
+
 /** The reference date: --as-of, or else the HEAD commit's date. */
 function referenceDate() {
-    const at = process.argv.indexOf("--as-of");
-    if (at !== -1) {
-        const value = process.argv[at + 1] ?? "";
-        if (datesIn(value).join(",") !== value) {
-            throw new Error(`--as-of needs a YYYY-MM-DD date, got "${value}"`);
-        }
-        return value;
+    const { date, error } = parseAsOf(process.argv.slice(2));
+    if (error) {
+        throw new Error(error);
+    }
+    if (date) {
+        return date;
     }
     return execFileSync("/usr/bin/git", ["log", "-1", "--format=%cs", "HEAD"], {
         encoding: "utf8",
@@ -419,11 +453,21 @@ function selfTest() {
     for (const s of flaggedDates) {
         console.error(`self-test: false later date: ${s}`);
     }
+    const acceptedAsOf = AS_OF_BAD.filter((a) => !parseAsOf(a).error);
+    const refusedAsOf = AS_OF_GOOD.filter((a) => parseAsOf(a).error);
+    for (const a of acceptedAsOf) {
+        console.error(`self-test: accepted --as-of: ${JSON.stringify(a)}`);
+    }
+    for (const a of refusedAsOf) {
+        console.error(`self-test: refused --as-of: ${JSON.stringify(a)}`);
+    }
     if (
         missed.length > 0 ||
         flagged.length > 0 ||
         missedDates.length > 0 ||
-        flaggedDates.length > 0
+        flaggedDates.length > 0 ||
+        acceptedAsOf.length > 0 ||
+        refusedAsOf.length > 0
     ) {
         return 1;
     }
@@ -432,6 +476,9 @@ function selfTest() {
     );
     console.log(
         `self-test: ${SAMPLES_FUTURE.length} later dates caught, ${SAMPLES_CURRENT.length} current dates pass`,
+    );
+    console.log(
+        `self-test: ${AS_OF_BAD.length} bad --as-of values refused, ${AS_OF_GOOD.length} good ones accepted`,
     );
     return 0;
 }
@@ -456,7 +503,13 @@ function hitsIn(file, asOf) {
 }
 
 function scanTree() {
-    const asOf = referenceDate();
+    let asOf;
+    try {
+        asOf = referenceDate();
+    } catch (error) {
+        console.error(`tree-hygiene: ${error.message}`);
+        return 1;
+    }
     // git by absolute path, so the guard never runs a PATH-substituted binary.
     const files = execFileSync(
         "/usr/bin/git",
