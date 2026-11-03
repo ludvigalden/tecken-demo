@@ -31,8 +31,16 @@ interface CommonsPage {
 const UA =
     "tecken-demo-media-pipeline/0.1 (https://github.com/ludvigalden/tecken-demo)";
 
+/** Removes markup until none is left, then any stray angle bracket, so the
+ * result never contains a tag. */
 function stripHtml(value: string): string {
-    return value.replaceAll(/<[^>]+>/g, "").trim();
+    let text = value;
+    let previous: string;
+    do {
+        previous = text;
+        text = text.replaceAll(/<[^<>]*>/g, "");
+    } while (text !== previous);
+    return text.replaceAll(/[<>]/g, "").trim();
 }
 
 function field(info: CommonsImageInfo, key: string): string {

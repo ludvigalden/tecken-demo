@@ -69,6 +69,23 @@ describe("fetchCommonsMetadata (fail closed)", () => {
         ).rejects.toBeInstanceOf(PipelineError);
     });
 
+    it("strips nested markup from text fields without leaving a tag", async () => {
+        const payload = metaResponse({
+            extmetadata: {
+                Artist: { value: "<scr<script>ipt>Probe</a>Author" },
+                LicenseShortName: { value: "CC BY 3.0" },
+                LicenseUrl: {
+                    value: "https://creativecommons.org/licenses/by/3.0",
+                },
+            },
+        });
+        const m = await fetchCommonsMetadata(
+            ["File:probe.webm"],
+            fetchWith(payload),
+        );
+        expect(m.get("File:probe.webm")?.author).toBe("ProbeAuthor");
+    });
+
     it("throws when a requested title has no metadata at all", async () => {
         await expect(
             fetchCommonsMetadata(

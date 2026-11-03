@@ -1,7 +1,7 @@
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { get as httpGet } from "node:http";
-import type { IncomingHttpHeaders } from "node:http";
+import type { IncomingHttpHeaders, IncomingMessage } from "node:http";
 import { get as httpsGet } from "node:https";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -20,6 +20,7 @@ import { CONTENT_SECURITY_POLICY } from "./security-headers";
 
 const repoRoot = join(import.meta.dirname, "../../..");
 const certDir = mkdtempSync(join(tmpdir(), "tecken-listen-"));
+const certFile = join(certDir, "cert.pem");
 const servers: Listening[] = [];
 
 function start(env: Record<string, string>): Promise<number> {
@@ -40,12 +41,15 @@ function start(env: Record<string, string>): Promise<number> {
 }
 
 function headersOf(url: string): Promise<IncomingHttpHeaders> {
-    const getter = url.startsWith("https") ? httpsGet : httpGet;
     return new Promise((resolve, reject) => {
-        getter(url, { rejectUnauthorized: false }, (res) => {
+        const onResponse = (res: IncomingMessage): void => {
             res.resume();
             resolve(res.headers);
-        }).on("error", reject);
+        };
+        const request = url.startsWith("https")
+            ? httpsGet(url, { ca: readFileSync(certFile) }, onResponse)
+            : httpGet(url, onResponse);
+        request.on("error", reject);
     });
 }
 
@@ -75,16 +79,18 @@ beforeAll(async () => {
             "1",
             "-subj",
             "/CN=localhost",
+            "-addext",
+            "subjectAltName=IP:127.0.0.1",
             "-keyout",
             join(certDir, "key.pem"),
             "-out",
-            join(certDir, "cert.pem"),
+            certFile,
         ],
         { stdio: "ignore" },
     );
     httpPort = await start({});
     httpsPort = await start({
-        TLS_CERT_FILE: join(certDir, "cert.pem"),
+        TLS_CERT_FILE: certFile,
         TLS_KEY_FILE: join(certDir, "key.pem"),
     });
 });

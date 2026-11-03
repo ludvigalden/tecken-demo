@@ -58,9 +58,11 @@ npm token.
   `@typescript-eslint/utils` 8.72.1 (its own copy would pull a second
   compiler). `tsc` and `vue-tsc` run as command-line tools only; no
   language server is part of any gate.
-- `npm audit --audit-level=high` exits 0. Four low katex advisories
-  remain and are accepted: the fix is a breaking markdownlint-cli2
-  downgrade.
+- `npm audit --audit-level=high` exits 0. A root override pins katex,
+  used by markdownlint's math extension, to a patched release. The
+  remaining moderate minimatch advisory sits in development tooling
+  (eslint, lerna, nx); its only patched release is a new major that
+  those tools do not support.
 
 ## Changing the API
 

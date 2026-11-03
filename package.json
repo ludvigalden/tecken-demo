@@ -33,6 +33,9 @@
     "markdownlint": {
       "re2js": "2.8.7"
     },
+    "micromark-extension-math": {
+      "katex": "0.19.1"
+    },
     "nx": {
       "undici": "7.30.1"
     },

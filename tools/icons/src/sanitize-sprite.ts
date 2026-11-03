@@ -25,12 +25,10 @@ export function sanitizeSprite(source: string): string {
         /(<symbol[^>]*id="f-icon-i"[^>]*>)([\s\S]*?)(<\/symbol>)/,
         (_match, open: string, body: string, close: string) =>
             open +
-            body
-                .replace(/<style[\s\S]*?<\/style>/g, "")
-                .replace(
-                    /<path(?![^>]*\sfill=)/g,
-                    '<path fill="currentColor"',
-                ) +
+            withoutStyleBlocks(body).replace(
+                /<path(?![^>]*\sfill=)/g,
+                '<path fill="currentColor"',
+            ) +
             close,
     );
 
@@ -41,6 +39,18 @@ export function sanitizeSprite(source: string): string {
         );
     }
     return svg;
+}
+
+/** Removes `<style>` blocks until none is left, so a nested block cannot
+ * reassemble into a new one. */
+function withoutStyleBlocks(body: string): string {
+    let text = body;
+    let previous: string;
+    do {
+        previous = text;
+        text = text.replaceAll(/<style[\s\S]*?<\/style>/g, "");
+    } while (text !== previous);
+    return text;
 }
 
 export function symbolIds(source: string): string[] {

@@ -37,4 +37,12 @@ describe("sanitize-sprite", () => {
         const out = sanitizeSprite(RAW);
         expect(out).not.toMatch(/<style[\s\S]*?<\/style>/);
     });
+
+    it("removes nested <style> blocks that a single pass would reassemble", () => {
+        const nested =
+            '<symbol id="f-icon-i"><sty<style></style>le>.a{}</style><path d="Z"/></symbol>';
+        expect(sanitizeSprite(nested)).toBe(
+            '<symbol id="f-icon-i"><path fill="currentColor" d="Z"/></symbol>',
+        );
+    });
 });
