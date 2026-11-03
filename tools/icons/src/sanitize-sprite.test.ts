@@ -45,4 +45,36 @@ describe("sanitize-sprite", () => {
             '<symbol id="f-icon-i"><path fill="currentColor" d="Z"/></symbol>',
         );
     });
+
+    it("removes <style> blocks in any letter case", () => {
+        const mixed =
+            '<symbol id="f-icon-i"><STYLE>.a{}</STYLE><Style>.b{}</sTyLe><path d="Z"/></symbol>';
+        expect(sanitizeSprite(mixed)).toBe(
+            '<symbol id="f-icon-i"><path fill="currentColor" d="Z"/></symbol>',
+        );
+    });
+
+    it("removes nested <style> blocks in mixed case", () => {
+        const nested =
+            '<symbol id="f-icon-i"><ST<STYLE></STYLE>YLE>.a{}</Style><path d="Z"/></symbol>';
+        expect(sanitizeSprite(nested)).toBe(
+            '<symbol id="f-icon-i"><path fill="currentColor" d="Z"/></symbol>',
+        );
+    });
+
+    it("converts uppercase inline style attributes to presentation attributes", () => {
+        const upper =
+            '<symbol id="f-icon-x"><path STYLE="fill:currentColor" d="Z"/><path Style="fill-rule:evenodd;clip-rule:evenodd" d="Z"/></symbol>';
+        expect(sanitizeSprite(upper)).toBe(
+            '<symbol id="f-icon-x"><path fill="currentColor" d="Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="Z"/></symbol>',
+        );
+    });
+
+    it("rejects any style substring left over, whatever its case", () => {
+        expect(() =>
+            sanitizeSprite(
+                '<symbol id="f-icon-x"><path STYLE="fill:red" d="Z"/></symbol>',
+            ),
+        ).toThrow(/style substrings/);
+    });
 });

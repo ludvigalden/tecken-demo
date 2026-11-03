@@ -15,24 +15,24 @@ export const ATTRIBUTION =
 export function sanitizeSprite(source: string): string {
     let svg = source;
 
-    svg = svg.replaceAll('style="fill:currentColor"', 'fill="currentColor"');
+    svg = svg.replaceAll(/style="fill:currentColor"/gi, 'fill="currentColor"');
     svg = svg.replaceAll(
-        'style="fill-rule:evenodd;clip-rule:evenodd"',
+        /style="fill-rule:evenodd;clip-rule:evenodd"/gi,
         'fill-rule="evenodd" clip-rule="evenodd"',
     );
 
     svg = svg.replace(
-        /(<symbol[^>]*id="f-icon-i"[^>]*>)([\s\S]*?)(<\/symbol>)/,
+        /(<symbol[^>]*id="f-icon-i"[^>]*>)([\s\S]*?)(<\/symbol>)/i,
         (_match, open: string, body: string, close: string) =>
             open +
             withoutStyleBlocks(body).replace(
-                /<path(?![^>]*\sfill=)/g,
-                '<path fill="currentColor"',
+                /<path(?![^>]*\sfill=)/gi,
+                '$& fill="currentColor"',
             ) +
             close,
     );
 
-    const leftover = (svg.match(/style/g) ?? []).length;
+    const leftover = (svg.match(/style/gi) ?? []).length;
     if (leftover !== 0) {
         throw new Error(
             `sanitized sprite still contains ${leftover} style substrings`,
@@ -41,14 +41,14 @@ export function sanitizeSprite(source: string): string {
     return svg;
 }
 
-/** Removes `<style>` blocks until none is left, so a nested block cannot
- * reassemble into a new one. */
+/** Removes `<style>` blocks in any letter case until none is left, so a
+ * nested block cannot reassemble into a new one. */
 function withoutStyleBlocks(body: string): string {
     let text = body;
     let previous: string;
     do {
         previous = text;
-        text = text.replaceAll(/<style[\s\S]*?<\/style>/g, "");
+        text = text.replaceAll(/<style[\s\S]*?<\/style>/gi, "");
     } while (text !== previous);
     return text;
 }
